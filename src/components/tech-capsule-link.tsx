@@ -1,7 +1,8 @@
+
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Sparkles } from "lucide-react";
+import { Rocket } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -23,7 +24,7 @@ export function TechCapsuleLink() {
         )}
         aria-label="Go to Tech Capsules"
       >
-        <Sparkles className="h-8 w-8" />
+        <Rocket className="h-8 w-8" />
       </Button>
     </Link>
   );
