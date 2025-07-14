@@ -2,7 +2,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Rocket } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
@@ -24,7 +24,7 @@ export function TechCapsuleLink() {
         )}
         aria-label="Go to Tech Capsules"
       >
-        <Rocket className="h-8 w-8" />
+        <Lightbulb className="h-8 w-8" />
       </Button>
     </Link>
   );
