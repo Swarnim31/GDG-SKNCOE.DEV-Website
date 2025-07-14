@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, ArrowRight } from "lucide-react";
+import { Calendar, MapPin, ArrowRight, Users } from "lucide-react";
 import { format } from "date-fns";
 
 type EventCardProps = {
@@ -33,7 +33,7 @@ export function EventCard({ event }: EventCardProps) {
         </div>
       </CardHeader>
       <CardContent className="p-4 flex-grow">
-        <CardTitle className="text-lg font-bold mb-2 line-clamp-2">{event.title}</CardTitle>
+        <CardTitle className="text-xl font-bold mb-2 line-clamp-2">{event.title}</CardTitle>
         <div className="w-full space-y-2 text-sm text-muted-foreground mb-4">
           <div className="flex items-center gap-2">
             <Calendar className="h-4 w-4" />
@@ -42,6 +42,10 @@ export function EventCard({ event }: EventCardProps) {
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4" />
             <span>{event.location}</span>
+          </div>
+           <div className="flex items-center gap-2">
+            <Users className="h-4 w-4" />
+            <span>{event.organizer}</span>
           </div>
         </div>
         <CardDescription className="text-muted-foreground line-clamp-3">

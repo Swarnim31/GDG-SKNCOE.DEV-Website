@@ -12,14 +12,17 @@ export function AppHeader() {
           <span className="text-xl font-bold tracking-tight">SknCoe-Dev</span>
         </Link>
         <div className="flex items-center gap-2">
-          <nav className="flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-2">
             <Button asChild variant="ghost">
-              <Link href="/">Events</Link>
+              <Link href="/">Home</Link>
             </Button>
-            <Button asChild>
-              <Link href="/submit">Submit Content</Link>
+            <Button asChild variant="ghost">
+              <Link href="/events">Events</Link>
             </Button>
           </nav>
+          <Button asChild>
+            <Link href="/submit">Submit Content</Link>
+          </Button>
           <ThemeToggle />
         </div>
       </div>

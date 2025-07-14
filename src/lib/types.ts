@@ -4,6 +4,7 @@ export type Event = {
   description: string;
   date: string;
   location: string;
+  organizer: string;
   type: "GDG Event" | "Tech Session" | "Resource Update";
   imageUrl: string;
   imageHint: string;
