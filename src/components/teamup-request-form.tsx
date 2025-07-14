@@ -65,56 +65,58 @@ export function TeamUpRequestForm() {
   };
 
   return (
-    <Card className="shadow-lg border-t-4 border-yellow-500">
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-            <Lightbulb className="h-6 w-6 text-yellow-500" />
-            Looking for a Team?
-        </CardTitle>
-        <CardDescription>Post a query to find collaborators for your next project idea.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField name="name" control={form.control} render={({ field }) => (
-              <FormItem>
-                <FormLabel>Your Name</FormLabel>
-                <FormControl><Input placeholder="e.g., Alex Doe" {...field} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-             <FormField name="query" control={form.control} render={({ field }) => (
-              <FormItem>
-                <FormLabel>Short Query</FormLabel>
-                <FormControl><Textarea placeholder="Describe your project idea or the help you need..." {...field} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-             <FormField name="skills" control={form.control} render={({ field }) => (
-              <FormItem>
-                <FormLabel>Skills Needed</FormLabel>
-                <FormControl><Input placeholder="e.g., React, UI/UX Design, Firebase" {...field} /></FormControl>
-                <FormDescription>Separate skills with commas.</FormDescription>
-                <FormMessage />
-              </FormItem>
-            )} />
-            <FormField name="contact" control={form.control} render={({ field }) => (
-              <FormItem>
-                <FormLabel>Contact Email (Optional)</FormLabel>
-                <FormControl><Input placeholder="Your email for interested members to reach out" {...field} /></FormControl>
-                <FormMessage />
-              </FormItem>
-            )} />
-            <Button type="submit" className="w-full btn-google rounded-full" disabled={isSubmitting}>
-              {isSubmitting ? (
-                <> <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Posting... </>
-              ) : (
-                <> Post Query <Send className="ml-2 h-4 w-4" /> </>
-              )}
-            </Button>
-          </form>
-        </Form>
-      </CardContent>
-    </Card>
+    <div className="p-1 rounded-2xl animated-gradient-border shadow-lg">
+      <Card className="rounded-xl">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+              <Lightbulb className="h-6 w-6 text-yellow-500" />
+              Looking for a Team?
+          </CardTitle>
+          <CardDescription>Post a query to find collaborators for your next project idea.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <FormField name="name" control={form.control} render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Your Name</FormLabel>
+                  <FormControl><Input placeholder="e.g., Alex Doe" {...field} /></FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
+               <FormField name="query" control={form.control} render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Short Query</FormLabel>
+                  <FormControl><Textarea placeholder="Describe your project idea or the help you need..." {...field} /></FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
+               <FormField name="skills" control={form.control} render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Skills Needed</FormLabel>
+                  <FormControl><Input placeholder="e.g., React, UI/UX Design, Firebase" {...field} /></FormControl>
+                  <FormDescription>Separate skills with commas.</FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )} />
+              <FormField name="contact" control={form.control} render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Contact Email (Optional)</FormLabel>
+                  <FormControl><Input placeholder="Your email for interested members to reach out" {...field} /></FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
+              <Button type="submit" className="w-full btn-google rounded-full" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <> <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Posting... </>
+                ) : (
+                  <> Post Query <Send className="ml-2 h-4 w-4" /> </>
+                )}
+              </Button>
+            </form>
+          </Form>
+        </CardContent>
+      </Card>
+    </div>
   );
 }

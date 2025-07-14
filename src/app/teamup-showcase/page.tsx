@@ -49,60 +49,63 @@ export default function TeamUpShowcasePage() {
       </div>
 
       {/* 1. Incoming Team-Up Requests */}
-      <Card className="mb-12 shadow-lg border-t-4 border-primary">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Users className="h-6 w-6 text-primary" />
-            Looking for Teammates?
-          </CardTitle>
-          <CardDescription>
-            Connect with peers who are looking for collaborators on their next big idea.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-4">
-            {alertsLoading && (
-              <>
-                <Skeleton className="h-24 w-full" />
-                <Skeleton className="h-24 w-full" />
-              </>
-            )}
-            {alertsError && (
-              <div className="text-destructive-foreground bg-destructive/80 p-4 rounded-md flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5" />
-                <p>Could not load team-up requests. Please try again later.</p>
+      <div className="p-1 rounded-2xl animated-gradient-border shadow-lg mb-12">
+        <Card className="rounded-xl">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Users className="h-6 w-6 text-primary" />
+              Looking for Teammates?
+            </CardTitle>
+            <CardDescription>
+              Connect with peers who are looking for collaborators on their next big idea.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {alertsLoading && (
+                <>
+                  <Skeleton className="h-24 w-full" />
+                  <Skeleton className="h-24 w-full" />
+                </>
+              )}
+              {alertsError && (
+                <div className="text-destructive-foreground bg-destructive/80 p-4 rounded-md flex items-center gap-2">
+                  <AlertTriangle className="h-5 w-5" />
+                  <p>Could not load team-up requests. Please try again later.</p>
+                </div>
+              )}
+              {!alertsLoading && alerts.length === 0 && (
+                <p className="text-muted-foreground text-center py-4">
+                  No active team-up requests at the moment. Be the first to post one!
+                </p>
+              )}
+              {alerts.slice(0, 3).map(alert => (
+                <TeamUpAlertCard key={alert.id} alert={alert} />
+              ))}
+            </div>
+            {alerts.length > 3 && (
+              <div className="mt-6 text-center">
+                <Dialog open={isAllQueriesOpen} onOpenChange={setIsAllQueriesOpen}>
+                  <DialogTrigger asChild>
+                    <Button variant="outline">View All Queries</Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-2xl">
+                    <DialogHeader>
+                      <DialogTitle>All Team-Up Queries</DialogTitle>
+                    </DialogHeader>
+                    <div className="space-y-4 max-h-[60vh] overflow-y-auto p-1 pr-4">
+                      {alerts.map(alert => (
+                        <TeamUpAlertCard key={alert.id} alert={alert} isExpanded />
+                      ))}
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             )}
-            {!alertsLoading && alerts.length === 0 && (
-              <p className="text-muted-foreground text-center py-4">
-                No active team-up requests at the moment. Be the first to post one!
-              </p>
-            )}
-            {alerts.slice(0, 3).map(alert => (
-              <TeamUpAlertCard key={alert.id} alert={alert} />
-            ))}
-          </div>
-          {alerts.length > 3 && (
-            <div className="mt-6 text-center">
-              <Dialog open={isAllQueriesOpen} onOpenChange={setIsAllQueriesOpen}>
-                <DialogTrigger asChild>
-                  <Button variant="outline">View All Queries</Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-2xl">
-                  <DialogHeader>
-                    <DialogTitle>All Team-Up Queries</DialogTitle>
-                  </DialogHeader>
-                  <div className="space-y-4 max-h-[60vh] overflow-y-auto p-1 pr-4">
-                    {alerts.map(alert => (
-                      <TeamUpAlertCard key={alert.id} alert={alert} isExpanded />
-                    ))}
-                  </div>
-                </DialogContent>
-              </Dialog>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
+
 
       <Separator className="my-16" />
 
