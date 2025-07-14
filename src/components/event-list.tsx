@@ -11,7 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { EventCard } from "@/components/event-card";
+import { EventListItem } from "@/components/event-list-item";
 import { ListFilter, Search } from "lucide-react";
 
 type EventListProps = {
@@ -72,9 +72,9 @@ export function EventList({ events }: EventListProps) {
       </div>
 
       {filteredEvents.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-4 max-w-4xl mx-auto">
           {filteredEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
+            <EventListItem key={event.id} event={event} />
           ))}
         </div>
       ) : (
