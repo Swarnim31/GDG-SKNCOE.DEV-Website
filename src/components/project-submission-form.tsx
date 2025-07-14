@@ -30,20 +30,22 @@ const projectSchema = z.object({
   category: z.enum(["Web", "Mobile", "AI", "Cloud"]),
 });
 
+const defaultFormValues = {
+  title: "",
+  description: "",
+  tags: "",
+  link: "",
+  contributors: [{ name: "", role: "" }],
+  category: "Web" as const,
+};
+
 export function ProjectSubmissionForm() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof projectSchema>>({
     resolver: zodResolver(projectSchema),
-    defaultValues: {
-      title: "",
-      description: "",
-      tags: "",
-      link: "",
-      contributors: [{ name: "", role: "" }],
-      category: "Web",
-    },
+    defaultValues: defaultFormValues,
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -64,14 +66,7 @@ export function ProjectSubmissionForm() {
         title: "Project Submitted!",
         description: "Thank you for sharing your work with the community.",
       });
-      form.reset({
-        title: "",
-        description: "",
-        tags: "",
-        link: "",
-        contributors: [{ name: "", role: "" }],
-        category: "Web",
-      });
+      form.reset(defaultFormValues);
     } catch (error) {
       console.error("Error submitting project:", error);
       toast({
