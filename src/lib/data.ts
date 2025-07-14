@@ -106,7 +106,7 @@ export const mockCapsules: Capsule[] = [
     { id: '7', title: 'VS Code Shortcut', tip: '`Ctrl+D` selects next occurrence of the current word.', category: 'Tools', emoji: '⌨️' },
     { id: '8', title: 'Firebase Rules', tip: 'Always secure your Firestore database with proper security rules.', category: 'Web', emoji: '🔒' },
     { id: '9', title: 'Gemini System Prompt', tip: 'Use a `system` instruction to guide the model\'s behavior and personality.', category: 'AI', emoji: '🤖' },
-    { id: '10', title: 'Flutter Widgets', tip: 'In Flutter, almost everything is a widget, from a button to padding.', category: 'Mobile', emoji: '🧰' },
+    { id: '10', title: 'Flutter Widgets', tip: 'In Flutter, almost everything is a widget, from a button to padding.', category: 'Mobile', emoji: '💊' },
     { id: '11', title: 'Android Vector Drawables', tip: 'Use Vector Drawables for sharp, scalable icons that reduce APK size.', category: 'Mobile', emoji: '✏️' },
 ];
 
@@ -627,3 +627,6 @@ export const mockProjects: Project[] = [
     imageHint: "cloud infrastructure diagram"
   }
 ];
+
+
+    
