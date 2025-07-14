@@ -115,26 +115,30 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-12">Meet the Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {mockTeam.map((member, index) => (
-              <Card
+              <div
                 key={member.id}
-                className="overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="p-1 rounded-2xl animated-gradient-border shadow-lg"
               >
-                <CardContent className="p-0">
-                  <div className="relative h-64 w-full">
-                    <Image
-                      src={member.imageUrl}
-                      alt={member.name}
-                      fill
-                      className="object-cover"
-                      data-ai-hint={member.imageHint}
-                    />
-                  </div>
-                  <div className="p-6 text-center">
-                    <p className="text-xl font-bold">{member.name}</p>
-                    <p className="text-primary">{member.role}</p>
-                  </div>
-                </CardContent>
-              </Card>
+                <Card
+                  className="overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl rounded-xl"
+                >
+                  <CardContent className="p-0">
+                    <div className="relative h-64 w-full">
+                      <Image
+                        src={member.imageUrl}
+                        alt={member.name}
+                        fill
+                        className="object-cover"
+                        data-ai-hint={member.imageHint}
+                      />
+                    </div>
+                    <div className="p-6 text-center">
+                      <p className="text-xl font-bold">{member.name}</p>
+                      <p className="text-primary">{member.role}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
           <Button asChild className="btn-gemini rounded-full">
