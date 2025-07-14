@@ -85,16 +85,16 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-2">
-            Welcome to GDG SknCoe.DEV
-          </h1>
           <Image
             src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-goog/events/gdg%20skncoe5_kltEGo5.png"
             alt="GDG SknCoe Logo"
             width={80}
             height={80}
-            className="h-16 w-16 md:h-20 md:w-20 rounded-full my-4 shadow-lg"
+            className="h-16 w-16 md:h-20 md:w-20 rounded-full mb-4 shadow-lg"
           />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-2">
+            Welcome to GDG SknCoe.DEV
+          </h1>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-4">
             Your Developer Ecosystem
           </h2>
