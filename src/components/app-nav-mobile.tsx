@@ -15,6 +15,8 @@ import Image from "next/image";
 export function AppNavMobile() {
   const [isOpen, setIsOpen] = React.useState(false);
 
+  const closeSheet = () => setIsOpen(false);
+
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
@@ -27,7 +29,7 @@ export function AppNavMobile() {
         <SheetHeader>
           <div
             className="p-0.5 rounded-full bg-gradient-to-r from-blue-500 via-green-500 to-yellow-500 self-start mb-4"
-            onClick={() => setIsOpen(false)}
+            onClick={closeSheet}
           >
             <Link
               href="/"
@@ -47,24 +49,24 @@ export function AppNavMobile() {
           </div>
         </SheetHeader>
         <div className="flex flex-col gap-2">
-          <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="/" onClick={() => setIsOpen(false)}>Home</Link>
-          </Button>
-          <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="/events" onClick={() => setIsOpen(false)}>Events</Link>
-          </Button>
-          <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="/teamup-showcase" onClick={() => setIsOpen(false)}>Showcase</Link>
-          </Button>
-          <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="/resources" onClick={() => setIsOpen(false)}>Resources</Link>
-          </Button>
-           <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="/team" onClick={() => setIsOpen(false)}>Our Team</Link>
-          </Button>
-          <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="/get-involved" onClick={() => setIsOpen(false)}>About GDG</Link>
-          </Button>
+          <Link href="/" passHref>
+            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Home</Button>
+          </Link>
+          <Link href="/events" passHref>
+            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Events</Button>
+          </Link>
+          <Link href="/teamup-showcase" passHref>
+            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Showcase</Button>
+          </Link>
+          <Link href="/resources" passHref>
+            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Resources</Button>
+          </Link>
+          <Link href="/team" passHref>
+            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Our Team</Button>
+          </Link>
+          <Link href="/get-involved" passHref>
+            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>About GDG</Button>
+          </Link>
         </div>
       </SheetContent>
     </Sheet>
