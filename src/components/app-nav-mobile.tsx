@@ -25,20 +25,26 @@ export function AppNavMobile() {
       </SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
-          <Link
-            href="/"
-            className="flex items-center gap-2 mb-4"
+          <div
+            className="p-0.5 rounded-full bg-gradient-to-r from-blue-500 via-green-500 to-yellow-500 self-start mb-4"
             onClick={() => setIsOpen(false)}
           >
-            <Image
-              src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-goog/events/gdg%20skncoe5_kltEGo5.png"
-              alt="GDG SknCoe Logo"
-              width={32}
-              height={32}
-              className="h-8 w-8"
-            />
-            <span className="text-xl font-bold tracking-tight">GDG SknCoe.DEV</span>
-          </Link>
+            <Link
+              href="/"
+              className="flex items-center gap-2 bg-card rounded-full px-3 py-1"
+            >
+              <Image
+                src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-goog/events/gdg%20skncoe5_kltEGo5.png"
+                alt="GDG SknCoe Logo"
+                width={32}
+                height={32}
+                className="h-8 w-8"
+              />
+              <span className="text-xl font-bold tracking-tight">
+                GDG SknCoe.DEV
+              </span>
+            </Link>
+          </div>
         </SheetHeader>
         <div className="flex flex-col gap-2">
           <Button asChild variant="ghost" className="justify-start text-base">
