@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -84,11 +85,14 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-4">
-            GDG SknCoe.DEV
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-2">
+            Welcome to GDG SknCoe.DEV
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-4">
             Your Developer Ecosystem
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto font-body">
+            Where ideas, code, and community come together.
           </p>
           <Button size="lg" asChild className="btn-google font-bold text-lg">
             <Link href="/events">
