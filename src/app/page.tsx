@@ -22,7 +22,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { TechCapsuleDisplay } from "@/components/tech-capsule-display";
-import { DevLinkBot } from "@/components/devlink-bot";
+import { SkncoeDevBot } from "@/components/skncoe-dev-bot";
 
 export default function Home() {
   const domains = [
@@ -183,8 +183,8 @@ export default function Home() {
         </div>
       </section>
       
-      {/* DevLinkBot floating component */}
-      <DevLinkBot />
+      {/* SkncoeDevBot floating component */}
+      <SkncoeDevBot />
     </div>
   );
 }
