@@ -70,26 +70,26 @@ export default function GetInvolvedPage() {
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
-            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-blue-100/50 dark:bg-blue-900/20">
-              <Award className="h-10 w-10 text-primary mx-auto mb-3" />
+            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 capsule-gradient-blue text-primary-foreground">
+              <Award className="h-10 w-10 text-white mx-auto mb-3" />
               <p className="text-3xl font-bold">
                  <AnimatedCounter to={15} />+
               </p>
-              <p className="text-muted-foreground">Sessions Hosted</p>
+              <p className="text-white/80">Sessions Hosted</p>
             </Card>
-            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-green-100/50 dark:bg-green-900/20">
-              <Users className="h-10 w-10 text-primary mx-auto mb-3" />
+            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 capsule-gradient-green text-primary-foreground">
+              <Users className="h-10 w-10 text-white mx-auto mb-3" />
               <p className="text-3xl font-bold">
                 <AnimatedCounter to={500} />+
               </p>
-              <p className="text-muted-foreground">Participants Engaged</p>
+              <p className="text-white/80">Participants Engaged</p>
             </Card>
-            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-yellow-100/50 dark:bg-yellow-900/20">
-              <Handshake className="h-10 w-10 text-primary mx-auto mb-3" />
+            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 capsule-gradient-yellow text-primary-foreground">
+              <Handshake className="h-10 w-10 text-white mx-auto mb-3" />
               <p className="text-3xl font-bold">
                  <AnimatedCounter to={3} />
               </p>
-              <p className="text-muted-foreground">Clubs Collaborated</p>
+              <p className="text-white/80">Clubs Collaborated</p>
             </Card>
           </div>
         </section>
