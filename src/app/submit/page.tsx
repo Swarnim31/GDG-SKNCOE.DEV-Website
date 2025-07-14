@@ -233,7 +233,7 @@ export default function SubmitPage() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full sm:w-auto">
+              <Button type="submit" className="w-full sm:w-auto btn-google rounded-full">
                 Submit Content
               </Button>
             </form>

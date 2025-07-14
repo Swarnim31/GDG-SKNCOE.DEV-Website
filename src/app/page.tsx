@@ -92,7 +92,7 @@ export default function Home() {
             height={80}
             className="h-16 w-16 md:h-20 md:w-20 rounded-full mb-4 shadow-lg"
           />
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-2">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-4">
             Welcome to GDG SknCoe.DEV
           </h1>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-4">
@@ -101,7 +101,7 @@ export default function Home() {
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto font-body">
             Where ideas, code, and community come together.
           </p>
-          <Button size="lg" asChild className="btn-google font-bold text-lg">
+          <Button size="lg" asChild className="btn-google font-bold text-lg rounded-full">
             <Link href="/events">
               Explore Events <ArrowRight className="ml-2 h-5 w-5" />
             </Link>

@@ -134,7 +134,7 @@ export default function GetInvolvedPage() {
             ))}
           </div>
           <div className="text-center">
-            <Button size="lg" asChild className="bg-gradient-to-r from-primary/90 to-secondary/90 text-primary-foreground hover:shadow-lg hover:from-primary hover:to-secondary">
+            <Button size="lg" asChild className="btn-google rounded-full">
               <a href="#" target="_blank" rel="noopener noreferrer">
                 Fill Interest Form <ArrowRight className="ml-2 h-5 w-5" />
               </a>
@@ -167,7 +167,7 @@ export default function GetInvolvedPage() {
                       <Label htmlFor="message">Message</Label>
                       <Textarea id="message" placeholder="Your message..." rows={5} />
                     </div>
-                    <Button type="submit" className="w-full">Send Message</Button>
+                    <Button type="submit" className="w-full btn-google rounded-full">Send Message</Button>
                   </form>
                </CardContent>
              </Card>

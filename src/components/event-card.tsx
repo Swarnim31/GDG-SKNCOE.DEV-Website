@@ -65,7 +65,7 @@ export function EventCard({ event }: EventCardProps) {
             </Badge>
           ))}
         </div>
-        <Button className="w-full mt-2">
+        <Button className="w-full mt-2 btn-google rounded-full">
           Register Now <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </CardFooter>

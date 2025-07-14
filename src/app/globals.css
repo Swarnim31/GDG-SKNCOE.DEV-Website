@@ -117,8 +117,13 @@
     @apply bg-gradient-to-br from-yellow-400 via-red-500 to-blue-500 text-white;
   }
   .btn-google {
-    @apply bg-gradient-to-r from-[#4285F4] via-[#9b72cb] to-[#d96570] text-white;
+    @apply bg-gradient-to-r from-[#4285F4] via-[#34A853] to-[#FBBC05] text-white transition-all duration-300 hover:shadow-lg hover:saturate-150;
+    background-size: 200% 200%;
   }
+  .btn-google:hover {
+    background-position: right center;
+  }
+
 
   .capsule-gradient-blue {
     @apply bg-gradient-to-br from-[#4285F4] to-[#34A853];

@@ -91,7 +91,7 @@ export function ResourceCard({
                     {resource.description}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-2">
-                    <Button asChild className="w-full btn-google">
+                    <Button asChild className="w-full btn-google rounded-full">
                       <Link
                         href={resource.toolLink}
                         target="_blank"
@@ -100,7 +100,7 @@ export function ResourceCard({
                         Open Tool <ExternalLink className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
-                    <Button asChild variant="secondary" className="w-full">
+                    <Button asChild variant="secondary" className="w-full rounded-full">
                       <Link
                         href={resource.learnLink}
                         target="_blank"
