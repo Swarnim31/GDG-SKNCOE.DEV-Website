@@ -34,7 +34,7 @@ export const mockEvents: Event[] = [
     location: "Community Hall",
     type: "GDG Event",
     imageUrl: "https://placehold.co/600x400.png",
-    imageHint: "android development",
+    imageHint: "android phone",
     tags: ["Android", "Kotlin", "Jetpack Compose"],
   },
   {
@@ -73,4 +73,39 @@ export const mockEvents: Event[] = [
     imageHint: "css code",
     tags: ["CSS", "Web Design", "Frontend"],
   },
+];
+
+export const mockTeam = [
+  {
+    id: "1",
+    name: "Alex Johnson",
+    role: "Lead Cloud Engineer",
+    imageUrl: "https://placehold.co/400x400.png",
+    imageHint: "person portrait",
+  },
+  {
+    id: "2",
+    name: "Samantha Lee",
+    role: "Senior Android Developer",
+    imageUrl: "https://placehold.co/400x400.png",
+    imageHint: "woman portrait",
+  },
+  {
+    id: "3",
+    name: "David Chen",
+    role: "AI/ML Specialist",
+    imageUrl: "https://placehold.co/400x400.png",
+    imageHint: "man portrait",
+  },
+];
+
+export const mockCapsules = [
+    { id: '1', title: 'Git Stash', tip: 'Use `git stash -u` to include untracked files.' },
+    { id: '2', title: 'CSS Flexbox', tip: '`justify-content` aligns on main axis, `align-items` on cross axis.' },
+    { id: '3', title: 'React Keys', tip: 'Keys help React identify which items have changed, are added, or are removed.' },
+    { id: '4', title: 'JS Destructuring', tip: 'Easily extract array values or object properties into distinct variables.' },
+    { id: '5', title: 'TypeScript Enums', tip: 'Use enums for a set of named constants, like `enum Color {Red, Green}`.' },
+    { id: '6', title: 'Next.js Image', tip: 'The `<Image>` component automatically optimizes images for performance.' },
+    { id: '7', title: 'VS Code Shortcut', tip: '`Ctrl+D` selects next occurrence of the current word.' },
+    { id: '8', title: 'Firebase Rules', tip: 'Always secure your Firestore database with proper security rules.' }
 ];
