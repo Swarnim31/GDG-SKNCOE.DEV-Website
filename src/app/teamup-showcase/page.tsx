@@ -19,6 +19,11 @@ import { AlertTriangle, Users } from "lucide-react";
 
 export default function TeamUpShowcasePage() {
   const [isAllQueriesOpen, setIsAllQueriesOpen] = React.useState(false);
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Fetch TeamUp Alerts
   const alertsQuery = query(collection(firestore, "teamupAlerts"), orderBy("timestamp", "desc"));
@@ -30,6 +35,10 @@ export default function TeamUpShowcasePage() {
   const [projectsSnapshot, projectsLoading, projectsError] = useCollection(projectsQuery);
   const projects: Project[] = projectsSnapshot?.docs.map(doc => ({ id: doc.id, ...doc.data() } as Project)) || [];
 
+  if (!isMounted) {
+    return null; // or a loading skeleton
+  }
+  
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="text-center mb-12">
