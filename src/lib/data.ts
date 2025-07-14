@@ -1,4 +1,4 @@
-import type { Event, Resource } from "./types";
+import type { Event, Resource, Capsule } from "./types";
 
 export const mockEvents: Event[] = [
   {
@@ -108,15 +108,18 @@ export const mockTeam = [
   },
 ];
 
-export const mockCapsules = [
-    { id: '1', title: 'Git Stash', tip: 'Use `git stash -u` to include untracked files.' },
-    { id: '2', title: 'CSS Flexbox', tip: '`justify-content` aligns on main axis, `align-items` on cross axis.' },
-    { id: '3', title: 'React Keys', tip: 'Keys help React identify which items have changed, are added, or are removed.' },
-    { id: '4', title: 'JS Destructuring', tip: 'Easily extract array values or object properties into distinct variables.' },
-    { id: '5', title: 'TypeScript Enums', tip: 'Use enums for a set of named constants, like `enum Color {Red, Green}`.' },
-    { id: '6', title: 'Next.js Image', tip: 'The `<Image>` component automatically optimizes images for performance.' },
-    { id: '7', title: 'VS Code Shortcut', tip: '`Ctrl+D` selects next occurrence of the current word.' },
-    { id: '8', title: 'Firebase Rules', tip: 'Always secure your Firestore database with proper security rules.' }
+export const mockCapsules: Capsule[] = [
+    { id: '1', title: 'Git Stash', tip: 'Use `git stash -u` to include untracked files.', category: 'Git' },
+    { id: '2', title: 'CSS Flexbox', tip: '`justify-content` aligns on main axis, `align-items` on cross axis.', category: 'Web' },
+    { id: '3', title: 'React Keys', tip: 'Keys help React identify which items have changed, are added, or are removed.', category: 'Web' },
+    { id: '4', title: 'JS Destructuring', tip: 'Easily extract array values or object properties into distinct variables.', category: 'Web' },
+    { id: '5', title: 'TypeScript Enums', tip: 'Use enums for a set of named constants, like `enum Color {Red, Green}`.', category: 'Web' },
+    { id: '6', title: 'Next.js Image', tip: 'The `<Image>` component automatically optimizes images for performance.', category: 'Web' },
+    { id: '7', title: 'VS Code Shortcut', tip: '`Ctrl+D` selects next occurrence of the current word.', category: 'Tools' },
+    { id: '8', title: 'Firebase Rules', tip: 'Always secure your Firestore database with proper security rules.', category: 'Web' },
+    { id: '9', title: 'Gemini System Prompt', tip: 'Use a `system` instruction to guide the model\'s behavior and personality.', category: 'AI' },
+    { id: '10', title: 'Flutter Widgets', tip: 'In Flutter, almost everything is a widget, from a button to padding.', category: 'Mobile' },
+    { id: '11', title: 'Android Vector Drawables', tip: 'Use Vector Drawables for sharp, scalable icons that reduce APK size.', category: 'Mobile' },
 ];
 
 export const mockResources: Resource[] = [

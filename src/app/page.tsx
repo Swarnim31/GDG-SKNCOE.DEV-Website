@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { EventCard } from "@/components/event-card";
-import { mockEvents, mockTeam, mockCapsules } from "@/lib/data";
+import { mockEvents, mockTeam } from "@/lib/data";
 import {
   Code,
   BrainCircuit,
@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
+import { TechCapsuleDisplay } from "@/components/tech-capsule-display";
 
 export default function Home() {
   const domains = [
@@ -171,22 +171,14 @@ export default function Home() {
       {/* Tech Capsules Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">
+          <h2 className="text-3xl font-bold text-center mb-4">
             <Sparkles className="inline-block h-8 w-8 text-amber-400 mr-2" />
             Tech Capsules
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {mockCapsules.map((capsule) => (
-              <Card key={capsule.id} className="p-4 transform transition-transform duration-300 hover:scale-105 hover:shadow-lg">
-                <CardHeader className="p-2 pt-0">
-                  <CardTitle className="text-base font-semibold">{capsule.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="p-2 pt-0">
-                  <p className="text-sm text-muted-foreground">{capsule.tip}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto">
+            Get a daily dose of bite-sized developer knowledge. A new tip appears every day!
+          </p>
+          <TechCapsuleDisplay />
         </div>
       </section>
 

@@ -20,3 +20,10 @@ export type Resource = {
   imageUrl: string;
   imageHint: string;
 };
+
+export type Capsule = {
+  id: string;
+  title: string;
+  tip: string;
+  category: "Web" | "AI" | "Mobile" | "Git" | "Tools";
+};
