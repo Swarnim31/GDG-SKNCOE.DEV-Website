@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CodeXml } from "lucide-react";
+import { ThemeToggle } from "./theme-toggle";
 
 export function AppHeader() {
   return (
@@ -10,14 +11,17 @@ export function AppHeader() {
           <CodeXml className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold tracking-tight">SknCoe-Dev</span>
         </Link>
-        <nav className="flex items-center gap-2">
-          <Button asChild variant="ghost">
-            <Link href="/">Events</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/submit">Submit Content</Link>
-          </Button>
-        </nav>
+        <div className="flex items-center gap-2">
+          <nav className="flex items-center gap-2">
+            <Button asChild variant="ghost">
+              <Link href="/">Events</Link>
+            </Button>
+            <Button asChild>
+              <Link href="/submit">Submit Content</Link>
+            </Button>
+          </nav>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
