@@ -1,4 +1,4 @@
-import type { Event, Resource, Capsule } from "./types";
+import type { Event, Resource, Capsule, Project } from "./types";
 
 export const mockEvents: Event[] = [
   {
@@ -176,5 +176,63 @@ export const mockResources: Resource[] = [
     link: "https://www.figma.com/",
     imageUrl: "https://placehold.co/600x400.png",
     imageHint: "design wireframe",
+  }
+];
+
+export const mockProjects: Project[] = [
+  {
+    id: "1",
+    title: "Community Event Platform",
+    description: "A full-stack web app for managing GDG events, registrations, and feedback, built with Next.js and Firebase.",
+    category: "Web",
+    tags: ["Next.js", "Firebase", "Tailwind CSS", "Genkit"],
+    contributors: [
+      { name: "Alice", role: "Frontend Dev" },
+      { name: "Bob", role: "Backend Dev" },
+    ],
+    link: "https://github.com/",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "web application screenshot"
+  },
+  {
+    id: "2",
+    title: "Campus Companion App",
+    description: "A cross-platform mobile app to help students navigate campus, find study spots, and connect with peers.",
+    category: "Mobile",
+    tags: ["Flutter", "Dart", "Firebase Auth"],
+    contributors: [
+      { name: "Charlie", role: "Flutter Dev" },
+      { name: "Diana", role: "UI/UX Designer" },
+    ],
+    link: "https://github.com/",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "mobile app screen"
+  },
+  {
+    id: "3",
+    title: "AI-Powered News Summarizer",
+    description: "An AI tool that fetches the latest tech news and provides concise, easy-to-read summaries using Gemini.",
+    category: "AI",
+    tags: ["Python", "Gemini", "Flask", "Genkit"],
+    contributors: [
+      { name: "Eve", role: "AI Engineer" },
+      { name: "Frank", role: "API Developer" },
+    ],
+    link: "https://github.com/",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "artificial intelligence abstract"
+  },
+  {
+    id: "4",
+    title: "Cloud Function Automation",
+    description: "A set of serverless functions to automate community management tasks like sending reminders and updating leaderboards.",
+    category: "Web",
+    tags: ["Google Cloud", "Node.js", "Firestore"],
+    contributors: [
+      { name: "Grace", role: "Cloud Engineer" },
+    ],
+    link: "https://github.com/",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "cloud infrastructure diagram"
   }
 ];

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { CodeXml } from "lucide-react";
 import { ThemeToggle } from "./theme-toggle";
+import { AppNavMobile } from "./app-nav-mobile";
 
 export function AppHeader() {
   return (
@@ -20,23 +21,21 @@ export function AppHeader() {
               <Link href="/events">Events</Link>
             </Button>
             <Button asChild variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">
-              <Link href="/team">Team</Link>
-            </Button>
-             <Button asChild variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">
-              <Link href="#">Projects</Link>
+              <Link href="/teamup-showcase">Showcase</Link>
             </Button>
              <Button asChild variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">
               <Link href="/resources">Resources</Link>
             </Button>
             <Button asChild variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">
-              <Link href="/get-involved#join">Join Us</Link>
+              <Link href="/get-involved">About GDG</Link>
             </Button>
              <Button asChild variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">
-              <Link href="/get-involved#contact">Contact</Link>
+              <Link href="/submit">Submit</Link>
             </Button>
           </nav>
           <div className="flex items-center gap-2">
             <ThemeToggle />
+            <AppNavMobile />
           </div>
         </div>
       </div>

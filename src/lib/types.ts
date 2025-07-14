@@ -27,3 +27,18 @@ export type Capsule = {
   tip: string;
   category: "Web" | "AI" | "Mobile" | "Git" | "Tools";
 };
+
+export type Project = {
+  id: string;
+  title: string;
+  description: string;
+  category: "Web" | "Mobile" | "AI";
+  tags: string[];
+  contributors: {
+    name: string;
+    role: string;
+  }[];
+  link: string;
+  imageUrl: string;
+  imageHint: string;
+};

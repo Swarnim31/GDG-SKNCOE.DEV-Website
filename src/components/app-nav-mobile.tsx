@@ -1,3 +1,6 @@
+"use client";
+
+import * as React from "react";
 import Link from "next/link";
 import {
   Sheet,
@@ -38,19 +41,16 @@ export function AppNavMobile() {
             <Link href="/events" onClick={() => setIsOpen(false)}>Events</Link>
           </Button>
           <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="/team" onClick={() => setIsOpen(false)}>Team</Link>
-          </Button>
-          <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="#" onClick={() => setIsOpen(false)}>Projects</Link>
+            <Link href="/teamup-showcase" onClick={() => setIsOpen(false)}>Showcase</Link>
           </Button>
           <Button asChild variant="ghost" className="justify-start text-base">
             <Link href="/resources" onClick={() => setIsOpen(false)}>Resources</Link>
           </Button>
           <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="/get-involved#join" onClick={() => setIsOpen(false)}>Join Us</Link>
+            <Link href="/get-involved" onClick={() => setIsOpen(false)}>About GDG</Link>
           </Button>
           <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="/get-involved#contact" onClick={() => setIsOpen(false)}>Contact</Link>
+             <Link href="/submit" onClick={() => setIsOpen(false)}>Submit</Link>
           </Button>
         </div>
       </SheetContent>
