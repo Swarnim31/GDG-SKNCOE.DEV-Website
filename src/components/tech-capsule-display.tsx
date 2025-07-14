@@ -30,22 +30,6 @@ export function TechCapsuleDisplay() {
     setCapsule(getDailyCapsule(mockCapsules));
   }, []);
 
-  const getGradientClass = (category: string) => {
-    switch (category.toLowerCase()) {
-      case "web":
-        return "capsule-gradient-blue";
-      case "ai":
-        return "capsule-gradient-red";
-      case "mobile":
-        return "capsule-gradient-green";
-      case "git":
-        return "capsule-gradient-yellow";
-      case "tools":
-      default:
-        return "capsule-gradient-purple";
-    }
-  };
-
   if (!capsule) {
     return (
       <Card className="max-w-2xl w-full mx-auto animate-pulse bg-muted/50 h-[150px] rounded-full" />
@@ -59,7 +43,7 @@ export function TechCapsuleDisplay() {
           "max-w-2xl w-full mx-auto shadow-lg hover:shadow-2xl transition-all duration-300 transform-style-3d",
           "hover:-translate-y-2 hover:rotate-x-6 hover:rotate-y-[-4deg]",
           "rounded-full text-primary-foreground p-4",
-          getGradientClass(capsule.category)
+          "capsule-gradient-fire"
         )}
       >
         <CardContent className="p-4 flex items-center gap-6">
