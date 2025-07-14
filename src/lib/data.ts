@@ -1,3 +1,4 @@
+
 import type { Event, Resource, Capsule, Project, GalleryImage } from "./types";
 
 export const mockEvents: Event[] = [
@@ -88,7 +89,7 @@ export const mockTeam = [
     role: "GDG Lead 24-25",
     imageUrl: "https://placehold.co/400x400.png",
     imageHint: "person portrait",
-    linkedinUrl: "https://www.linkedin.com/",
+    linkedinUrl: "https://www.linkedin.com/in/ojas-bhalerao-9742282b3/",
   },
 ];
 
