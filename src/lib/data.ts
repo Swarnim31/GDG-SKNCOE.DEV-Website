@@ -1,4 +1,4 @@
-import type { Event, Resource, Capsule, Project } from "./types";
+import type { Event, Resource, Capsule, Project, GalleryImage } from "./types";
 
 export const mockEvents: Event[] = [
   {
@@ -106,6 +106,15 @@ export const mockTeam = [
     imageHint: "man portrait",
     linkedinUrl: "https://www.linkedin.com/",
   },
+];
+
+export const mockGalleryImages: GalleryImage[] = [
+  { id: '1', src: 'https://placehold.co/600x400.png', alt: 'Team working on a project', hint: 'team collaboration', caption: 'Hackathon brainstorming session.' },
+  { id: '2', src: 'https://placehold.co/600x400.png', alt: 'Group photo at a tech talk', hint: 'group photo', caption: 'Post-event group picture!' },
+  { id: '3', src: 'https://placehold.co/600x400.png', alt: 'Presenter at a workshop', hint: 'public speaking', caption: 'Live coding workshop in action.' },
+  { id: '4', src: 'https://placehold.co/600x400.png', alt: 'Team members networking', hint: 'people talking', caption: 'Networking at the annual meetup.' },
+  { id: '5', src: 'https://placehold.co/600x400.png', alt: 'Celebrating a project launch', hint: 'team celebration', caption: 'Celebrating the launch of our new app.' },
+  { id: '6', src: 'https://placehold.co/600x400.png', alt: 'Casual team lunch', hint: 'team lunch', caption: 'Team lunch at our favorite spot.' },
 ];
 
 export const mockCapsules: Capsule[] = [

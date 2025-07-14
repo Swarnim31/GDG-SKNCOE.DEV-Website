@@ -42,3 +42,11 @@ export type Project = {
   imageUrl: string;
   imageHint: string;
 };
+
+export type GalleryImage = {
+  id: string;
+  src: string;
+  alt: string;
+  hint: string;
+  caption?: string;
+};
