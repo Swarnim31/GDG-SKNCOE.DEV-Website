@@ -23,12 +23,11 @@ export function TeamCard({ member, index }: TeamCardProps) {
   return (
     <div
       className={cn(
-        "team-card-container relative p-1 rounded-2xl overflow-hidden group animate-fade-in-up",
-        "bg-gradient-to-br from-primary/20 via-transparent to-secondary/20"
+        "team-card-container relative rounded-2xl overflow-hidden group animate-fade-in-up"
       )}
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      <Card className="overflow-hidden text-center h-full rounded-xl bg-background/80 backdrop-blur-sm bg-purple-100/30 dark:bg-purple-900/10">
+      <Card className="overflow-hidden text-center h-full rounded-xl bg-background/80 backdrop-blur-sm">
         <div className="relative h-64 w-full">
           <Image
             src={member.imageUrl}
