@@ -10,7 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
-import { Menu } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import Image from "next/image";
 
 export function AppNavMobile() {
@@ -70,6 +70,11 @@ export function AppNavMobile() {
           </Link>
           <Link href="/join" passHref>
             <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Join</Button>
+          </Link>
+          <Link href="/profile" passHref>
+             <Button variant="ghost" className="w-full justify-start text-base gap-2" onClick={closeSheet}>
+                <User className="h-5 w-5" /> Profile
+             </Button>
           </Link>
         </div>
       </SheetContent>

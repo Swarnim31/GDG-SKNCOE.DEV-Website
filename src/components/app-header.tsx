@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import { AppNavMobile } from "./app-nav-mobile";
 import Image from "next/image";
+import { User } from "lucide-react";
 
 export function AppHeader() {
   return (
@@ -46,6 +47,12 @@ export function AppHeader() {
             <ThemeToggle />
             <Link href="/join" passHref>
               <Button className="btn-gemini rounded-full hidden md:inline-flex">Join</Button>
+            </Link>
+            <Link href="/profile" passHref>
+              <Button variant="outline" size="icon" className="rounded-full hidden md:inline-flex">
+                <User className="h-5 w-5" />
+                <span className="sr-only">Profile</span>
+              </Button>
             </Link>
             <AppNavMobile />
           </div>
