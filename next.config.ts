@@ -61,7 +61,6 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: 'astro.build' },
       { protocol: 'https', hostname: 'svelte.dev' },
       { protocol: 'https', hostname: 'stackblitz.com' },
-      { protocol: 'https', hostname: 'grafana.com' },
     ],
   },
 };

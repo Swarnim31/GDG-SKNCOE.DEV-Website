@@ -567,15 +567,6 @@ export const devTools: Resource[] = [
     toolLink: 'https://stackblitz.com/',
     learnLink: 'https://developer.stackblitz.com/',
   },
-  {
-    id: 'dev-18',
-    name: 'Grafana',
-    category: 'Developer',
-    description: 'The open and composable observability and data visualization platform.',
-    logoUrl: 'https://grafana.com/static/assets/img/fav32.png',
-    toolLink: 'https://grafana.com/',
-    learnLink: 'https://grafana.com/docs/',
-  },
 ];
 
 
