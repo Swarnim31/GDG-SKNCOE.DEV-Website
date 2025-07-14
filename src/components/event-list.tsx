@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo } from "react";
@@ -11,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { EventCard } from "@/components/event-card";
-import { Search } from "lucide-react";
+import { ListFilter, Search } from "lucide-react";
 
 type EventListProps = {
   events: Event[];
@@ -39,30 +40,37 @@ export function EventList({ events }: EventListProps) {
 
   return (
     <div>
-      <div className="flex flex-col md:flex-row gap-4 mb-8">
-        <div className="relative flex-grow">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search for events..."
-            className="pl-10 w-full"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
+      <div className="flex justify-center mb-12 sticky top-20 z-40">
+        <div className="p-1 rounded-full animated-gradient-border shadow-lg">
+          <div className="flex items-center gap-2 bg-background/80 backdrop-blur-sm p-2 rounded-full">
+            <div className="relative flex-grow sm:min-w-[300px]">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Input
+                type="search"
+                placeholder="Search for events..."
+                className="pl-10 w-full h-11 text-base bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <div className="w-px h-6 bg-border mx-2"></div>
+            <Select value={filterType} onValueChange={setFilterType}>
+              <SelectTrigger className="w-auto h-11 text-base bg-transparent border-0 gap-2 focus:ring-0 focus:ring-offset-0">
+                 <ListFilter className="h-5 w-5 text-muted-foreground" />
+                <SelectValue placeholder="Filter by type" />
+              </SelectTrigger>
+              <SelectContent>
+                {eventTypes.map((type) => (
+                  <SelectItem key={type} value={type} className="capitalize">
+                    {type === 'all' ? 'All Types' : type}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
-        <Select value={filterType} onValueChange={setFilterType}>
-          <SelectTrigger className="w-full md:w-[180px]">
-            <SelectValue placeholder="Filter by type" />
-          </SelectTrigger>
-          <SelectContent>
-            {eventTypes.map((type) => (
-              <SelectItem key={type} value={type} className="capitalize">
-                {type === 'all' ? 'All Types' : type}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
       </div>
+
       {filteredEvents.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {filteredEvents.map((event) => (
