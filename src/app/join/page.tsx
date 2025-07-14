@@ -19,7 +19,7 @@ import { GoogleIcon } from "@/components/icons/google";
 export default function JoinPage() {
   return (
     <div className="flex items-center justify-center min-h-[calc(100vh-8rem)] bg-background p-4">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 max-w-6xl w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] lg:gap-8 items-center max-w-6xl w-full">
         {/* Sign Up Card */}
         <div className="p-1 rounded-2xl animated-gradient-border shadow-lg">
           <Card className="rounded-xl h-full">
@@ -69,19 +69,26 @@ export default function JoinPage() {
                   <GoogleIcon className="mr-2 h-5 w-5" />
                   Continue with Google
                 </Button>
+                 <p className="text-center text-sm text-muted-foreground mt-6">
+                  Already have an account?{' '}
+                  <Link href="/join" className="font-semibold text-primary hover:underline">
+                    Login
+                  </Link>
+                </p>
               </form>
             </CardContent>
           </Card>
         </div>
 
         {/* Separator */}
-        <div className="hidden lg:flex items-center justify-center relative">
-          <Separator orientation="vertical" className="h-2/3" />
-           <div className="absolute bg-background p-2 rounded-full border text-muted-foreground text-sm font-mono">OR</div>
+        <div className="hidden lg:flex flex-col items-center justify-center h-full">
+          <Separator orientation="vertical" className="h-1/2" />
+           <div className="my-4 bg-background p-2 rounded-full border text-muted-foreground text-sm font-mono">OR</div>
+          <Separator orientation="vertical" className="h-1/2" />
         </div>
 
         {/* Login Card */}
-        <div className="p-1 rounded-2xl animated-gradient-border shadow-lg">
+        <div className="p-1 rounded-2xl animated-gradient-border shadow-lg mt-8 lg:mt-0">
           <Card className="rounded-xl h-full">
             <CardHeader className="text-center">
               <CardTitle className="text-2xl">Welcome Back</CardTitle>
@@ -122,6 +129,12 @@ export default function JoinPage() {
                   <GoogleIcon className="mr-2 h-5 w-5" />
                   Continue with Google
                 </Button>
+                 <p className="text-center text-sm text-muted-foreground mt-6">
+                  New here?{' '}
+                  <Link href="/join" className="font-semibold text-primary hover:underline">
+                    Create an account
+                  </Link>
+                </p>
               </form>
             </CardContent>
           </Card>
