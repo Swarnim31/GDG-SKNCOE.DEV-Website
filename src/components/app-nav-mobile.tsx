@@ -38,7 +38,7 @@ export function AppNavMobile() {
                 alt="GDG SknCoe Logo"
                 width={32}
                 height={32}
-                className="h-8 w-8"
+                className="h-8 w-8 rounded-full"
               />
               <span className="text-xl font-bold tracking-tight">
                 GDG SknCoe.DEV
