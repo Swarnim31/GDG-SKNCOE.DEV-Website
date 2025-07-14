@@ -18,7 +18,7 @@ import { GoogleIcon } from "@/components/icons/google";
 
 export default function JoinPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[calc(100vh-8rem)] bg-background p-4 space-y-8">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center justify-center space-y-8">
       
       {/* Sign Up Card */}
       <Card className="w-full max-w-md">
@@ -115,7 +115,7 @@ export default function JoinPage() {
             </Button>
             <p className="text-center text-sm text-muted-foreground mt-6">
               New here?{' '}
-              <Link href="/join" className="font-semibold text-primary hover:underline">
+              <Link href="#" className="font-semibold text-primary hover:underline" onClick={(e) => { e.preventDefault(); document.querySelector('#fullname')?.focus(); }}>
                 Create an account
               </Link>
             </p>
