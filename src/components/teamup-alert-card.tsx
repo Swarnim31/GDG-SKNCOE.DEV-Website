@@ -16,7 +16,7 @@ import { useToast } from "@/hooks/use-toast";
 
 type TeamUpAlertCardProps = {
   alert: TeamUpAlert;
-  isExpanded?: boolean;
+  isExpanded?: boolean; // isExpanded is no longer used to conditionally render reply, but kept for compatibility
 };
 
 export function TeamUpAlertCard({ alert, isExpanded = false }: TeamUpAlertCardProps) {
@@ -56,14 +56,12 @@ export function TeamUpAlertCard({ alert, isExpanded = false }: TeamUpAlertCardPr
                 <p className="font-semibold">{alert.name}</p>
                 <p className="text-muted-foreground text-sm mt-1">{alert.query}</p>
               </div>
-              {isExpanded && (
-                    <CollapsibleTrigger asChild>
-                         <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0">
-                            <ChevronDown className={cn("h-4 w-4 transition-transform", isReplyOpen && "rotate-180")} />
-                            <span className="sr-only">Toggle Reply</span>
-                        </Button>
-                    </CollapsibleTrigger>
-              )}
+              <CollapsibleTrigger asChild>
+                   <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0">
+                      <ChevronDown className={cn("h-4 w-4 transition-transform", isReplyOpen && "rotate-180")} />
+                      <span className="sr-only">Toggle Reply</span>
+                  </Button>
+              </CollapsibleTrigger>
             </div>
             <div className="flex flex-wrap gap-2 mt-3">
               {alert.skills.map(skill => (
@@ -78,21 +76,19 @@ export function TeamUpAlertCard({ alert, isExpanded = false }: TeamUpAlertCardPr
             </div>
           </div>
         </div>
-        {isExpanded && (
-          <CollapsibleContent className="pl-[56px] pt-4">
-             <div className="space-y-2">
-                <Textarea 
-                  placeholder={`Reply to ${alert.name}...`} 
-                  className="bg-muted" 
-                  value={replyMessage}
-                  onChange={(e) => setReplyMessage(e.target.value)}
-                />
-                <Button onClick={handleReply} size="sm">
-                    Send Reply <Send className="ml-2 h-4 w-4" />
-                </Button>
-            </div>
-          </CollapsibleContent>
-        )}
+        <CollapsibleContent className="pl-[56px] pt-4">
+           <div className="space-y-2">
+              <Textarea 
+                placeholder={`Reply to ${alert.name}...`} 
+                className="bg-muted" 
+                value={replyMessage}
+                onChange={(e) => setReplyMessage(e.target.value)}
+              />
+              <Button onClick={handleReply} size="sm">
+                  Send Reply <Send className="ml-2 h-4 w-4" />
+              </Button>
+          </div>
+        </CollapsibleContent>
         </Collapsible>
       </CardContent>
     </Card>
