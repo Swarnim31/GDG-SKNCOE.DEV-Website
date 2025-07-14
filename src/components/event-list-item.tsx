@@ -11,6 +11,7 @@ import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from 'next/link';
 
 type EventListItemProps = {
   event: Event;
@@ -32,13 +33,13 @@ export function EventListItem({ event, index }: EventListItemProps) {
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
-            <div className={cn("flex items-center justify-between w-full p-4 rounded-full text-lg font-bold cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-white", gradientClass)}>
+            <div className={cn("flex items-center justify-between w-full p-4 rounded-full text-lg font-bold cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-white relative z-10", gradientClass)}>
                 <span>{event.title}</span>
                 {isOpen ? <ChevronUp className="h-6 w-6" /> : <ChevronDown className="h-6 w-6" />}
             </div>
         </CollapsibleTrigger>
         <CollapsibleContent>
-            <Card className="mt-[-2rem] pt-[3rem] pb-4 z-[-1] relative shadow-lg rounded-3xl border-t-0">
+            <Card className="mt-[-2rem] pt-[3rem] pb-4 z-0 relative shadow-lg rounded-3xl border-t-0">
                 <CardContent>
                     <div className="grid md:grid-cols-3 gap-6">
                         <div className="md:col-span-1 relative h-48 w-full rounded-lg overflow-hidden">
@@ -74,11 +75,11 @@ export function EventListItem({ event, index }: EventListItemProps) {
                                     </Badge>
                                 ))}
                             </div>
-                            <a href="https://gdg.community.dev/gdg-on-campus-shrimati-kashibai-navale-college-of-engineering-pune-india/" target="_blank" rel="noopener noreferrer">
-                                <Button className="w-full sm:w-auto btn-google rounded-full">
+                            <Button asChild className="w-full sm:w-auto btn-google rounded-full">
+                                <Link href="https://gdg.community.dev/gdg-on-campus-shrimati-kashibai-navale-college-of-engineering-pune-india/" target="_blank" rel="noopener noreferrer">
                                     Checkout More <ArrowRight className="ml-2 h-4 w-4" />
-                                </Button>
-                            </a>
+                                </Link>
+                            </Button>
                         </div>
                     </div>
                 </CardContent>
