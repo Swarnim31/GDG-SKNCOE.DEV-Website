@@ -12,14 +12,23 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type ResourceCardProps = {
   resource: Resource;
 };
 
 export function ResourceCard({ resource }: ResourceCardProps) {
+    const tagColors: { [key: string]: string } = {
+    Web: "bg-blue-100/50 dark:bg-blue-900/20",
+    Mobile: "bg-green-100/50 dark:bg-green-900/20",
+    AI: "bg-red-100/50 dark:bg-red-900/20",
+    "UI/UX": "bg-yellow-100/50 dark:bg-yellow-900/20",
+  };
+  const cardColor = tagColors[resource.tag] || "bg-card";
+
   return (
-    <Card className="flex flex-col h-full transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl">
+    <Card className={cn("flex flex-col h-full transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl", cardColor)}>
       <CardHeader className="p-0">
         <div className="relative h-48 w-full">
           <Image

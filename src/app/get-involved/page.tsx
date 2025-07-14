@@ -25,6 +25,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import React from "react";
+import { AnimatedCounter } from "@/components/animated-counter";
 
 const milestones = [
   { year: "2021", event: "Chapter Inception" },
@@ -78,19 +79,25 @@ export default function GetInvolvedPage() {
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
-            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-blue-100/50 dark:bg-blue-900/20">
               <Award className="h-10 w-10 text-primary mx-auto mb-3" />
-              <p className="text-3xl font-bold">15+</p>
+              <p className="text-3xl font-bold">
+                 <AnimatedCounter to={15} />+
+              </p>
               <p className="text-muted-foreground">Sessions Hosted</p>
             </Card>
-            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-green-100/50 dark:bg-green-900/20">
               <Users className="h-10 w-10 text-primary mx-auto mb-3" />
-              <p className="text-3xl font-bold">500+</p>
+              <p className="text-3xl font-bold">
+                <AnimatedCounter to={500} />+
+              </p>
               <p className="text-muted-foreground">Participants Engaged</p>
             </Card>
-            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 bg-yellow-100/50 dark:bg-yellow-900/20">
               <Handshake className="h-10 w-10 text-primary mx-auto mb-3" />
-              <p className="text-3xl font-bold">3</p>
+              <p className="text-3xl font-bold">
+                 <AnimatedCounter to={3} />
+              </p>
               <p className="text-muted-foreground">Clubs Collaborated</p>
             </Card>
           </div>
@@ -119,7 +126,7 @@ export default function GetInvolvedPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             {roles.map((role) => (
-              <Card key={role.title} className="p-8 text-center transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <Card key={role.title} className="p-8 text-center transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl bg-card">
                 {role.icon}
                 <h4 className="text-xl font-bold mb-2">{role.title}</h4>
                 <p className="text-muted-foreground">{role.description}</p>

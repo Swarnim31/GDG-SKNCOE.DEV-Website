@@ -33,49 +33,49 @@ export default function Home() {
       icon: <Code className="h-8 w-8 text-blue-600" />,
       title: "Web Development",
       description: "Explore the latest in web technologies and frameworks.",
-      color: "bg-blue-500/5",
+      color: "bg-blue-100/50 dark:bg-blue-900/20",
     },
     {
       icon: <BrainCircuit className="h-8 w-8 text-red-600" />,
       title: "Artificial Intelligence",
       description: "Dive into machine learning, AI models, and GenAI.",
-      color: "bg-red-500/5",
+      color: "bg-red-100/50 dark:bg-red-900/20",
     },
     {
       icon: <Palette className="h-8 w-8 text-yellow-600" />,
       title: "UI/UX Design",
       description: "Craft beautiful and intuitive user experiences.",
-      color: "bg-yellow-500/5",
+      color: "bg-yellow-100/50 dark:bg-yellow-900/20",
     },
     {
       icon: <Cloud className="h-8 w-8 text-green-600" />,
       title: "Cloud Computing",
       description: "Leverage the power of the cloud for your applications.",
-      color: "bg-green-500/5",
+      color: "bg-green-100/50 dark:bg-green-900/20",
     },
      {
       icon: <Feather className="h-8 w-8 text-pink-600" />,
       title: "Women in Tech",
       description: "Empowering and supporting women in the technology field.",
-      color: "bg-pink-500/5",
+      color: "bg-pink-100/50 dark:bg-pink-900/20",
     },
     {
       icon: <Handshake className="h-8 w-8 text-purple-600" />,
       title: "Sponsorship",
       description: "Forge partnerships to support our community's growth.",
-      color: "bg-purple-500/5",
+      color: "bg-purple-100/50 dark:bg-purple-900/20",
     },
     {
       icon: <CalendarCheck className="h-8 w-8 text-indigo-600" />,
       title: "Event Management",
       description: "Organize and execute memorable tech events and workshops.",
-      color: "bg-indigo-500/5",
+      color: "bg-indigo-100/50 dark:bg-indigo-900/20",
     },
     {
       icon: <Shield className="h-8 w-8 text-gray-600" />,
       title: "Cyber Security",
       description: "Exploring the world of digital protection and ethical hacking.",
-      color: "bg-gray-500/5",
+      color: "bg-gray-200/60 dark:bg-gray-800/20",
     },
   ];
 
@@ -134,7 +134,7 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-12">Meet the Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {mockTeam.map((member) => (
+            {mockTeam.map((member, index) => (
               <Card
                 key={member.id}
                 className="overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl"
@@ -175,7 +175,7 @@ export default function Home() {
             {domains.map((domain, index) => (
               <Card
                 key={index}
-                className={`p-6 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border-t-4 ${domain.color}`}
+                className={`p-6 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border-t-4 border-transparent ${domain.color}`}
               >
                 <div className={`p-3 rounded-full mb-4 ${domain.color}`}>
                   {domain.icon}

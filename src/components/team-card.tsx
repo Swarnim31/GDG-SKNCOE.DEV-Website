@@ -28,7 +28,7 @@ export function TeamCard({ member, index }: TeamCardProps) {
       )}
       style={{ animationDelay: `${index * 100}ms` }}
     >
-      <Card className="overflow-hidden text-center h-full rounded-xl bg-background/80 backdrop-blur-sm">
+      <Card className="overflow-hidden text-center h-full rounded-xl bg-background/80 backdrop-blur-sm bg-purple-100/30 dark:bg-purple-900/10">
         <div className="relative h-64 w-full">
           <Image
             src={member.imageUrl}

@@ -12,14 +12,22 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, User } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type ProjectCardProps = {
   project: Project;
 };
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const categoryColors: { [key: string]: string } = {
+    Web: "bg-blue-100/50 dark:bg-blue-900/20",
+    Mobile: "bg-green-100/50 dark:bg-green-900/20",
+    AI: "bg-red-100/50 dark:bg-red-900/20",
+  };
+  const cardColor = categoryColors[project.category] || "bg-card";
+
   return (
-    <Card className="flex flex-col h-full transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl">
+    <Card className={cn("flex flex-col h-full transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl", cardColor)}>
       <CardHeader className="p-0">
         <div className="relative h-56 w-full">
           <Image

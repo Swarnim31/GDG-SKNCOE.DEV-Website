@@ -12,14 +12,19 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, ArrowRight, Users } from "lucide-react";
 import { format } from "date-fns";
+import { cn } from "@/lib/utils";
 
 type EventCardProps = {
   event: Event;
 };
 
 export function EventCard({ event }: EventCardProps) {
+    const cardColor =
+    event.type === "GDG Event"
+      ? "bg-blue-100/50 dark:bg-blue-900/20"
+      : "bg-green-100/50 dark:bg-green-900/20";
   return (
-    <Card className="flex flex-col h-full transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl">
+    <Card className={cn("flex flex-col h-full transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl", cardColor)}>
       <CardHeader className="p-0">
         <div className="relative h-48 w-full">
           <Image
