@@ -6,7 +6,8 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -63,7 +64,14 @@ export function ProjectSubmissionForm() {
         title: "Project Submitted!",
         description: "Thank you for sharing your work with the community.",
       });
-      form.reset();
+      form.reset({
+        title: "",
+        description: "",
+        tags: "",
+        link: "",
+        contributors: [{ name: "", role: "" }],
+        category: "Web",
+      });
     } catch (error) {
       console.error("Error submitting project:", error);
       toast({
@@ -102,10 +110,34 @@ export function ProjectSubmissionForm() {
                 <FormMessage />
               </FormItem>
             )} />
+              <FormField
+                control={form.control}
+                name="category"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Category</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select a project category" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value="Web">Web</SelectItem>
+                        <SelectItem value="Mobile">Mobile</SelectItem>
+                        <SelectItem value="AI">AI</SelectItem>
+                        <SelectItem value="Cloud">Cloud</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
              <FormField name="tags" control={form.control} render={({ field }) => (
               <FormItem>
-                <FormLabel>Tech Stack (comma-separated)</FormLabel>
+                <FormLabel>Tech Stack</FormLabel>
                 <FormControl><Input placeholder="e.g., Next.js, Firebase, Genkit" {...field} /></FormControl>
+                <FormDescription>Separate tags with commas.</FormDescription>
                 <FormMessage />
               </FormItem>
             )} />

@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ const teamUpSchema = z.object({
   name: z.string().min(2, "Name is required."),
   query: z.string().min(10, "Please describe your idea or what you're looking for (min. 10 characters)."),
   skills: z.string().min(1, "Please list at least one skill you're looking for."),
-  contact: z.string().optional(),
+  contact: z.string().email("Please enter a valid email address.").optional().or(z.literal('')),
 });
 
 export function TeamUpRequestForm() {
@@ -49,7 +49,12 @@ export function TeamUpRequestForm() {
         title: "Query Posted!",
         description: "Your team-up request is now live.",
       });
-      form.reset();
+      form.reset({
+        name: "",
+        query: "",
+        skills: "",
+        contact: "",
+      });
     } catch (error) {
       console.error("Error posting query:", error);
       toast({
@@ -90,15 +95,16 @@ export function TeamUpRequestForm() {
             )} />
              <FormField name="skills" control={form.control} render={({ field }) => (
               <FormItem>
-                <FormLabel>Skills Needed (comma-separated)</FormLabel>
+                <FormLabel>Skills Needed</FormLabel>
                 <FormControl><Input placeholder="e.g., React, UI/UX Design, Firebase" {...field} /></FormControl>
+                <FormDescription>Separate skills with commas.</FormDescription>
                 <FormMessage />
               </FormItem>
             )} />
             <FormField name="contact" control={form.control} render={({ field }) => (
               <FormItem>
-                <FormLabel>Contact Info (Optional)</FormLabel>
-                <FormControl><Input placeholder="Your email or social media link" {...field} /></FormControl>
+                <FormLabel>Contact Email (Optional)</FormLabel>
+                <FormControl><Input placeholder="Your email for interested members to reach out" {...field} /></FormControl>
                 <FormMessage />
               </FormItem>
             )} />

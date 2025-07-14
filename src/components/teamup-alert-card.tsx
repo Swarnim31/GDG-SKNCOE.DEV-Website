@@ -7,7 +7,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { ChevronDown, Send } from "lucide-react";
@@ -22,18 +21,30 @@ type TeamUpAlertCardProps = {
 
 export function TeamUpAlertCard({ alert, isExpanded = false }: TeamUpAlertCardProps) {
   const [isReplyOpen, setIsReplyOpen] = React.useState(false);
+  const [replyMessage, setReplyMessage] = React.useState("");
   const { toast } = useToast();
 
   const handleReply = () => {
+    if (!replyMessage.trim()) {
+        toast({
+            title: "Empty Message",
+            description: "Please write a message before sending.",
+            variant: "destructive",
+        })
+        return;
+    }
     toast({
         title: "Reply Sent!",
         description: "Your message has been sent to " + alert.name,
     })
+    setReplyMessage("");
+    setIsReplyOpen(false);
   }
   
   return (
     <Card className="hover:shadow-md transition-shadow bg-background/50 border">
       <CardContent className="p-4">
+        <Collapsible open={isReplyOpen} onOpenChange={setIsReplyOpen}>
         <div className="flex items-start gap-4">
           <Avatar>
             <AvatarImage />
@@ -46,14 +57,12 @@ export function TeamUpAlertCard({ alert, isExpanded = false }: TeamUpAlertCardPr
                 <p className="text-muted-foreground text-sm mt-1">{alert.query}</p>
               </div>
               {isExpanded && (
-                 <Collapsible open={isReplyOpen} onOpenChange={setIsReplyOpen}>
                     <CollapsibleTrigger asChild>
-                         <Button variant="ghost" size="icon" className="h-8 w-8">
+                         <Button variant="ghost" size="icon" className="h-8 w-8 flex-shrink-0">
                             <ChevronDown className={cn("h-4 w-4 transition-transform", isReplyOpen && "rotate-180")} />
                             <span className="sr-only">Toggle Reply</span>
                         </Button>
                     </CollapsibleTrigger>
-                </Collapsible>
               )}
             </div>
             <div className="flex flex-wrap gap-2 mt-3">
@@ -70,15 +79,21 @@ export function TeamUpAlertCard({ alert, isExpanded = false }: TeamUpAlertCardPr
           </div>
         </div>
         {isExpanded && (
-          <CollapsibleContent className="pl-14 mt-4">
+          <CollapsibleContent className="pl-[56px] pt-4">
              <div className="space-y-2">
-                <Textarea placeholder={`Reply to ${alert.name}...`} className="bg-muted"/>
+                <Textarea 
+                  placeholder={`Reply to ${alert.name}...`} 
+                  className="bg-muted" 
+                  value={replyMessage}
+                  onChange={(e) => setReplyMessage(e.target.value)}
+                />
                 <Button onClick={handleReply} size="sm">
                     Send Reply <Send className="ml-2 h-4 w-4" />
                 </Button>
             </div>
           </CollapsibleContent>
         )}
+        </Collapsible>
       </CardContent>
     </Card>
   );
