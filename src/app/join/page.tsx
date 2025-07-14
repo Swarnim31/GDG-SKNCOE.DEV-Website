@@ -15,8 +15,19 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Lock, Mail, User, ArrowRight } from "lucide-react";
 import { GoogleIcon } from "@/components/icons/google";
+import React from 'react';
 
 export default function JoinPage() {
+    const [isMounted, setIsMounted] = React.useState(false);
+
+    React.useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted) {
+        return null;
+    }
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center justify-center space-y-8">
       
