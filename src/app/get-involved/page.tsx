@@ -70,7 +70,7 @@ export default function GetInvolvedPage() {
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
-            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 capsule-gradient-blue text-primary-foreground">
+            <Card className="text-center p-6 shadow-lg hover:shadow-2xl transition-shadow duration-300 capsule-gradient-red text-primary-foreground">
               <Award className="h-10 w-10 text-white mx-auto mb-3" />
               <p className="text-3xl font-bold">
                  <AnimatedCounter to={15} />+
@@ -127,54 +127,58 @@ export default function GetInvolvedPage() {
              <p className="mt-4 text-lg text-muted-foreground">Have questions? We’d love to hear from you.</p>
            </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-             <Card className="p-8">
-               <CardHeader className="p-0 mb-6">
-                 <CardTitle>Send us a Message</CardTitle>
-               </CardHeader>
-               <CardContent className="p-0">
-                  <form className="space-y-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">Name</Label>
-                      <Input id="name" placeholder="Your Name" />
-                    </div>
-                     <div className="space-y-2">
-                      <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" placeholder="your.email@example.com" />
-                    </div>
-                     <div className="space-y-2">
-                      <Label htmlFor="message">Message</Label>
-                      <Textarea id="message" placeholder="Your message..." rows={5} />
-                    </div>
-                    <Button type="submit" className="w-full btn-google rounded-full">Send Message</Button>
-                  </form>
-               </CardContent>
-             </Card>
+             <div className="p-1 rounded-2xl animated-gradient-border shadow-lg">
+                <Card className="p-8 rounded-xl">
+                  <CardHeader className="p-0 mb-6">
+                    <CardTitle>Send us a Message</CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                      <form className="space-y-6">
+                        <div className="space-y-2">
+                          <Label htmlFor="name">Name</Label>
+                          <Input id="name" placeholder="Your Name" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="email">Email</Label>
+                          <Input id="email" type="email" placeholder="your.email@example.com" />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="message">Message</Label>
+                          <Textarea id="message" placeholder="Your message..." rows={5} />
+                        </div>
+                        <Button type="submit" className="w-full btn-google rounded-full">Send Message</Button>
+                      </form>
+                  </CardContent>
+                </Card>
+             </div>
 
              <div className="space-y-8">
-                <Card className="p-6">
-                    <h4 className="font-bold text-lg mb-4">Get in Touch</h4>
-                    <div className="space-y-4 text-muted-foreground">
-                        <a href="mailto:contact@gdgskncoe.com" className="flex items-center gap-4 hover:text-primary transition-colors">
-                            <Mail className="h-6 w-6"/>
-                            <span>contact@gdgskncoe.dev</span>
-                        </a>
-                        <div className="flex space-x-4 pt-2">
-                           <Button asChild variant="outline" size="icon">
-                             <a href="https://www.linkedin.com/company/gdgoncampus/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
-                                <Linkedin className="h-5 w-5" />
-                                <span className="sr-only">LinkedIn</span>
-                             </a>
-                           </Button>
-                           <Button asChild variant="outline" size="icon">
-                             <a href="https://www.instagram.com/gdg_skncoe/?hl=en" target="_blank" rel="noopener noreferrer">
-                                <Instagram className="h-5 w-5" />
-                                <span className="sr-only">Instagram</span>
-                             </a>
-                           </Button>
-                        </div>
-                    </div>
-                </Card>
-                <Card className="overflow-hidden">
+                <div className="p-1 rounded-2xl animated-gradient-border shadow-lg">
+                  <Card className="p-6 rounded-xl bg-card/80">
+                      <h4 className="font-bold text-lg mb-4">Get in Touch</h4>
+                      <div className="space-y-4 text-muted-foreground">
+                          <a href="mailto:contact@gdgskncoe.com" className="flex items-center gap-4 hover:text-primary transition-colors">
+                              <Mail className="h-6 w-6"/>
+                              <span>contact@gdgskncoe.dev</span>
+                          </a>
+                          <div className="flex space-x-4 pt-2">
+                            <Button asChild variant="outline" size="icon">
+                              <a href="https://www.linkedin.com/company/gdgoncampus/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
+                                  <Linkedin className="h-5 w-5" />
+                                  <span className="sr-only">LinkedIn</span>
+                              </a>
+                            </Button>
+                            <Button asChild variant="outline" size="icon">
+                              <a href="https://www.instagram.com/gdg_skncoe/?hl=en" target="_blank" rel="noopener noreferrer">
+                                  <Instagram className="h-5 w-5" />
+                                  <span className="sr-only">Instagram</span>
+                              </a>
+                            </Button>
+                          </div>
+                      </div>
+                  </Card>
+                </div>
+                <Card className="overflow-hidden rounded-2xl shadow-lg">
                    <div className="aspect-w-16 aspect-h-9 bg-muted">
                     {/* Replace with your Google Maps embed code */}
                     <iframe 
@@ -196,24 +200,3 @@ export default function GetInvolvedPage() {
     </div>
   );
 }
-
-// Custom scrollbar utility for Tailwind
-// Add the following to your globals.css or a utility CSS file if it doesn't exist
-/*
-@layer utilities {
-  .scrollbar-thin {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--primary)) hsl(var(--muted));
-  }
-  .scrollbar-thumb-primary\/50::-webkit-scrollbar-thumb {
-    background-color: hsl(var(--primary) / 0.5);
-    border-radius: 4px;
-  }
-  .scrollbar-track-muted::-webkit-scrollbar-track {
-    background: hsl(var(--muted));
-  }
-  .scrollbar-thumb-primary\/50::-webkit-scrollbar {
-    height: 8px;
-  }
-}
-*/
