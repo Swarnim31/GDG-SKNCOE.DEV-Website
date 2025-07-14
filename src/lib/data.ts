@@ -1,4 +1,3 @@
-
 import type { Event, Resource, Capsule, Project, GalleryImage } from "./types";
 
 export const mockEvents: Event[] = [
@@ -85,26 +84,10 @@ export const mockEvents: Event[] = [
 export const mockTeam = [
   {
     id: "1",
-    name: "Alex Johnson",
-    role: "Lead Cloud Engineer",
+    name: "Ojas Bhalerao",
+    role: "GDG Lead 24-25",
     imageUrl: "https://placehold.co/400x400.png",
     imageHint: "person portrait",
-    linkedinUrl: "https://www.linkedin.com/",
-  },
-  {
-    id: "2",
-    name: "Samantha Lee",
-    role: "Senior Android Developer",
-    imageUrl: "https://placehold.co/400x400.png",
-    imageHint: "woman portrait",
-    linkedinUrl: "https://www.linkedin.com/",
-  },
-  {
-    id: "3",
-    name: "David Chen",
-    role: "AI/ML Specialist",
-    imageUrl: "https://placehold.co/400x400.png",
-    imageHint: "man portrait",
     linkedinUrl: "https://www.linkedin.com/",
   },
 ];
