@@ -21,7 +21,6 @@ export type Resource = {
   logoUrl: string;
   toolLink: string;
   learnLink: string;
-  category: "google" | "ai" | "dev";
 };
 
 export type Capsule = {
