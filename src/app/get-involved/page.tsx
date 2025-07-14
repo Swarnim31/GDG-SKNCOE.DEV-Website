@@ -1,4 +1,6 @@
 
+"use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,6 +24,7 @@ import {
   Instagram,
   ArrowRight,
 } from "lucide-react";
+import React from "react";
 
 const milestones = [
   { year: "2021", event: "Chapter Inception" },
@@ -51,6 +54,16 @@ const roles = [
 ];
 
 export default function GetInvolvedPage() {
+  const [isMounted, setIsMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; // or a loading skeleton
+  }
+
   return (
     <div className="bg-background text-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -219,3 +232,5 @@ export default function GetInvolvedPage() {
   }
 }
 */
+
+    
