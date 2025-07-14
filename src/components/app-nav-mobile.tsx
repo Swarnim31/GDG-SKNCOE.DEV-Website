@@ -30,7 +30,7 @@ export function AppNavMobile() {
             onClick={() => setIsOpen(false)}
           >
             <CodeXml className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold tracking-tight">SknCoe</span>
+            <span className="text-xl font-bold tracking-tight">GDG SknCoe.DEV</span>
           </Link>
         </SheetHeader>
         <div className="flex flex-col gap-2">

@@ -10,7 +10,7 @@ export function AppFooter() {
           <Link href="/" className="flex items-center gap-2 mb-4">
             <CodeXml className="h-8 w-8 text-primary" />
             <span className="text-xl font-bold tracking-tight">
-              GDG SKNCOE
+              GDG SknCoe.DEV
             </span>
           </Link>
           <div className="flex space-x-2 mb-4">
@@ -46,7 +46,7 @@ export function AppFooter() {
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
-            Made with ❤️ by the GDG SKNCOE Team
+            Made with ❤️ by the GDG SknCoe Team
           </p>
         </div>
       </div>

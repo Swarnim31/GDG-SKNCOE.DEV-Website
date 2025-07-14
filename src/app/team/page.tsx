@@ -9,7 +9,7 @@ export default function TeamPage() {
       <div className="text-center mb-16">
         <h1 className="text-4xl font-black tracking-tight mb-4">Meet the Team</h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-          The driving force behind SknCoe-Dev, a passionate group of creators, thinkers, and innovators.
+          The driving force behind GDG SknCoe.DEV, a passionate group of creators, thinkers, and innovators.
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">

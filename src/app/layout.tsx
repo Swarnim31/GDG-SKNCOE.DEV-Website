@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AppFooter } from "@/components/app-footer";
 
 export const metadata: Metadata = {
-  title: "SknCoe-Dev",
+  title: "GDG SknCoe.DEV",
   description: "A hub for GDG event listings and developer resources.",
 };
 

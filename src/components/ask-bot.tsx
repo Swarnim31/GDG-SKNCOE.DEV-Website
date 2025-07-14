@@ -66,7 +66,7 @@ export function AskBot() {
           "h-16 w-16 rounded-full shadow-2xl transition-transform hover:scale-110",
           "btn-gemini animate-float"
         )}
-        aria-label="Ask SknCoe-Dev Bot"
+        aria-label="Ask GDG SknCoe.DEV Bot"
         onClick={() => setIsOpen(true)}
       >
         <Sparkles className="h-8 w-8" />
@@ -77,7 +77,7 @@ export function AskBot() {
           <DialogHeader className="p-4 border-b">
             <DialogTitle className="flex items-center gap-2 text-lg">
               <Sparkles className="h-5 w-5 text-yellow-400" />
-              Ask SknCoe-Dev Bot
+              Ask GDG SknCoe.DEV Bot
             </DialogTitle>
           </DialogHeader>
           <div className="flex flex-col h-[60vh]">

@@ -85,10 +85,10 @@ export default function Home() {
       <section className="bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-4">
-            Welcome to SknCoe-Dev– Your Developer Ecosystem
+            GDG SknCoe.DEV
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Where ideas, code, and collaboration come together.
+            Your Developer Ecosystem
           </p>
           <Button size="lg" asChild className="btn-google font-bold text-lg">
             <Link href="/events">

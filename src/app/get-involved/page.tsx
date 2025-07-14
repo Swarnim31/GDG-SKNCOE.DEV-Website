@@ -69,13 +69,13 @@ export default function GetInvolvedPage() {
     <div className="bg-background text-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         
-        {/* Section 1: About GDG SKNCOE */}
+        {/* Section 1: About GDG SknCoe */}
         <section id="about" className="mb-20 md:mb-28 text-center">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            About GDG SKNCOE
+            About GDG SknCoe
           </h1>
           <p className="max-w-3xl mx-auto text-lg text-muted-foreground mb-12">
-            Google Developer Group SKNCOE is a community of student developers passionate about Google technologies. Our vision is to create a vibrant ecosystem for learning, sharing, and building innovative solutions. Through workshops, talks, and collaborative projects, we empower students to grow their skills and make a real-world impact.
+            Google Developer Group SknCoe is a community of student developers passionate about Google technologies. Our vision is to create a vibrant ecosystem for learning, sharing, and building innovative solutions. Through workshops, talks, and collaborative projects, we empower students to grow their skills and make a real-world impact.
           </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
@@ -178,7 +178,7 @@ export default function GetInvolvedPage() {
                     <div className="space-y-4 text-muted-foreground">
                         <a href="mailto:contact@gdgskncoe.com" className="flex items-center gap-4 hover:text-primary transition-colors">
                             <Mail className="h-6 w-6"/>
-                            <span>contact@gdgskncoe.com</span>
+                            <span>contact@gdgskncoe.dev</span>
                         </a>
                         <div className="flex space-x-4 pt-2">
                            <Button asChild variant="outline" size="icon">
