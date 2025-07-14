@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, User } from "lucide-react";
+import { ArrowRight, User, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 type ProjectCardProps = {
@@ -20,28 +20,20 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const categoryColors: { [key: string]: string } = {
-    Web: "bg-blue-100/50 dark:bg-blue-900/20",
-    Mobile: "bg-green-100/50 dark:bg-green-900/20",
-    AI: "bg-red-100/50 dark:bg-red-900/20",
+    Web: "bg-blue-100/50 dark:bg-blue-900/20 border-blue-500/50",
+    Mobile: "bg-green-100/50 dark:bg-green-900/20 border-green-500/50",
+    AI: "bg-red-100/50 dark:bg-red-900/20 border-red-500/50",
+    Cloud: "bg-purple-100/50 dark:bg-purple-900/20 border-purple-500/50",
   };
   const cardColor = categoryColors[project.category] || "bg-card";
 
   return (
-    <Card className={cn("flex flex-col h-full transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl", cardColor)}>
-      <CardHeader className="p-0">
-        <div className="relative h-56 w-full">
-          <Image
-            src={project.imageUrl}
-            alt={project.title}
-            fill
-            className="object-cover"
-            data-ai-hint={project.imageHint}
-          />
-           <Badge className="absolute top-3 right-3" variant="secondary">{project.category}</Badge>
-        </div>
+    <Card className={cn("flex flex-col h-full transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl border-t-4", cardColor)}>
+      <CardHeader>
+         <Badge className="w-fit" variant="secondary">{project.category}</Badge>
+        <CardTitle className="text-xl pt-2 line-clamp-1">{project.title}</CardTitle>
       </CardHeader>
-      <CardContent className="p-6 flex-grow">
-        <CardTitle className="text-xl mb-2 line-clamp-1">{project.title}</CardTitle>
+      <CardContent className="flex-grow">
         <CardDescription className="text-foreground/80 line-clamp-2 h-10 mb-4">
           {project.description}
         </CardDescription>
@@ -68,7 +60,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
         <Button asChild className="w-full mt-auto">
           <Link href={project.link} target="_blank" rel="noopener noreferrer">
-            View More <ArrowRight className="ml-2 h-4 w-4" />
+            <Github className="mr-2 h-4 w-4" />
+            View on GitHub
           </Link>
         </Button>
       </CardFooter>

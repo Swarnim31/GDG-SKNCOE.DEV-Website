@@ -1,3 +1,5 @@
+import type { Timestamp } from "firebase/firestore";
+
 export type Event = {
   id: string;
   title: string;
@@ -22,26 +24,29 @@ export type Resource = {
 };
 
 export type Capsule = {
-  id: string;
+  id:string;
   title: string;
   tip: string;
   category: "Web" | "AI" | "Mobile" | "Git" | "Tools";
   emoji: string;
 };
 
+export type Contributor = {
+  name: string;
+  role: string;
+};
+
 export type Project = {
   id: string;
   title: string;
   description: string;
-  category: "Web" | "Mobile" | "AI";
+  category: "Web" | "Mobile" | "AI" | "Cloud";
   tags: string[];
-  contributors: {
-    name: string;
-    role: string;
-  }[];
+  contributors: Contributor[];
   link: string;
-  imageUrl: string;
-  imageHint: string;
+  imageUrl?: string;
+  imageHint?: string;
+  timestamp?: Timestamp;
 };
 
 export type GalleryImage = {
@@ -51,3 +56,12 @@ export type GalleryImage = {
   hint: string;
   caption?: string;
 };
+
+export type TeamUpAlert = {
+    id: string;
+    name: string;
+    query: string;
+    skills: string[];
+    contact?: string;
+    timestamp: Timestamp;
+}
