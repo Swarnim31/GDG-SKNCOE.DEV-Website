@@ -27,15 +27,6 @@ import {
 import React from "react";
 import { AnimatedCounter } from "@/components/animated-counter";
 
-const milestones = [
-  { year: "2021", event: "Chapter Inception" },
-  { year: "2022", event: "First Major Workshop" },
-  { year: "2022", event: "Cloud Study Jams" },
-  { year: "2023", event: "Flutter Festival" },
-  { year: "2023", event: "Hackathon Partnership" },
-  { year: "2024", event: "Google I/O Extended" },
-];
-
 const roles = [
   {
     icon: <Code className="h-10 w-10 text-primary mb-4" />,
@@ -100,19 +91,6 @@ export default function GetInvolvedPage() {
               </p>
               <p className="text-muted-foreground">Clubs Collaborated</p>
             </Card>
-          </div>
-
-          <h3 className="text-2xl font-bold mb-8">Our Journey</h3>
-          <div className="relative">
-            <div className="flex overflow-x-auto space-x-8 pb-4 scrollbar-thin scrollbar-thumb-primary/50 scrollbar-track-muted">
-              {milestones.map((milestone, index) => (
-                <div key={index} className="flex-shrink-0 w-48 text-center">
-                  <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center mx-auto font-bold text-lg mb-2">{milestone.year}</div>
-                  <p className="text-muted-foreground">{milestone.event}</p>
-                </div>
-              ))}
-            </div>
-             <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-border/50 -translate-y-1/2 -z-10"></div>
           </div>
         </section>
 
