@@ -6,7 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { EventCard } from "@/components/event-card";
 import { mockEvents, mockTeam } from "@/lib/data";
 import {
@@ -17,7 +17,6 @@ import {
   Cloud,
   ArrowRight,
   Sparkles,
-  MessageCircle,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -111,7 +110,7 @@ export default function Home() {
             {mockTeam.map((member) => (
               <Card
                 key={member.id}
-                className="overflow-hidden transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl"
+                className="overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl"
               >
                 <CardContent className="p-0">
                   <div className="relative h-64 w-full">
@@ -149,7 +148,7 @@ export default function Home() {
             {domains.map((domain, index) => (
               <Card
                 key={index}
-                className="p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className="p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
               >
                 <div className="p-3 bg-primary/10 rounded-full mb-4">
                   {domain.icon}
@@ -158,7 +157,7 @@ export default function Home() {
                 <p className="text-muted-foreground">{domain.description}</p>
               </Card>
             ))}
-             <Card className="p-6 flex flex-col items-center text-center transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl bg-primary/10 border-primary">
+             <Card className="p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl bg-primary/10 border-primary">
                 <div className="p-3 bg-primary/20 rounded-full mb-4">
                     <Sparkles className="h-8 w-8 text-primary" />
                 </div>
@@ -172,13 +171,15 @@ export default function Home() {
       {/* Tech Capsules Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-4">
-            <Sparkles className="inline-block h-8 w-8 text-amber-400 mr-2" />
-            Tech Capsules
-          </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-xl mx-auto">
-            Get a daily dose of bite-sized developer knowledge. A new tip appears every day!
-          </p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-center mb-4 flex items-center justify-center gap-2">
+              <Sparkles className="h-8 w-8 text-yellow-500" />
+              Tech Capsules
+            </h2>
+            <p className="text-center text-muted-foreground max-w-xl mx-auto">
+              Get a daily dose of bite-sized developer knowledge. A new tip appears every day!
+            </p>
+          </div>
           <TechCapsuleDisplay />
         </div>
       </section>

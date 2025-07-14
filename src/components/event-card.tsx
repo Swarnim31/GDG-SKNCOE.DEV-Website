@@ -19,7 +19,7 @@ type EventCardProps = {
 
 export function EventCard({ event }: EventCardProps) {
   return (
-    <Card className="flex flex-col overflow-hidden h-full transform hover:-translate-y-1 transition-transform duration-300 ease-in-out shadow-lg hover:shadow-2xl">
+    <Card className="flex flex-col h-full transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl">
       <CardHeader className="p-0">
         <div className="relative h-48 w-full">
           <Image
@@ -29,12 +29,12 @@ export function EventCard({ event }: EventCardProps) {
             className="object-cover"
             data-ai-hint={event.imageHint}
           />
-          <Badge className="absolute top-2 right-2" variant={event.type === 'GDG Event' ? 'default' : 'secondary'}>{event.type}</Badge>
+          <Badge className="absolute top-3 right-3" variant={event.type === 'GDG Event' ? 'default' : 'secondary'}>{event.type}</Badge>
         </div>
       </CardHeader>
-      <CardContent className="p-4 flex-grow">
-        <CardTitle className="text-xl font-bold mb-2 line-clamp-2">{event.title}</CardTitle>
-        <div className="w-full space-y-2 text-sm text-muted-foreground mb-4">
+      <CardContent className="p-6 flex-grow">
+        <CardTitle className="text-xl mb-2 line-clamp-2">{event.title}</CardTitle>
+        <div className="space-y-2 text-sm text-muted-foreground mb-4">
           <div className="flex items-center gap-2">
             <Calendar className="h-4 w-4" />
             <span>{format(new Date(event.date), "PPP")}</span>
@@ -48,11 +48,11 @@ export function EventCard({ event }: EventCardProps) {
             <span>{event.organizer}</span>
           </div>
         </div>
-        <CardDescription className="text-muted-foreground line-clamp-3">
+        <CardDescription className="text-foreground/80 line-clamp-3">
           {event.description}
         </CardDescription>
       </CardContent>
-      <CardFooter className="p-4 pt-0 flex-col items-start gap-4">
+      <CardFooter className="p-6 pt-0 flex flex-col items-start gap-4 mt-auto">
         <div className="flex flex-wrap gap-2">
           {event.tags.map((tag) => (
             <Badge key={tag} variant="outline">
