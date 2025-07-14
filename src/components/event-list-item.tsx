@@ -14,23 +14,25 @@ import { Card, CardContent } from "@/components/ui/card";
 
 type EventListItemProps = {
   event: Event;
+  index: number;
 };
 
-export function EventListItem({ event }: EventListItemProps) {
-    const [isOpen, setIsOpen] = useState(false);
+const gradientClasses = [
+    "capsule-gradient-blue",
+    "capsule-gradient-red",
+    "capsule-gradient-green",
+    "capsule-gradient-yellow",
+    "capsule-gradient-purple",
+];
 
-    const getGradientClass = (type: string) => {
-        switch(type) {
-            case "GDG Event": return "capsule-gradient-blue text-white";
-            case "Tech Session": return "capsule-gradient-green text-white";
-            default: return "capsule-gradient-purple text-white";
-        }
-    }
+export function EventListItem({ event, index }: EventListItemProps) {
+    const [isOpen, setIsOpen] = useState(false);
+    const gradientClass = gradientClasses[index % gradientClasses.length];
 
   return (
     <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
-            <div className={cn("flex items-center justify-between w-full p-4 rounded-full text-lg font-bold cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1", getGradientClass(event.type))}>
+            <div className={cn("flex items-center justify-between w-full p-4 rounded-full text-lg font-bold cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 text-white", gradientClass)}>
                 <span>{event.title}</span>
                 {isOpen ? <ChevronUp className="h-6 w-6" /> : <ChevronDown className="h-6 w-6" />}
             </div>
