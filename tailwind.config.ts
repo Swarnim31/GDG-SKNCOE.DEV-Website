@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['"Google Sans"', 'sans-serif'],
-        headline: ['"Google Sans"', 'sans-serif'],
+        body: ['"Google Sans"', '"Product Sans"', 'sans-serif'],
+        headline: ['"Google Sans"', '"Product Sans"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

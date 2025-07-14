@@ -68,7 +68,7 @@ export function SkncoeDevBot() {
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
         <Button
-          className="fixed bottom-6 right-6 h-16 w-16 rounded-full bg-gradient-to-br from-primary to-secondary/80 text-primary-foreground shadow-2xl transition-transform hover:scale-110"
+          className="fixed bottom-6 right-6 h-16 w-16 rounded-full btn-gemini shadow-2xl transition-transform hover:scale-110 z-50"
           aria-label="Open SknCoe-Dev Bot"
         >
           <MessageCircle className="h-8 w-8" />
@@ -78,7 +78,7 @@ export function SkncoeDevBot() {
         <DialogHeader className="p-4 border-b">
           <DialogTitle className="flex items-center gap-2">
             <Avatar>
-              <AvatarFallback className="bg-gradient-to-br from-primary to-secondary/80 text-primary-foreground">
+              <AvatarFallback className="btn-gemini text-primary-foreground">
                 <MessageCircle className="h-5 w-5" />
               </AvatarFallback>
             </Avatar>
