@@ -168,7 +168,7 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          <Button variant="outline" asChild>
+          <Button asChild className="btn-google rounded-full">
             <Link href="/team">
               View All Team Members <ArrowRight className="ml-2 h-5 w-5" />
             </Link>

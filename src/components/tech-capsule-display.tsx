@@ -71,7 +71,7 @@ export function TechCapsuleDisplay() {
            </div>
         </CardContent>
       </Card>
-      <Button asChild variant="outline">
+      <Button asChild className="btn-google rounded-full">
         <Link href="/resources">
           More Resources <ArrowRight className="ml-2 h-4 w-4" />
         </Link>
