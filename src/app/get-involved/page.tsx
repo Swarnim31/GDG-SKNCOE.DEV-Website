@@ -182,13 +182,13 @@ export default function GetInvolvedPage() {
                         </a>
                         <div className="flex space-x-4 pt-2">
                            <Button asChild variant="outline" size="icon">
-                             <a href="#" target="_blank" rel="noopener noreferrer">
+                             <a href="https://www.linkedin.com/company/gdgoncampus/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
                                 <Linkedin className="h-5 w-5" />
                                 <span className="sr-only">LinkedIn</span>
                              </a>
                            </Button>
                            <Button asChild variant="outline" size="icon">
-                             <a href="#" target="_blank" rel="noopener noreferrer">
+                             <a href="https://www.instagram.com/gdg_skncoe/?hl=en" target="_blank" rel="noopener noreferrer">
                                 <Instagram className="h-5 w-5" />
                                 <span className="sr-only">Instagram</span>
                              </a>
