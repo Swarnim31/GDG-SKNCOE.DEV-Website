@@ -50,32 +50,32 @@ export function AppNavMobile() {
           </div>
         </SheetHeader>
         <div className="flex flex-col gap-2">
-          <Link href="/" passHref>
-            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Home</Button>
-          </Link>
-          <Link href="/events" passHref>
-            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Events</Button>
-          </Link>
-          <Link href="/teamup-showcase" passHref>
-            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Showcase</Button>
-          </Link>
-          <Link href="/resources" passHref>
-            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Resources</Button>
-          </Link>
-          <Link href="/team" passHref>
-            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Our Team</Button>
-          </Link>
-          <Link href="/get-involved" passHref>
-            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>About GDG</Button>
-          </Link>
-          <Link href="/join" passHref>
-            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Join</Button>
-          </Link>
-          <Link href="/profile" passHref>
-             <Button variant="ghost" className="w-full justify-start text-base gap-2" onClick={closeSheet}>
+          <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet} asChild>
+            <Link href="/">Home</Link>
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet} asChild>
+            <Link href="/events">Events</Link>
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet} asChild>
+            <Link href="/teamup-showcase">Showcase</Link>
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet} asChild>
+            <Link href="/resources">Resources</Link>
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet} asChild>
+            <Link href="/team">Our Team</Link>
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet} asChild>
+            <Link href="/get-involved">About GDG</Link>
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet} asChild>
+            <Link href="/join">Join</Link>
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-base gap-2" onClick={closeSheet} asChild>
+             <Link href="/profile">
                 <User className="h-5 w-5" /> Profile
-             </Button>
-          </Link>
+             </Link>
+          </Button>
         </div>
       </SheetContent>
     </Sheet>

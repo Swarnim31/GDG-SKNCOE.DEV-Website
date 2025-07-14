@@ -24,36 +24,36 @@ export function AppHeader() {
         </div>
         <div className="flex items-center gap-4">
           <nav className="hidden md:flex items-center gap-1">
-            <Link href="/" passHref>
-              <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">Home</Button>
-            </Link>
-            <Link href="/events" passHref>
-              <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">Events</Button>
-            </Link>
-            <Link href="/teamup-showcase" passHref>
-              <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">Showcase</Button>
-            </Link>
-            <Link href="/resources" passHref>
-              <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">Resources</Button>
-            </Link>
-            <Link href="/team" passHref>
-              <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">Our Team</Button>
-            </Link>
-            <Link href="/get-involved" passHref>
-              <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">About GDG</Button>
-            </Link>
+            <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline" asChild>
+              <Link href="/">Home</Link>
+            </Button>
+            <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline" asChild>
+              <Link href="/events">Events</Link>
+            </Button>
+            <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline" asChild>
+              <Link href="/teamup-showcase">Showcase</Link>
+            </Button>
+            <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline" asChild>
+              <Link href="/resources">Resources</Link>
+            </Button>
+            <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline" asChild>
+              <Link href="/team">Our Team</Link>
+            </Button>
+            <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline" asChild>
+              <Link href="/get-involved">About GDG</Link>
+            </Button>
           </nav>
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Link href="/join" passHref>
-              <Button className="btn-gemini rounded-full hidden md:inline-flex">Join</Button>
-            </Link>
-            <Link href="/profile" passHref>
-              <Button variant="outline" size="icon" className="rounded-full hidden md:inline-flex">
+            <Button className="btn-gemini rounded-full hidden md:inline-flex" asChild>
+              <Link href="/join">Join</Link>
+            </Button>
+            <Button variant="outline" size="icon" className="rounded-full hidden md:inline-flex" asChild>
+              <Link href="/profile">
                 <User className="h-5 w-5" />
                 <span className="sr-only">Profile</span>
-              </Button>
-            </Link>
+              </Link>
+            </Button>
             <AppNavMobile />
           </div>
         </div>
