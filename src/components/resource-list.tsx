@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useMemo } from "react";
@@ -22,7 +23,7 @@ export function ResourceList({ resources }: ResourceListProps) {
   const [filterTag, setFilterTag] = useState("all");
 
   const resourceTags = useMemo(() => {
-    const tags = new Set(resources.map((resource) => resource.tag));
+    const tags = new Set(resources.map((resource) => resource.category));
     return ["all", ...Array.from(tags)];
   }, [resources]);
 
@@ -30,7 +31,7 @@ export function ResourceList({ resources }: ResourceListProps) {
     return resources
       .filter((resource) => {
         if (filterTag === "all") return true;
-        return resource.tag === filterTag;
+        return resource.category === filterTag;
       })
       .filter((resource) => {
         return resource.name.toLowerCase().includes(searchTerm.toLowerCase());

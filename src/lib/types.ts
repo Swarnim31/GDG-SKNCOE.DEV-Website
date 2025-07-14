@@ -1,3 +1,4 @@
+
 import type { Timestamp } from "firebase/firestore";
 
 export type Event = {
@@ -17,10 +18,10 @@ export type Resource = {
   id: string;
   name: string;
   description: string;
-  tag: string;
-  link: string;
-  imageUrl: string;
-  imageHint: string;
+  logoUrl: string;
+  toolLink: string;
+  learnLink: string;
+  category: "google" | "ai" | "dev";
 };
 
 export type Capsule = {
@@ -58,7 +59,7 @@ export type GalleryImage = {
 };
 
 export type TeamUpAlert = {
-    id: string;
+    id:string;
     name: string;
     query: string;
     skills: string[];
