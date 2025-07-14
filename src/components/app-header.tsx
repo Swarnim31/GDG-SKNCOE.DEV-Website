@@ -1,3 +1,4 @@
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
@@ -43,6 +44,9 @@ export function AppHeader() {
           </nav>
           <div className="flex items-center gap-2">
             <ThemeToggle />
+            <Link href="/join" passHref>
+              <Button className="btn-gemini rounded-full hidden md:inline-flex">Join</Button>
+            </Link>
             <AppNavMobile />
           </div>
         </div>

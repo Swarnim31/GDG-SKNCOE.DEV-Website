@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -66,6 +67,9 @@ export function AppNavMobile() {
           </Link>
           <Link href="/get-involved" passHref>
             <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>About GDG</Button>
+          </Link>
+          <Link href="/join" passHref>
+            <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet}>Join</Button>
           </Link>
         </div>
       </SheetContent>
