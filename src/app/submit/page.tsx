@@ -39,6 +39,7 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import React, { useState, useEffect } from "react";
 
 const formSchema = z.object({
   title: z.string().min(5, { message: "Title must be at least 5 characters." }),
@@ -55,6 +56,12 @@ const formSchema = z.object({
 
 export default function SubmitPage() {
   const { toast } = useToast();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -72,6 +79,10 @@ export default function SubmitPage() {
       description: "Thank you for your contribution. Your event is under review.",
     });
     form.reset();
+  }
+
+  if (!isMounted) {
+    return null; // or a loading skeleton
   }
 
   return (
