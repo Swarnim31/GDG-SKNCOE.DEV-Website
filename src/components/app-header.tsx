@@ -25,6 +25,9 @@ export function AppHeader() {
             <Button asChild variant="ghost">
               <Link href="/team">Team</Link>
             </Button>
+            <Button asChild variant="ghost">
+              <Link href="/get-involved">Get Involved</Link>
+            </Button>
           </nav>
           <Button asChild>
             <Link href="/submit">Submit Content</Link>
