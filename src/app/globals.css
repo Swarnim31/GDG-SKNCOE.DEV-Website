@@ -98,6 +98,10 @@
     0%, 60%, 100% { transform: translateY(0); }
     30% { transform: translateY(-4px); }
   }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
 }
 
 @layer components {
@@ -171,5 +175,8 @@
   }
   .animate-typing-bubble-3 {
     animation: typing-bubble 1.2s infinite ease-in-out 0.4s;
+  }
+  .animate-float {
+    animation: float 2s ease-in-out infinite;
   }
 }

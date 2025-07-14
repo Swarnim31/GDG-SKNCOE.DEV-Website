@@ -21,7 +21,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { TechCapsuleDisplay } from "@/components/tech-capsule-display";
-import { SkncoeDevBot } from "@/components/skncoe-dev-bot";
+import { TechCapsuleLink } from "@/components/tech-capsule-link";
 
 export default function Home() {
   const domains = [
@@ -169,7 +169,7 @@ export default function Home() {
       </section>
 
       {/* Tech Capsules Section */}
-      <section className="py-16 bg-background">
+      <section id="tech-capsules" className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-center mb-4 flex items-center justify-center gap-2">
@@ -184,8 +184,10 @@ export default function Home() {
         </div>
       </section>
       
-      {/* SkncoeDevBot floating component */}
-      <SkncoeDevBot />
+      {/* Floating Buttons */}
+      <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-center gap-4">
+        <TechCapsuleLink />
+      </div>
     </div>
   );
 }
