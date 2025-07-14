@@ -6,19 +6,19 @@ import Image from "next/image";
 export default function TeamPage() {
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold tracking-tight">Our Team</h1>
-        <p className="mt-4 text-lg text-muted-foreground">
-          The driving force behind SknCoe-Dev.
+      <div className="text-center mb-16">
+        <h1 className="text-4xl font-black tracking-tight mb-4">Meet the Team</h1>
+        <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+          The driving force behind SknCoe-Dev, a passionate group of creators, thinkers, and innovators.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-        {mockTeam.map((member) => (
-          <TeamCard key={member.id} member={member} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
+        {mockTeam.map((member, index) => (
+          <TeamCard key={member.id} member={member} index={index} />
         ))}
       </div>
 
-      <Separator className="my-16" />
+      <Separator className="my-20" />
 
       <div className="text-center mb-12">
         <h2 className="text-3xl font-bold tracking-tight">Team Moments Gallery</h2>
@@ -28,19 +28,20 @@ export default function TeamPage() {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {mockGalleryImages.map((image) => (
-          <div key={image.id} className="group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+          <div key={image.id} className="group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 relative">
             <div className="relative aspect-w-16 aspect-h-9">
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
-                className="object-cover transform transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transform transition-transform duration-500 group-hover:scale-110"
                 data-ai-hint={image.hint}
               />
+               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
             </div>
             {image.caption && (
-              <div className="p-3 bg-card">
-                <p className="text-sm text-muted-foreground italic text-center">{image.caption}</p>
+               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+                <p className="text-sm text-white/90 font-semibold text-center drop-shadow-md">{image.caption}</p>
               </div>
             )}
           </div>
