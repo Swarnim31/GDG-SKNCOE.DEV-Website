@@ -1,4 +1,4 @@
-import type { Event } from "./types";
+import type { Event, Resource } from "./types";
 
 export const mockEvents: Event[] = [
   {
@@ -117,4 +117,61 @@ export const mockCapsules = [
     { id: '6', title: 'Next.js Image', tip: 'The `<Image>` component automatically optimizes images for performance.' },
     { id: '7', title: 'VS Code Shortcut', tip: '`Ctrl+D` selects next occurrence of the current word.' },
     { id: '8', title: 'Firebase Rules', tip: 'Always secure your Firestore database with proper security rules.' }
+];
+
+export const mockResources: Resource[] = [
+  {
+    id: "1",
+    name: "Firebase",
+    description: "An app development platform that helps you build and grow apps and games users love.",
+    tag: "Web",
+    link: "https://firebase.google.com/",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "firebase logo",
+  },
+  {
+    id: "2",
+    name: "Gemini",
+    description: "A family of generative AI models that lets developers generate content and build applications.",
+    tag: "AI",
+    link: "https://ai.google.dev/gemini-api",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "ai abstract",
+  },
+    {
+    id: "3",
+    name: "Flutter",
+    description: "Build, test, and deploy beautiful mobile, web, desktop, and embedded apps from a single codebase.",
+    tag: "Mobile",
+    link: "https://flutter.dev/",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "flutter logo",
+  },
+   {
+    id: "4",
+    name: "Next.js",
+    description: "The React framework for building full-stack web applications. Supports both server and client components.",
+    tag: "Web",
+    link: "https://nextjs.org/",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "nextjs logo",
+  },
+   {
+    id: "5",
+    name: "Google Colab",
+    description: "Write and execute Python in your browser, with zero configuration required and free access to GPUs.",
+    tag: "AI",
+    link: "https://colab.research.google.com/",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "python code",
+  },
+   {
+    id: "6",
+    name: "Figma",
+    description: "The collaborative interface design tool. Build, test, and ship better designs from start to finish.",
+    tag: "UI/UX",
+    link: "https://www.figma.com/",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "design wireframe",
+  }
 ];

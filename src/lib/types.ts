@@ -10,3 +10,13 @@ export type Event = {
   imageHint: string;
   tags: string[];
 };
+
+export type Resource = {
+  id: string;
+  name: string;
+  description: string;
+  tag: string;
+  link: string;
+  imageUrl: string;
+  imageHint: string;
+};
