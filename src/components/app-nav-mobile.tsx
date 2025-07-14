@@ -9,7 +9,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "./ui/button";
-import { CodeXml, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
+import Image from "next/image";
 
 export function AppNavMobile() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -29,7 +30,13 @@ export function AppNavMobile() {
             className="flex items-center gap-2 mb-4"
             onClick={() => setIsOpen(false)}
           >
-            <CodeXml className="h-8 w-8 text-primary" />
+            <Image
+              src="https://www.gstatic.com/devrel-devsite/prod/v2294f3a743c68e134394998d30c5e3f4e2f90a187140f04e0a78b94101e4c760/firebase/images/lockup.svg"
+              alt="GDG SknCoe Logo"
+              width={32}
+              height={32}
+              className="h-8 w-8"
+            />
             <span className="text-xl font-bold tracking-tight">GDG SknCoe.DEV</span>
           </Link>
         </SheetHeader>
