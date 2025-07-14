@@ -10,7 +10,7 @@ export function AppFooter() {
         <div className="flex flex-col items-center justify-center text-center">
           <Link href="/" className="flex items-center gap-2 mb-4">
             <Image
-              src="https://www.gstatic.com/devrel-devsite/prod/v2294f3a743c68e134394998d30c5e3f4e2f90a187140f04e0a78b94101e4c760/firebase/images/lockup.svg"
+              src="https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-goog/events/gdg%20skncoe5_kltEGo5.png"
               alt="GDG SknCoe Logo"
               width={32}
               height={32}
