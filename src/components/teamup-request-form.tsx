@@ -22,18 +22,20 @@ const teamUpSchema = z.object({
   contact: z.string().email("Please enter a valid email address.").optional().or(z.literal('')),
 });
 
+const defaultFormValues = {
+  name: "",
+  query: "",
+  skills: "",
+  contact: "",
+};
+
 export function TeamUpRequestForm() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { toast } = useToast();
 
   const form = useForm<z.infer<typeof teamUpSchema>>({
     resolver: zodResolver(teamUpSchema),
-    defaultValues: {
-      name: "",
-      query: "",
-      skills: "",
-      contact: "",
-    },
+    defaultValues: defaultFormValues,
   });
 
   const onSubmit = async (values: z.infer<typeof teamUpSchema>) => {
@@ -49,12 +51,7 @@ export function TeamUpRequestForm() {
         title: "Query Posted!",
         description: "Your team-up request is now live.",
       });
-      form.reset({
-        name: "",
-        query: "",
-        skills: "",
-        contact: "",
-      });
+      form.reset(defaultFormValues);
     } catch (error) {
       console.error("Error posting query:", error);
       toast({
