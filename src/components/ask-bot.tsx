@@ -96,7 +96,7 @@ export function AskBot() {
                     {message.sender === "bot" && (
                       <Avatar className="h-8 w-8">
                         <AvatarFallback className="btn-gemini text-primary-foreground">
-                          <Bot className="h-5 w-5" />
+                          <Sparkles className="h-5 w-5" />
                         </AvatarFallback>
                       </Avatar>
                     )}
@@ -123,7 +123,7 @@ export function AskBot() {
                   <div className="flex items-start gap-3 justify-start animate-message-in">
                     <Avatar className="h-8 w-8">
                       <AvatarFallback className="btn-gemini text-primary-foreground">
-                        <Bot className="h-5 w-5" />
+                        <Sparkles className="h-5 w-5" />
                       </AvatarFallback>
                     </Avatar>
                     <div className="rounded-2xl px-4 py-2 max-w-sm bg-muted text-foreground rounded-bl-none flex items-center gap-1.5">
