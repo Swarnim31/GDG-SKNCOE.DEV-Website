@@ -26,6 +26,7 @@ export type Capsule = {
   title: string;
   tip: string;
   category: "Web" | "AI" | "Mobile" | "Git" | "Tools";
+  emoji: string;
 };
 
 export type Project = {

@@ -8,7 +8,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { mockCapsules } from "@/lib/data";
 import type { Capsule } from "@/lib/types";
 import { ArrowRight, Sparkles } from "lucide-react";
@@ -27,55 +26,49 @@ export function TechCapsuleDisplay() {
   const [capsule, setCapsule] = useState<Capsule | null>(null);
 
   useEffect(() => {
-    // This logic runs only on the client to avoid hydration mismatch
     setCapsule(getDailyCapsule(mockCapsules));
   }, []);
 
-  const getBadgeVariant = (category: string) => {
+  const getGradientClass = (category: string) => {
     switch (category.toLowerCase()) {
       case "web":
-        return "default";
+        return "capsule-gradient-blue";
       case "ai":
-        return "destructive";
+        return "capsule-gradient-red";
       case "mobile":
-        return "secondary";
+        return "capsule-gradient-green";
+      case "git":
+        return "capsule-gradient-yellow";
+      case "tools":
       default:
-        return "outline";
+        return "capsule-gradient-purple";
     }
   };
 
   if (!capsule) {
     return (
-      <Card className="max-w-2xl w-full mx-auto animate-pulse bg-muted/50 h-[150px]" />
+      <Card className="max-w-2xl w-full mx-auto animate-pulse bg-muted/50 h-[150px] rounded-full" />
     );
   }
 
   return (
-    <div className="flex flex-col items-center gap-8">
+    <div className="flex flex-col items-center gap-8 perspective-1000">
       <Card
         className={cn(
-          "max-w-2xl w-full mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1",
-          "border-l-4",
-          capsule.category.toLowerCase() === 'web' && 'border-primary',
-          capsule.category.toLowerCase() === 'ai' && 'border-destructive',
-          capsule.category.toLowerCase() === 'mobile' && 'border-green-500',
-          capsule.category.toLowerCase() === 'git' && 'border-orange-500',
-          capsule.category.toLowerCase() === 'tools' && 'border-yellow-500',
+          "max-w-2xl w-full mx-auto shadow-lg hover:shadow-2xl transition-all duration-300 transform-style-3d",
+          "hover:-translate-y-2 hover:rotate-x-6 hover:rotate-y-[-4deg]",
+          "rounded-full text-primary-foreground p-4",
+          getGradientClass(capsule.category)
         )}
       >
-        <CardHeader>
-          <div className="flex justify-between items-start">
-            <CardTitle className="text-xl flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-yellow-500"/>
-              {capsule.title}
-            </CardTitle>
-            <Badge variant={getBadgeVariant(capsule.category)}>
-              {capsule.category}
-            </Badge>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <p className="text-lg text-muted-foreground">{capsule.tip}</p>
+        <CardContent className="p-4 flex items-center gap-6">
+           <div className="text-4xl">{capsule.emoji}</div>
+           <div className="flex-grow">
+              <CardTitle className="text-xl font-bold mb-1">
+                {capsule.title}
+              </CardTitle>
+              <p className="text-lg opacity-90">{capsule.tip}</p>
+           </div>
         </CardContent>
       </Card>
       <Button asChild variant="outline">
