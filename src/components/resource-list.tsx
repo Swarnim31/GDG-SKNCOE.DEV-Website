@@ -12,7 +12,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ResourceCard } from "@/components/resource-card";
-import { Search } from "lucide-react";
+import { Search, Code, Cpu, FileJson } from "lucide-react";
+import { motion } from "framer-motion";
 
 type ResourceListProps = {
   resources: Resource[];
@@ -38,43 +39,135 @@ export function ResourceList({ resources }: ResourceListProps) {
       });
   }, [resources, searchTerm, filterTag]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+      },
+    },
+  };
+  
+  const googleTools = filteredResources.filter(r => r.category === 'Google & Firebase');
+  const aiTools = filteredResources.filter(r => r.category === 'AI');
+  const devTools = filteredResources.filter(r => r.category === 'Developer');
+
+
   return (
     <div>
-      <div className="flex flex-col md:flex-row gap-4 mb-8">
+      <div className="flex flex-col md:flex-row gap-4 mb-12 sticky top-20 z-40 bg-background/80 backdrop-blur-sm p-4 rounded-xl border shadow-lg">
         <div className="relative flex-grow">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input
             type="search"
-            placeholder="Search for resources..."
-            className="pl-10 w-full"
+            placeholder="Search for tools..."
+            className="pl-10 w-full h-11 text-base"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
         <Select value={filterTag} onValueChange={setFilterTag}>
-          <SelectTrigger className="w-full md:w-[180px]">
-            <SelectValue placeholder="Filter by tag" />
+          <SelectTrigger className="w-full md:w-[220px] h-11 text-base">
+            <SelectValue placeholder="Filter by category" />
           </SelectTrigger>
           <SelectContent>
             {resourceTags.map((tag) => (
               <SelectItem key={tag} value={tag} className="capitalize">
-                {tag === "all" ? "All Tags" : tag}
+                {tag === "all" ? "All Categories" : tag}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
       </div>
-      {filteredResources.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredResources.map((resource) => (
-            <ResourceCard key={resource.id} resource={resource} />
-          ))}
-        </div>
-      ) : (
+
+      {(filterTag === "all" || filterTag === 'Google & Firebase') && googleTools.length > 0 && (
+        <section className="mb-16">
+            <h2 className="text-3xl font-bold mb-8 flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center capsule-gradient-blue shadow-lg text-white">
+                <FileJson className="h-7 w-7" />
+              </div>
+              Google & Firebase Tools
+            </h2>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {googleTools.map((resource) => (
+                <ResourceCard
+                  key={resource.id}
+                  resource={resource}
+                  gradientFrom="from-blue-500/80"
+                  gradientTo="to-green-500/80"
+                  hoverGradientFrom="hover:from-green-500/80"
+                  hoverGradientTo="hover:to-blue-500/80"
+                />
+              ))}
+            </motion.div>
+        </section>
+      )}
+
+      {(filterTag === "all" || filterTag === 'AI') && aiTools.length > 0 && (
+        <section className="mb-16">
+            <h2 className="text-3xl font-bold mb-8 flex items-center gap-4">
+               <div className="w-12 h-12 rounded-full flex items-center justify-center capsule-gradient-red shadow-lg text-white">
+                <Cpu className="h-7 w-7" />
+              </div>
+              AI Tools / Agents
+            </h2>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {aiTools.map((resource) => (
+                <ResourceCard
+                  key={resource.id}
+                  resource={resource}
+                  gradientFrom="from-red-500/80"
+                  gradientTo="to-yellow-500/80"
+                  hoverGradientFrom="hover:from-yellow-500/80"
+                  hoverGradientTo="hover:to-red-500/80"
+                />
+              ))}
+            </motion.div>
+        </section>
+      )}
+
+      {(filterTag === "all" || filterTag === 'Developer') && devTools.length > 0 && (
+       <section>
+            <h2 className="text-3xl font-bold mb-8 flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center capsule-gradient-purple shadow-lg text-white">
+                <Code className="h-7 w-7" />
+              </div>
+              Developer Tools
+            </h2>
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {devTools.map((resource) => (
+                <ResourceCard
+                  key={resource.id}
+                  resource={resource}
+                  gradientFrom="from-purple-500/80"
+                  gradientTo="to-pink-500/80"
+                  hoverGradientFrom="hover:from-pink-500/80"
+                  hoverGradientTo="hover:to-purple-500/80"
+                />
+              ))}
+            </motion.div>
+        </section>
+      )}
+
+      {filteredResources.length === 0 && (
         <div className="text-center py-16">
-          <p className="text-lg text-muted-foreground">
-            No resources found. Try a different search or filter.
-          </p>
+            <p className="text-lg text-muted-foreground">No tools found matching your criteria. Try a different search or filter.</p>
         </div>
       )}
     </div>

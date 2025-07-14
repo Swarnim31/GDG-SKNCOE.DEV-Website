@@ -136,6 +136,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-1',
     name: 'Firebase',
+    category: 'Google & Firebase',
     description: 'An app development platform for building and growing apps, backed by Google.',
     logoUrl: 'https://www.gstatic.com/devrel-devsite/prod/v874c5d871cf34262c5b3d9d683664d471a41493a3841e2f893a3b54435b87c71/firebase/images/lockup.svg',
     toolLink: 'https://firebase.google.com/',
@@ -144,6 +145,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-2',
     name: 'Gemini',
+    category: 'Google & Firebase',
     description: 'A family of generative AI models from Google AI for multimodal reasoning.',
     logoUrl: 'https://www.gstatic.com/lamda/images/gemini_lockup_gm_horizontal_20231206_blue_158x26_v2_hr.svg',
     toolLink: 'https://ai.google.dev/',
@@ -152,6 +154,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-3',
     name: 'Google Colab',
+    category: 'Google & Firebase',
     description: 'Execute Python in your browser with zero configuration and free access to GPUs.',
     logoUrl: 'https://colab.research.google.com/img/colab_favicon_256px.png',
     toolLink: 'https://colab.research.google.com/',
@@ -160,6 +163,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-4',
     name: 'Flutter',
+    category: 'Google & Firebase',
     description: 'Google\'s UI toolkit for building beautiful, natively compiled cross-platform applications.',
     logoUrl: 'https://storage.googleapis.com/cms-storage-bucket/4fd5520fe28eb2a65a44.svg',
     toolLink: 'https://flutter.dev/',
@@ -168,6 +172,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-5',
     name: 'Android Studio',
+    category: 'Google & Firebase',
     description: 'The official IDE for Android app development, built on JetBrains\' IntelliJ IDEA software.',
     logoUrl: 'https://developer.android.com/static/studio/images/new-studio-logo-1-1.svg',
     toolLink: 'https://developer.android.com/studio',
@@ -176,6 +181,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-6',
     name: 'Google Cloud',
+    category: 'Google & Firebase',
     description: 'A suite of cloud computing services that runs on the same infrastructure as Google.',
     logoUrl: 'https://cloud.google.com/images/social-icon-google-cloud-1200-v2.png',
     toolLink: 'https://cloud.google.com/',
@@ -184,6 +190,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-7',
     name: 'TensorFlow',
+    category: 'Google & Firebase',
     description: 'An end-to-end open source platform for machine learning.',
     logoUrl: 'https://www.tensorflow.org/static/images/favicon.png',
     toolLink: 'https://www.tensorflow.org/',
@@ -192,6 +199,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-8',
     name: 'Kaggle',
+    category: 'Google & Firebase',
     description: 'An online community of data scientists and machine learning practitioners.',
     logoUrl: 'https://www.kaggle.com/static/images/favicon.ico',
     toolLink: 'https://www.kaggle.com/',
@@ -200,6 +208,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-9',
     name: 'Google Analytics',
+    category: 'Google & Firebase',
     description: 'A web analytics service that tracks and reports website traffic.',
     logoUrl: 'https://www.google.com/analytics/static/images/favicon.ico',
     toolLink: 'https://analytics.google.com/',
@@ -208,6 +217,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-10',
     name: 'Chrome DevTools',
+    category: 'Google & Firebase',
     description: 'A set of web developer tools built directly into the Google Chrome browser.',
     logoUrl: 'https://developer.chrome.com/images/favicon.png',
     toolLink: 'https://developer.chrome.com/docs/devtools',
@@ -216,6 +226,7 @@ export const googleTools: Resource[] = [
   {
     id: 'g-11',
     name: 'Lighthouse',
+    category: 'Google & Firebase',
     description: 'An open-source, automated tool for improving the quality of web pages.',
     logoUrl: 'https://developer.chrome.com/static/images/lighthouse-logo.svg',
     toolLink: 'https://developer.chrome.com/docs/lighthouse/overview/',
@@ -224,6 +235,7 @@ export const googleTools: Resource[] = [
    {
     id: 'g-12',
     name: 'Material Design',
+    category: 'Google & Firebase',
     description: 'A design system created by Google to help teams build high-quality digital experiences.',
     logoUrl: 'https://material.io/static/images/favicon.ico',
     toolLink: 'https://material.io/',
@@ -235,6 +247,7 @@ export const aiTools: Resource[] = [
   {
     id: 'ai-1',
     name: 'ChatGPT',
+    category: 'AI',
     description: 'A conversational AI model by OpenAI, capable of understanding and generating human-like text.',
     logoUrl: 'https://openai.com/favicon.ico',
     toolLink: 'https://chat.openai.com/',
@@ -243,6 +256,7 @@ export const aiTools: Resource[] = [
   {
     id: 'ai-2',
     name: 'Claude AI',
+    category: 'AI',
     description: 'A family of large language models developed by Anthropic, focused on safety and helpfulness.',
     logoUrl: 'https://www.anthropic.com/images/icons/apple-touch-icon.png',
     toolLink: 'https://claude.ai/',
@@ -251,6 +265,7 @@ export const aiTools: Resource[] = [
   {
     id: 'ai-3',
     name: 'Perplexity AI',
+    category: 'AI',
     description: 'An AI-powered search engine and conversational assistant that provides direct answers with citations.',
     logoUrl: 'https://www.perplexity.ai/favicon.svg',
     toolLink: 'https://www.perplexity.ai/',
@@ -259,6 +274,7 @@ export const aiTools: Resource[] = [
   {
     id: 'ai-4',
     name: 'Poe by Quora',
+    category: 'AI',
     description: 'A platform to ask questions, get instant answers, and have back-and-forth conversations with AI bots.',
     logoUrl: 'https://poe.com/favicon.ico',
     toolLink: 'https://poe.com/',
@@ -267,6 +283,7 @@ export const aiTools: Resource[] = [
   {
     id: 'ai-5',
     name: 'Vercel v0',
+    category: 'AI',
     description: 'A generative UI system by Vercel that creates custom components on the fly from text prompts.',
     logoUrl: 'https://assets.vercel.com/image/upload/front/favicon/vercel/favicon.ico',
     toolLink: 'https://v0.dev/',
@@ -275,6 +292,7 @@ export const aiTools: Resource[] = [
    {
     id: 'ai-6',
     name: 'Phind',
+    category: 'AI',
     description: 'An AI search engine and pair programmer for developers, providing code examples and technical answers.',
     logoUrl: 'https://phind.com/favicon.ico',
     toolLink: 'https://phind.com/',
@@ -283,6 +301,7 @@ export const aiTools: Resource[] = [
   {
     id: 'ai-7',
     name: 'Hugging Face',
+    category: 'AI',
     description: 'A community and data science platform that provides tools for building, training and deploying ML models.',
     logoUrl: 'https://huggingface.co/favicon.ico',
     toolLink: 'https://huggingface.co/',
@@ -291,6 +310,7 @@ export const aiTools: Resource[] = [
   {
     id: 'ai-8',
     name: 'Midjourney',
+    category: 'AI',
     description: 'An independent research lab that produces a proprietary artificial intelligence program that creates images from textual descriptions.',
     logoUrl: 'https://media.discordapp.net/attachments/1041133746691604530/1121048639825944646/midjourney_icon.png',
     toolLink: 'https://www.midjourney.com/',
@@ -299,6 +319,7 @@ export const aiTools: Resource[] = [
   {
     id: 'ai-9',
     name: 'Replicate',
+    category: 'AI',
     description: 'Run open-source machine learning models with a cloud API.',
     logoUrl: 'https://replicate.com/favicon.ico',
     toolLink: 'https://replicate.com/',
@@ -307,6 +328,7 @@ export const aiTools: Resource[] = [
   {
     id: 'ai-10',
     name: 'LangChain',
+    category: 'AI',
     description: 'A framework for developing applications powered by language models.',
     logoUrl: 'https://www.langchain.com/favicon.ico',
     toolLink: 'https://www.langchain.com/',
@@ -315,6 +337,7 @@ export const aiTools: Resource[] = [
    {
     id: 'ai-11',
     name: 'Runway',
+    category: 'AI',
     description: 'An applied AI research company shaping the next era of art, entertainment and human creativity.',
     logoUrl: 'https://runwayml.com/favicon.ico',
     toolLink: 'https://runwayml.com/',
@@ -326,6 +349,7 @@ export const devTools: Resource[] = [
   {
     id: 'dev-1',
     name: 'Next.js',
+    category: 'Developer',
     description: 'The React framework for building full-stack web applications with server-side rendering and static site generation.',
     logoUrl: 'https://nextjs.org/favicon.ico',
     toolLink: 'https://nextjs.org/',
@@ -334,6 +358,7 @@ export const devTools: Resource[] = [
   {
     id: 'dev-2',
     name: 'Figma',
+    category: 'Developer',
     description: 'A collaborative interface design tool that allows teams to design, prototype, and gather feedback all in one place.',
     logoUrl: 'https://static.figma.com/app/icon/1/favicon.png',
     toolLink: 'https://www.figma.com/',
@@ -342,6 +367,7 @@ export const devTools: Resource[] = [
   {
     id: 'dev-3',
     name: 'Tailwind CSS',
+    category: 'Developer',
     description: 'A utility-first CSS framework for rapidly building custom user interfaces without leaving your HTML.',
     logoUrl: 'https://tailwindcss.com/favicons/favicon.ico?v=3',
     toolLink: 'https://tailwindcss.com/',
@@ -350,6 +376,7 @@ export const devTools: Resource[] = [
   {
     id: 'dev-4',
     name: 'GitHub',
+    category: 'Developer',
     description: 'A web-based platform for version control using Git, plus project management and collaboration features.',
     logoUrl: 'https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png',
     toolLink: 'https://github.com/',
@@ -358,6 +385,7 @@ export const devTools: Resource[] = [
   {
     id: 'dev-5',
     name: 'VS Code',
+    category: 'Developer',
     description: 'A free, lightweight, and powerful source-code editor that runs on your desktop and is available for all platforms.',
     logoUrl: 'https://code.visualstudio.com/favicon.ico',
     toolLink: 'https://code.visualstudio.com/',
@@ -366,6 +394,7 @@ export const devTools: Resource[] = [
    {
     id: 'dev-6',
     name: 'Supabase',
+    category: 'Developer',
     description: 'An open-source Firebase alternative providing a Postgres database, authentication, storage, and auto-generated APIs.',
     logoUrl: 'https://supabase.com/favicon/favicon.ico',
     toolLink: 'https://supabase.com/',
@@ -374,6 +403,7 @@ export const devTools: Resource[] = [
   {
     id: 'dev-7',
     name: 'Docker',
+    category: 'Developer',
     description: 'A platform for developing, shipping, and running applications in containers.',
     logoUrl: 'https://www.docker.com/favicon.ico',
     toolLink: 'https://www.docker.com/',
@@ -382,6 +412,7 @@ export const devTools: Resource[] = [
   {
     id: 'dev-8',
     name: 'Postman',
+    category: 'Developer',
     description: 'An API platform for developers to design, build, test and iterate their APIs.',
     logoUrl: 'https://www.postman.com/favicon.ico',
     toolLink: 'https://www.postman.com/',
@@ -390,6 +421,7 @@ export const devTools: Resource[] = [
   {
     id: 'dev-9',
     name: 'Notion',
+    category: 'Developer',
     description: 'The connected workspace where better, faster work happens.',
     logoUrl: 'https://www.notion.so/images/favicon.ico',
     toolLink: 'https://www.notion.so/',
@@ -398,6 +430,7 @@ export const devTools: Resource[] = [
   {
     id: 'dev-10',
     name: 'shadcn/ui',
+    category: 'Developer',
     description: 'Beautifully designed components that you can copy and paste into your apps.',
     logoUrl: 'https://ui.shadcn.com/favicon.ico',
     toolLink: 'https://ui.shadcn.com/',
@@ -406,6 +439,7 @@ export const devTools: Resource[] = [
   {
     id: 'dev-11',
     name: 'Storybook',
+    category: 'Developer',
     description: 'A frontend workshop for building UI components and pages in isolation.',
     logoUrl: 'https://storybook.js.org/favicon.ico',
     toolLink: 'https://storybook.js.org/',
@@ -414,6 +448,7 @@ export const devTools: Resource[] = [
    {
     id: 'dev-12',
     name: 'Sentry',
+    category: 'Developer',
     description: 'Application monitoring and error tracking software.',
     logoUrl: 'https://sentry.io/favicon.ico',
     toolLink: 'https://sentry.io/',

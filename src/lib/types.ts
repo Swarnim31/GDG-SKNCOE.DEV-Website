@@ -18,6 +18,7 @@ export type Resource = {
   id: string;
   name: string;
   description: string;
+  category: 'Google & Firebase' | 'AI' | 'Developer';
   logoUrl: string;
   toolLink: string;
   learnLink: string;
