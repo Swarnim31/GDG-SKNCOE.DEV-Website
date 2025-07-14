@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -100,7 +101,7 @@ export default function Home() {
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto font-body">
             Where ideas, code, and community come together.
           </p>
-          <Button size="lg" asChild className="btn-google font-bold text-lg rounded-full">
+          <Button size="lg" asChild className="btn-gemini font-bold text-lg rounded-full">
             <Link href="/events">
               Explore Events <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
@@ -167,7 +168,7 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          <Button asChild className="btn-google rounded-full">
+          <Button asChild className="btn-gemini rounded-full">
             <Link href="/team">
               View All Team Members <ArrowRight className="ml-2 h-5 w-5" />
             </Link>

@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -71,7 +72,7 @@ export function TechCapsuleDisplay() {
            </div>
         </CardContent>
       </Card>
-      <Button asChild className="btn-google rounded-full">
+      <Button asChild className="btn-gemini rounded-full">
         <Link href="/resources">
           More Resources <ArrowRight className="ml-2 h-4 w-4" />
         </Link>
