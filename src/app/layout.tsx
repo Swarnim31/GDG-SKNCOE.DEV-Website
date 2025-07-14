@@ -3,6 +3,7 @@ import "./globals.css";
 import { AppHeader } from "@/components/app-header";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AppFooter } from "@/components/app-footer";
 
 export const metadata: Metadata = {
   title: "SknCoe-Dev",
@@ -33,11 +34,10 @@ export default function RootLayout({
         >
           <AppHeader />
           <main className="flex-grow">{children}</main>
+          <AppFooter />
           <Toaster />
         </ThemeProvider>
       </body>
     </html>
   );
 }
-
-    
