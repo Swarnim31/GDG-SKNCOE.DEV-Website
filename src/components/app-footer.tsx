@@ -23,7 +23,7 @@ export function AppFooter() {
           <div className="flex space-x-2 mb-4">
             <Button asChild variant="ghost" size="icon">
               <Link
-                href="#"
+                href="https://www.linkedin.com/company/gdgoncampus/posts/?feedView=all"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -33,7 +33,7 @@ export function AppFooter() {
             </Button>
             <Button asChild variant="ghost" size="icon">
               <Link
-                href="#"
+                href="https://www.instagram.com/gdg_skncoe/?hl=en"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -43,7 +43,7 @@ export function AppFooter() {
             </Button>
             <Button asChild variant="ghost" size="icon">
               <Link
-                href="#"
+                href="https://www.youtube.com/@GDGONCAMPUSSKNCOE"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube"
