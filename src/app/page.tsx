@@ -22,6 +22,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { TechCapsuleDisplay } from "@/components/tech-capsule-display";
 import { TechCapsuleLink } from "@/components/tech-capsule-link";
+import { AskBot } from "@/components/ask-bot";
 
 export default function Home() {
   const domains = [
@@ -187,6 +188,9 @@ export default function Home() {
       {/* Floating Buttons */}
       <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-center gap-4">
         <TechCapsuleLink />
+      </div>
+      <div className="fixed bottom-6 left-6 z-[100] flex flex-col items-center gap-4">
+        <AskBot />
       </div>
     </div>
   );
