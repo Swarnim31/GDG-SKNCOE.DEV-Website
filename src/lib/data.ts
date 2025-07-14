@@ -87,7 +87,7 @@ export const mockTeam = [
     id: "1",
     name: "Ojas Bhalerao",
     role: "GDG Lead 24-25",
-    imageUrl: "https://placehold.co/400x400.png",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2,f_auto,g_face,h_400,q_auto:good,w_400/v1/gcs/platform-data-goog/avatars/ojas_bhalerao.jpg",
     imageHint: "person portrait",
     linkedinUrl: "https://www.linkedin.com/in/ojas-bhalerao-9742282b3/",
   },
