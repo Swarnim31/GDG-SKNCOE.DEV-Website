@@ -131,8 +131,10 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          <Button variant="outline">
-            View All Team Members <ArrowRight className="ml-2 h-5 w-5" />
+          <Button variant="outline" asChild>
+            <Link href="/team">
+              View All Team Members <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </Button>
         </div>
       </section>

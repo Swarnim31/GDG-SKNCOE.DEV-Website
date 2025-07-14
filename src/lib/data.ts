@@ -88,6 +88,7 @@ export const mockTeam = [
     role: "Lead Cloud Engineer",
     imageUrl: "https://placehold.co/400x400.png",
     imageHint: "person portrait",
+    linkedinUrl: "https://www.linkedin.com/",
   },
   {
     id: "2",
@@ -95,6 +96,7 @@ export const mockTeam = [
     role: "Senior Android Developer",
     imageUrl: "https://placehold.co/400x400.png",
     imageHint: "woman portrait",
+    linkedinUrl: "https://www.linkedin.com/",
   },
   {
     id: "3",
@@ -102,6 +104,7 @@ export const mockTeam = [
     role: "AI/ML Specialist",
     imageUrl: "https://placehold.co/400x400.png",
     imageHint: "man portrait",
+    linkedinUrl: "https://www.linkedin.com/",
   },
 ];
 
