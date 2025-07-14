@@ -69,7 +69,7 @@ export function AskBot() {
         aria-label="Ask SknCoe-Dev Bot"
         onClick={() => setIsOpen(true)}
       >
-        <Bot className="h-8 w-8" />
+        <Sparkles className="h-8 w-8" />
       </Button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
