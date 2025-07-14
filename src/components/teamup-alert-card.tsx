@@ -82,7 +82,7 @@ export function TeamUpAlertCard({ alert, isExpanded = false }: TeamUpAlertCardPr
                     value={replyMessage}
                     onChange={(e) => setReplyMessage(e.target.value)}
                   />
-                  <Button onClick={handleReply} size="sm">
+                  <Button onClick={handleReply} size="sm" className="rounded-full">
                       Send Reply <Send className="ml-2 h-4 w-4" />
                   </Button>
               </div>
