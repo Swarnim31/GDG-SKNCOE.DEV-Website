@@ -23,26 +23,24 @@ export default function TeamPage() {
       <Separator className="my-20" />
 
       <div className="text-center mb-12">
-        <h2 className="text-3xl font-bold tracking-tight">Team Moments Gallery</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Team Moments Gallery 📸</h2>
         <p className="mt-4 text-lg text-muted-foreground">
           A glimpse into our community events and activities.
         </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {mockGalleryImages.map((image) => (
-          <div key={image.id} className="group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 relative">
-            <div className="relative aspect-w-16 aspect-h-9">
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                className="object-cover transform transition-transform duration-500 group-hover:scale-110"
-                data-ai-hint={image.hint}
-              />
-               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
-            </div>
+          <div key={image.id} className="group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 relative aspect-w-1 aspect-h-1">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              data-ai-hint={image.hint}
+            />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
             {image.caption && (
-               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
+               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <p className="text-sm text-white/90 font-semibold text-center drop-shadow-md">{image.caption}</p>
               </div>
             )}
