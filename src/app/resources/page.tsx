@@ -31,14 +31,16 @@ export default function ResourcesPage() {
       </div>
 
       <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-          <Image
-            src="https://www.gstatic.com/devrel-devsite/prod/v874c5d871cf34262c5b3d9d683664d471a41493a3841e2f893a3b54435b87c71/firebase/images/lockup.svg"
-            width={24}
-            height={24}
-            alt="Google"
-            className="h-8 w-auto"
-          />
+        <h2 className="text-3xl font-bold mb-8 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full flex items-center justify-center capsule-gradient-blue shadow-lg">
+            <Image
+              src="https://www.gstatic.com/devrel-devsite/prod/v874c5d871cf34262c5b3d9d683664d471a41493a3841e2f893a3b54435b87c71/firebase/images/lockup.svg"
+              width={24}
+              height={24}
+              alt="Google"
+              className="h-7 w-auto"
+            />
+          </div>
           Google & Firebase Tools
         </h2>
         <motion.div
@@ -61,14 +63,16 @@ export default function ResourcesPage() {
       </section>
 
       <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-          <Image
-             src="https://www.gstatic.com/lamda/images/gemini_lockup_gm_horizontal_20231206_blue_158x26_v2_hr.svg"
-             width={24}
-             height={24}
-             alt="AI"
-             className="h-6 w-auto"
-           />
+        <h2 className="text-3xl font-bold mb-8 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full flex items-center justify-center capsule-gradient-red shadow-lg">
+            <Image
+              src="https://www.gstatic.com/lamda/images/gemini_lockup_gm_horizontal_20231206_blue_158x26_v2_hr.svg"
+              width={24}
+              height={24}
+              alt="AI"
+              className="h-5 w-auto"
+            />
+          </div>
           AI Tools / Agents
         </h2>
         <motion.div
@@ -78,7 +82,7 @@ export default function ResourcesPage() {
           animate="visible"
         >
           {aiTools.map((resource) => (
-             <ResourceCard
+            <ResourceCard
               key={resource.id}
               resource={resource}
               gradientFrom="from-red-500/80"
@@ -91,8 +95,10 @@ export default function ResourcesPage() {
       </section>
 
       <section>
-        <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-          <Code className="h-7 w-7 text-green-500" />
+        <h2 className="text-3xl font-bold mb-8 flex items-center gap-4">
+          <div className="w-12 h-12 rounded-full flex items-center justify-center capsule-gradient-purple shadow-lg text-white">
+            <Code className="h-7 w-7" />
+          </div>
           Developer Tools
         </h2>
         <motion.div
@@ -102,7 +108,7 @@ export default function ResourcesPage() {
           animate="visible"
         >
           {devTools.map((resource) => (
-             <ResourceCard
+            <ResourceCard
               key={resource.id}
               resource={resource}
               gradientFrom="from-purple-500/80"
