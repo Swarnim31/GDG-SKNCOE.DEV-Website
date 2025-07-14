@@ -109,37 +109,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Upcoming Events Section */}
-      <section id="events" className="py-16 bg-card/50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">
-            Upcoming Events
-          </h2>
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {mockEvents.slice(0, 3).map((event) => (
-                <CarouselItem
-                  key={event.id}
-                  className="md:basis-1/2 lg:basis-1/3"
-                >
-                  <div className="p-1">
-                    <EventCard event={event} />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
-          </Carousel>
-        </div>
-      </section>
-
       {/* Meet the Team Section */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
