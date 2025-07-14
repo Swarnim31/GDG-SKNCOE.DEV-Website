@@ -12,11 +12,14 @@ import { mockEvents, mockTeam } from "@/lib/data";
 import {
   Code,
   BrainCircuit,
-  Smartphone,
   Palette,
   Cloud,
   ArrowRight,
   Sparkles,
+  Handshake,
+  Shield,
+  CalendarCheck,
+  Feather,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,29 +30,52 @@ import { AskBot } from "@/components/ask-bot";
 export default function Home() {
   const domains = [
     {
-      icon: <Code className="h-8 w-8 text-primary" />,
+      icon: <Code className="h-8 w-8 text-blue-600" />,
       title: "Web Development",
       description: "Explore the latest in web technologies and frameworks.",
+      color: "bg-blue-500/5",
     },
     {
-      icon: <BrainCircuit className="h-8 w-8 text-primary" />,
+      icon: <BrainCircuit className="h-8 w-8 text-red-600" />,
       title: "Artificial Intelligence",
       description: "Dive into machine learning, AI models, and GenAI.",
+      color: "bg-red-500/5",
     },
     {
-      icon: <Smartphone className="h-8 w-8 text-primary" />,
-      title: "Android",
-      description: "Build innovative applications for the Android ecosystem.",
-    },
-    {
-      icon: <Palette className="h-8 w-8 text-primary" />,
+      icon: <Palette className="h-8 w-8 text-yellow-600" />,
       title: "UI/UX Design",
       description: "Craft beautiful and intuitive user experiences.",
+      color: "bg-yellow-500/5",
     },
     {
-      icon: <Cloud className="h-8 w-8 text-primary" />,
+      icon: <Cloud className="h-8 w-8 text-green-600" />,
       title: "Cloud Computing",
       description: "Leverage the power of the cloud for your applications.",
+      color: "bg-green-500/5",
+    },
+     {
+      icon: <Feather className="h-8 w-8 text-pink-600" />,
+      title: "Women in Tech",
+      description: "Empowering and supporting women in the technology field.",
+      color: "bg-pink-500/5",
+    },
+    {
+      icon: <Handshake className="h-8 w-8 text-purple-600" />,
+      title: "Sponsorship",
+      description: "Forge partnerships to support our community's growth.",
+      color: "bg-purple-500/5",
+    },
+    {
+      icon: <CalendarCheck className="h-8 w-8 text-indigo-600" />,
+      title: "Event Management",
+      description: "Organize and execute memorable tech events and workshops.",
+      color: "bg-indigo-500/5",
+    },
+    {
+      icon: <Shield className="h-8 w-8 text-gray-600" />,
+      title: "Cyber Security",
+      description: "Exploring the world of digital protection and ethical hacking.",
+      color: "bg-gray-500/5",
     },
   ];
 
@@ -145,26 +171,19 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-12">
             Explore Our Domains
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {domains.map((domain, index) => (
               <Card
                 key={index}
-                className="p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl"
+                className={`p-6 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-xl border-t-4 ${domain.color}`}
               >
-                <div className="p-3 bg-primary/10 rounded-full mb-4">
+                <div className={`p-3 rounded-full mb-4 ${domain.color}`}>
                   {domain.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{domain.title}</h3>
-                <p className="text-muted-foreground">{domain.description}</p>
+                <p className="text-muted-foreground flex-grow">{domain.description}</p>
               </Card>
             ))}
-             <Card className="p-6 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl bg-primary/10 border-primary">
-                <div className="p-3 bg-primary/20 rounded-full mb-4">
-                    <Sparkles className="h-8 w-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">And more...</h3>
-                <p className="text-muted-foreground">We are constantly exploring new frontiers in technology.</p>
-              </Card>
           </div>
         </div>
       </section>
