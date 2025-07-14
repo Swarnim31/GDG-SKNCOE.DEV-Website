@@ -49,7 +49,7 @@ const formSchema = z.object({
     .min(20, { message: "Description must be at least 20 characters." }),
   location: z.string().min(3, { message: "Location is required." }),
   date: z.date({ required_error: "A date is required." }),
-  type: z.enum(["GDG Event", "Tech Session", "Resource Update"], {
+  type: z.enum(["GDG Event", "Tech Session", "Resource Update", "Info Session", "Conference", "Workshop / Study Group"], {
     required_error: "You need to select an event type.",
   }),
   tags: z.string().min(1, { message: "Please add at least one tag." }),
@@ -119,6 +119,9 @@ export default function SubmitPage() {
                         <SelectItem value="Resource Update">
                           Resource Update
                         </SelectItem>
+                        <SelectItem value="Info Session">Info Session</SelectItem>
+                        <SelectItem value="Conference">Conference</SelectItem>
+                        <SelectItem value="Workshop / Study Group">Workshop / Study Group</SelectItem>
                       </SelectContent>
                     </Select>
                     <FormMessage />

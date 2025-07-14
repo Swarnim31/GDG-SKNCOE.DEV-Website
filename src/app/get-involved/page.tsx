@@ -53,7 +53,7 @@ export default function GetInvolvedPage() {
   }, []);
 
   if (!isMounted) {
-    return null; // or a loading skeleton
+    return null;
   }
 
   return (

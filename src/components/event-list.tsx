@@ -53,7 +53,7 @@ export function EventList({ events }: EventListProps) {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
-            <div className="w-px h-6 bg-border mx-2"></div>
+            <div className="w-px h-6 bg-border mx-2" />
             <Select value={filterType} onValueChange={setFilterType}>
               <SelectTrigger className="w-auto h-11 text-base bg-transparent border-0 gap-2 focus:ring-0 focus:ring-offset-0">
                  <ListFilter className="h-5 w-5 text-muted-foreground" />

@@ -36,7 +36,18 @@ export default function TeamUpShowcasePage() {
   const projects: Project[] = projectsSnapshot?.docs.map(doc => ({ id: doc.id, ...doc.data() } as Project)) || [];
 
   if (!isMounted) {
-    return null; // or a loading skeleton
+    return (
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="text-center mb-12">
+          <Skeleton className="h-10 w-3/4 mx-auto" />
+          <Skeleton className="h-6 w-1/2 mx-auto mt-4" />
+        </div>
+        <div className="space-y-16">
+          <Skeleton className="h-64 w-full" />
+          <Skeleton className="h-96 w-full" />
+        </div>
+      </div>
+    );
   }
   
   return (

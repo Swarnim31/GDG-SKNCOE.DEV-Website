@@ -8,7 +8,7 @@ export type Event = {
   date: string;
   location: string;
   organizer: string;
-  type: "GDG Event" | "Tech Session" | "Resource Update";
+  type: "GDG Event" | "Tech Session" | "Resource Update" | "Info Session" | "Conference" | "Workshop / Study Group";
   imageUrl: string;
   imageHint: string;
   tags: string[];

@@ -45,7 +45,7 @@ export const mockEvents: Event[] = [
     date: "2024-10-04",
     location: "GDG on Campus Shrimati Kashibai Navale College of Engineering - Pune, India",
     organizer: "GDG on Campus SKNCOE",
-    type: "Info session",
+    type: "Info Session",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2.0,f_auto,g_center,h_1080,q_100,w_1080/v1/gcs/platform-data-goog/events/gdg%20skncoe5_kltEGo5.png",
     imageHint: "info session",
     tags: ["GenAI", "Info Session", "AI"],
