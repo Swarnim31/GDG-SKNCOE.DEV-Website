@@ -26,11 +26,11 @@ export function AppHeader() {
              <Button asChild variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">
               <Link href="/resources">Resources</Link>
             </Button>
+             <Button asChild variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">
+              <Link href="/team">Our Team</Link>
+            </Button>
             <Button asChild variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">
               <Link href="/get-involved">About GDG</Link>
-            </Button>
-             <Button asChild variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">
-              <Link href="/submit">Submit</Link>
             </Button>
           </nav>
           <div className="flex items-center gap-2">

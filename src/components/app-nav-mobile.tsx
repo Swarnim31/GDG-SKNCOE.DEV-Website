@@ -46,11 +46,11 @@ export function AppNavMobile() {
           <Button asChild variant="ghost" className="justify-start text-base">
             <Link href="/resources" onClick={() => setIsOpen(false)}>Resources</Link>
           </Button>
-          <Button asChild variant="ghost" className="justify-start text-base">
-            <Link href="/get-involved" onClick={() => setIsOpen(false)}>About GDG</Link>
+           <Button asChild variant="ghost" className="justify-start text-base">
+            <Link href="/team" onClick={() => setIsOpen(false)}>Our Team</Link>
           </Button>
           <Button asChild variant="ghost" className="justify-start text-base">
-             <Link href="/submit" onClick={() => setIsOpen(false)}>Submit</Link>
+            <Link href="/get-involved" onClick={() => setIsOpen(false)}>About GDG</Link>
           </Button>
         </div>
       </SheetContent>
