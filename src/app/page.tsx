@@ -22,6 +22,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { TechCapsuleDisplay } from "@/components/tech-capsule-display";
+import { DevLinkBot } from "@/components/devlink-bot";
 
 export default function Home() {
   const domains = [
@@ -181,25 +182,9 @@ export default function Home() {
           <TechCapsuleDisplay />
         </div>
       </section>
-
-      {/* Ask DevLinkBot Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <Card className="bg-gradient-to-r from-primary/80 to-secondary/80 text-primary-foreground p-8 md:p-12 text-center shadow-2xl">
-            <CardHeader>
-              <CardTitle className="text-3xl md:text-4xl font-bold mb-4">Have a question?</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <p className="text-lg mb-6 max-w-2xl mx-auto">
-                Our AI-powered assistant, DevLinkBot, is here to help you with your developer queries.
-              </p>
-              <Button size="lg" variant="secondary" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90">
-                <MessageCircle className="mr-2 h-5 w-5" /> Ask DevLinkBot
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
+      
+      {/* DevLinkBot floating component */}
+      <DevLinkBot />
     </div>
   );
 }
