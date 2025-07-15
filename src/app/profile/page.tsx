@@ -1,7 +1,7 @@
 
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,11 +13,11 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Briefcase, Edit, Mail, Save, User, LogOut } from "lucide-react";
+import { Briefcase, Edit, Mail, Save, User, LogOut, Loader2 } from "lucide-react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { auth, firestore } from "@/lib/firebase";
-import { doc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
 import { signOut } from "firebase/auth";
@@ -31,10 +31,20 @@ export default function ProfilePage() {
   const userDocRef = user ? doc(firestore, "users", user.uid) : null;
   const [userData, userLoading, userError] = useDocumentData(userDocRef);
 
-  const [isMounted, setIsMounted] = React.useState(false);
-  React.useEffect(() => {
+  const [isMounted, setIsMounted] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [editedName, setEditedName] = useState("");
+
+  useEffect(() => {
     setIsMounted(true);
   }, []);
+  
+  useEffect(() => {
+    if (userData?.name) {
+      setEditedName(userData.name);
+    }
+  }, [userData]);
   
   const handleLogout = async () => {
     await signOut(auth);
@@ -43,6 +53,35 @@ export default function ProfilePage() {
         description: "You have been successfully logged out.",
     });
     router.push('/join');
+  }
+
+  const handleSaveChanges = async () => {
+      if (!userDocRef || !editedName.trim()) {
+          toast({
+              title: "Invalid Name",
+              description: "Name cannot be empty.",
+              variant: "destructive",
+          });
+          return;
+      };
+      setIsSaving(true);
+      try {
+          await updateDoc(userDocRef, { name: editedName });
+          toast({
+              title: "Profile Updated",
+              description: "Your name has been successfully updated.",
+          });
+          setIsEditing(false);
+      } catch (error) {
+          console.error("Error updating profile:", error);
+          toast({
+              title: "Update Failed",
+              description: "Could not update your profile. Please try again.",
+              variant: "destructive",
+          });
+      } finally {
+          setIsSaving(false);
+      }
   }
 
   if (!isMounted || authLoading || (user && userLoading)) {
@@ -84,7 +123,6 @@ export default function ProfilePage() {
   }
 
   if (!user) {
-    // Optional: You can redirect them to the login page
     if (typeof window !== "undefined") {
         router.push('/join');
     }
@@ -135,9 +173,9 @@ export default function ProfilePage() {
                 <CardTitle>Profile Details</CardTitle>
                 <CardDescription>Update your personal information.</CardDescription>
             </div>
-            <Button variant="outline" size="icon">
-                <Edit className="h-4 w-4" />
-                <span className="sr-only">Edit Profile</span>
+            <Button variant="outline" size="icon" onClick={() => setIsEditing(!isEditing)} disabled={isSaving}>
+                {isEditing ? <Save className="h-4 w-4" /> : <Edit className="h-4 w-4" />}
+                <span className="sr-only">{isEditing ? "Save Profile" : "Edit Profile"}</span>
             </Button>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -146,7 +184,7 @@ export default function ProfilePage() {
                     <Label htmlFor="fullName">Full Name</Label>
                     <div className="relative">
                         <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                        <Input id="fullName" defaultValue={userData?.name} className="pl-10" />
+                        <Input id="fullName" value={editedName} onChange={(e) => setEditedName(e.target.value)} className="pl-10" disabled={!isEditing || isSaving} />
                     </div>
                 </div>
                 <div className="space-y-2">
@@ -157,12 +195,23 @@ export default function ProfilePage() {
                     </div>
                 </div>
             </div>
-             <div className="flex justify-end">
-                <Button className="btn-google rounded-full">
-                    <Save className="mr-2 h-4 w-4"/>
-                    Save Changes
-                </Button>
-            </div>
+             {isEditing && (
+                <div className="flex justify-end">
+                    <Button className="btn-google rounded-full" onClick={handleSaveChanges} disabled={isSaving}>
+                        {isSaving ? (
+                            <>
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                Saving...
+                            </>
+                        ) : (
+                            <>
+                                <Save className="mr-2 h-4 w-4"/>
+                                Save Changes
+                            </>
+                        )}
+                    </Button>
+                </div>
+            )}
           </CardContent>
         </Card>
 
