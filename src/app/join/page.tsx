@@ -23,6 +23,7 @@ import { auth, firestore } from "@/lib/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
 
 const signUpSchema = z.object({
   fullName: z.string().min(1, { message: "Full name is required" }),
@@ -34,6 +35,7 @@ export default function JoinPage() {
     const [isMounted, setIsMounted] = React.useState(false);
     const [isSubmitting, setIsSubmitting] = React.useState(false);
     const { toast } = useToast();
+    const router = useRouter();
 
     React.useEffect(() => {
         setIsMounted(true);
@@ -62,9 +64,10 @@ export default function JoinPage() {
 
             toast({
                 title: "Account Created!",
-                description: "Welcome to the community. You can now log in.",
+                description: "Welcome to the community. Redirecting to your profile...",
             });
             form.reset();
+            router.push('/profile');
 
         } catch (error: any) {
             console.error("Sign up error:", error);
