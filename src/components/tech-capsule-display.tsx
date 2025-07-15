@@ -19,21 +19,12 @@ import { firestore } from "@/lib/firebase";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function TechCapsuleDisplay() {
-  const [currentDay, setCurrentDay] = useState<number | null>(null);
   const [capsuleData, setCapsuleData] = useState<Capsule | null>(null);
 
-  useEffect(() => {
-    // This runs only on the client to avoid hydration mismatch
-    setCurrentDay(new Date().getDate());
-  }, []);
-
-  const capsulesQuery =
-    currentDay !== null
-      ? query(
-          collection(firestore, "tech_Capsule"),
-          where("day", "==", currentDay)
-        )
-      : null;
+  const capsulesQuery = query(
+    collection(firestore, "tech_Capsule"),
+    where("day", "==", 1)
+  );
 
   const [capsulesSnapshot, loading, error] = useCollection(capsulesQuery);
 
@@ -47,7 +38,7 @@ export function TechCapsuleDisplay() {
   }, [capsulesSnapshot]);
 
   const renderContent = () => {
-    if (loading || currentDay === null) {
+    if (loading) {
       return (
         <Card className="max-w-2xl w-full mx-auto shadow-lg bg-muted/50 rounded-full flex items-center p-4 h-[110px]">
           <Skeleton className="h-10 w-10 rounded-full" />
@@ -61,7 +52,7 @@ export function TechCapsuleDisplay() {
 
     if (error || !capsuleData) {
       return (
-        <Card className="max-w-2xl w-full mx-auto bg-muted/50 rounded-full flex items-center justify-center h-[110px]">
+        <Card className="max-w-2xl w-full mx-auto bg-muted/50 rounded-lg flex items-center justify-center h-[110px]">
           <CardContent className="p-4 text-center text-muted-foreground">
             <p>No tech capsule available for today. Check back tomorrow!</p>
           </CardContent>
@@ -74,18 +65,16 @@ export function TechCapsuleDisplay() {
         className={cn(
           "max-w-2xl w-full mx-auto shadow-lg hover:shadow-2xl transition-all duration-300 transform-style-3d",
           "hover:-translate-y-2",
-          "rounded-full text-primary-foreground p-4",
+          "rounded-lg text-primary-foreground p-4",
           "capsule-gradient-fire"
         )}
       >
-        <CardContent className="p-4 flex items-center gap-6">
-          <div className="text-4xl">{capsuleData.emoji}</div>
-          <div className="flex-grow">
-            <CardTitle className="text-xl font-bold mb-1">
-              {capsuleData.title}
-            </CardTitle>
-            <p className="text-lg opacity-90">{capsuleData.tip}</p>
-          </div>
+        <CardContent className="p-4 flex flex-col items-center gap-2 text-center">
+           <div className="text-sm opacity-80">(For debugging) Day: {capsuleData.day}</div>
+          <CardTitle className="text-xl font-bold mb-1">
+            {capsuleData.title}
+          </CardTitle>
+          <p className="text-lg opacity-90">{capsuleData.tip}</p>
         </CardContent>
       </Card>
     );
