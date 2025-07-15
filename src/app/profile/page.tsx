@@ -31,14 +31,15 @@ export default function ProfilePage() {
   const userDocRef = user ? doc(firestore, "users", user.uid) : null;
   const [userData, userLoading, userError] = useDocumentData(userDocRef);
 
-  const [isMounted, setIsMounted] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [editedName, setEditedName] = useState("");
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    if (!authLoading && !user) {
+      router.push('/join');
+    }
+  }, [user, authLoading, router]);
   
   useEffect(() => {
     if (userData?.name) {
@@ -84,7 +85,7 @@ export default function ProfilePage() {
       }
   }
 
-  if (!isMounted || authLoading || (user && userLoading)) {
+  if (authLoading || userLoading) {
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="max-w-4xl mx-auto space-y-8">
@@ -123,9 +124,6 @@ export default function ProfilePage() {
   }
 
   if (!user) {
-    if (typeof window !== "undefined") {
-        router.push('/join');
-    }
     return null;
   }
 
