@@ -6,7 +6,6 @@ import { collection, query, where, limit } from "firebase/firestore";
 import { firestore } from "@/lib/firebase";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Capsule } from "@/lib/types";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Lightbulb } from "lucide-react";
 import React from "react";
 
@@ -14,7 +13,14 @@ export function TechCapsuleDisplay() {
   const [currentDay, setCurrentDay] = React.useState<number>(1);
   const [capsuleData, setCapsuleData] = React.useState<Capsule | null>(null);
 
+  React.useEffect(() => {
+    // This will run only on the client, after hydration
+    const date = new Date();
+    setCurrentDay(date.getDate());
+  }, []);
+
   const capsulesQuery = React.useMemo(() => {
+    if (!currentDay) return null;
     return query(
       collection(firestore, "tech_Capsule"),
       where("day", "==", currentDay),
@@ -34,17 +40,13 @@ export function TechCapsuleDisplay() {
   }, [capsulesSnapshot]);
   
   const renderContent = () => {
-    if (loading) {
+    if (loading || !currentDay) {
       return (
-         <Card className="w-full max-w-2xl mx-auto">
-          <CardHeader>
-            <Skeleton className="h-6 w-1/2" />
-          </CardHeader>
-          <CardContent>
-             <Skeleton className="h-4 w-full mb-2" />
-             <Skeleton className="h-4 w-3/4" />
-          </CardContent>
-        </Card>
+         <div className="w-full max-w-2xl mx-auto p-8">
+            <Skeleton className="h-8 w-3/4 mb-4" />
+            <Skeleton className="h-4 w-1/4 mb-6" />
+            <Skeleton className="h-6 w-full" />
+        </div>
       );
     }
 
@@ -54,20 +56,16 @@ export function TechCapsuleDisplay() {
     
     if (capsuleData) {
        return (
-        <Card className="w-full max-w-2xl mx-auto animated-gradient-border p-1 shadow-lg">
-           <Card className="w-full h-full bg-background/80 backdrop-blur-sm rounded-xl">
-             <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Lightbulb className="h-6 w-6 text-yellow-500" />
-                  {capsuleData.title}
-                </CardTitle>
-                <CardDescription>Day: {capsuleData.day}</CardDescription>
-             </CardHeader>
-             <CardContent>
-                <p className="text-lg text-foreground/80">{capsuleData.tip}</p>
-             </CardContent>
-           </Card>
-        </Card>
+        <div className="w-full max-w-2xl mx-auto rounded-full p-8 shadow-lg transition-shadow hover:shadow-xl bg-gradient-to-r from-yellow-100 via-blue-100 to-green-100 dark:from-yellow-900/30 dark:via-blue-900/30 dark:to-green-900/30">
+            <div className="flex flex-col text-left">
+                <div className="flex items-center gap-4 mb-2">
+                    <Lightbulb className="h-8 w-8 text-yellow-500 flex-shrink-0" />
+                    <h3 className="text-2xl font-bold text-foreground tracking-tight">{capsuleData.title}</h3>
+                </div>
+                <p className="text-sm text-muted-foreground ml-12 mb-4">Day: {capsuleData.day}</p>
+                <p className="text-lg text-foreground/80 ml-12">{capsuleData.tip}</p>
+            </div>
+        </div>
       );
     }
 
