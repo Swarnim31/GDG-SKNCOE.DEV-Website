@@ -81,6 +81,7 @@ export function TechCapsuleDisplay() {
 
   return (
     <div className="flex flex-col items-center gap-8 perspective-1000">
+      <p>Current Day: {currentDay}</p>
       {renderContent()}
       <Button asChild className="btn-gemini rounded-full">
         <Link href="/resources">
