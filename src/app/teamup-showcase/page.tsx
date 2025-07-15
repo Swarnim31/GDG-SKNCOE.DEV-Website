@@ -26,7 +26,7 @@ export default function TeamUpShowcasePage() {
   }, []);
 
   // Fetch TeamUp Alerts
-  const alertsQuery = query(collection(firestore, "teamupAlerts"), orderBy("timestamp", "desc"));
+  const alertsQuery = query(collection(firestore, "teamQueries"), orderBy("timestamp", "desc"));
   const [alertsSnapshot, alertsLoading, alertsError] = useCollection(alertsQuery);
   const alerts: TeamUpAlert[] = alertsSnapshot?.docs.map(doc => ({ id: doc.id, ...doc.data() } as TeamUpAlert)) || [];
 

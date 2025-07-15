@@ -64,6 +64,6 @@ export type TeamUpAlert = {
     name: string;
     query: string;
     skills: string[];
-    contact?: string;
+    email?: string;
     timestamp: Timestamp;
 }
