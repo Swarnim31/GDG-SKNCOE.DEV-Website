@@ -6,8 +6,9 @@ import { collection, query, where, limit } from "firebase/firestore";
 import { firestore } from "@/lib/firebase";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Capsule } from "@/lib/types";
-import { Lightbulb } from "lucide-react";
+import { LayoutGrid } from "lucide-react";
 import React from "react";
+import { cn } from "@/lib/utils";
 
 export function TechCapsuleDisplay() {
   const [currentDay, setCurrentDay] = React.useState<number>(1);
@@ -36,7 +37,7 @@ export function TechCapsuleDisplay() {
     if (loading) {
       return (
         <div className="w-full max-w-2xl mx-auto">
-          <Skeleton className="h-32 w-full rounded-full" />
+          <Skeleton className="h-24 w-full rounded-full" />
         </div>
       );
     }
@@ -47,14 +48,17 @@ export function TechCapsuleDisplay() {
     
     if (capsuleData) {
        return (
-        <div className="w-full max-w-2xl mx-auto rounded-full p-8 shadow-lg transition-shadow hover:shadow-xl bg-gradient-to-r from-yellow-100 via-blue-100 to-green-100 dark:from-yellow-900/30 dark:via-blue-900/30 dark:to-green-900/30">
+        <div className={cn(
+            "w-full max-w-3xl mx-auto rounded-full p-6 shadow-lg transition-all hover:shadow-xl hover:-translate-y-1",
+            "flex items-center gap-6",
+            "capsule-gradient-fire text-white"
+        )}>
+            <div className="flex-shrink-0">
+                <LayoutGrid className="h-10 w-10 text-white/80" />
+            </div>
             <div className="flex flex-col text-left">
-                <div className="flex items-center gap-4 mb-2">
-                    <Lightbulb className="h-8 w-8 text-yellow-500 flex-shrink-0" />
-                    <h3 className="text-2xl font-bold text-foreground tracking-tight">{capsuleData.title}</h3>
-                </div>
-                <p className="text-sm text-muted-foreground ml-12 mb-4">Day: {capsuleData.day}</p>
-                <p className="text-lg text-foreground/80 ml-12">{capsuleData.tip}</p>
+                <h3 className="text-2xl font-bold tracking-tight">{capsuleData.title}</h3>
+                <p className="text-lg text-white/90">{capsuleData.tip}</p>
             </div>
         </div>
       );
@@ -67,5 +71,5 @@ export function TechCapsuleDisplay() {
     );
   };
 
-  return <div className="w-full max-w-2xl mx-auto">{renderContent()}</div>;
+  return <div className="w-full max-w-3xl mx-auto">{renderContent()}</div>;
 }
