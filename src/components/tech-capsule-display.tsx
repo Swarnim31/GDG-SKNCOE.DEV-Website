@@ -19,13 +19,22 @@ import { firestore } from "@/lib/firebase";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function TechCapsuleDisplay() {
-  const [currentDay, setCurrentDay] = useState<number>(1);
+  const [currentDay, setCurrentDay] = useState<number | null>(null);
   const [capsuleData, setCapsuleData] = useState<Capsule | null>(null);
 
-  const capsulesQuery = query(
-    collection(firestore, "tech_Capsule"),
-    where("day", "==", currentDay)
-  );
+  useEffect(() => {
+    // This runs only on the client to avoid hydration mismatch
+    setCurrentDay(new Date().getDate());
+  }, []);
+
+  const capsulesQuery =
+    currentDay !== null
+      ? query(
+          collection(firestore, "tech_Capsule"),
+          where("day", "==", currentDay)
+        )
+      : null;
+
   const [capsulesSnapshot, loading, error] = useCollection(capsulesQuery);
 
   useEffect(() => {
@@ -36,16 +45,16 @@ export function TechCapsuleDisplay() {
       setCapsuleData(null);
     }
   }, [capsulesSnapshot]);
-  
+
   const renderContent = () => {
-    if (loading) {
+    if (loading || currentDay === null) {
       return (
         <Card className="max-w-2xl w-full mx-auto shadow-lg bg-muted/50 rounded-full flex items-center p-4 h-[110px]">
-            <Skeleton className="h-10 w-10 rounded-full" />
-            <div className="flex-grow ml-6 space-y-2">
-                <Skeleton className="h-4 w-1/3" />
-                <Skeleton className="h-4 w-3/4" />
-            </div>
+          <Skeleton className="h-10 w-10 rounded-full" />
+          <div className="flex-grow ml-6 space-y-2">
+            <Skeleton className="h-4 w-1/3" />
+            <Skeleton className="h-4 w-3/4" />
+          </div>
         </Card>
       );
     }
@@ -59,7 +68,7 @@ export function TechCapsuleDisplay() {
         </Card>
       );
     }
-    
+
     return (
       <Card
         className={cn(
