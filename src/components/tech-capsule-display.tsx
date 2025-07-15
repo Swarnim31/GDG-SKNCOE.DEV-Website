@@ -19,9 +19,10 @@ import { firestore } from "@/lib/firebase";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export function TechCapsuleDisplay() {
-  const [capsule, setCapsule] = useState<Capsule | null>(null);
   const [currentDay, setCurrentDay] = useState<number>(1);
+  const [capsuleData, setCapsuleData] = useState<Capsule | null>(null);
 
+  // 3. Fetch a document from the Firestore collection `tech_Capsule` where the field `day` equals `currentDay`.
   const capsulesQuery = query(
     collection(firestore, "tech_Capsule"),
     where("day", "==", currentDay)
@@ -29,54 +30,62 @@ export function TechCapsuleDisplay() {
   const [capsulesSnapshot, loading, error] = useCollection(capsulesQuery);
 
   useEffect(() => {
+    // 4. Store the result in a variable named `capsuleData`.
     if (capsulesSnapshot && !capsulesSnapshot.empty) {
       const doc = capsulesSnapshot.docs[0];
-      setCapsule({ id: doc.id, ...doc.data() } as Capsule);
+      setCapsuleData({ id: doc.id, ...doc.data() } as Capsule);
     } else {
-        setCapsule(null);
+      setCapsuleData(null);
     }
   }, [capsulesSnapshot]);
   
   const renderContent = () => {
     if (loading) {
-        return (
-             <Skeleton className="max-w-2xl w-full mx-auto bg-muted/50 h-[150px] rounded-full" />
-        );
+      return (
+        <Skeleton className="max-w-2xl w-full mx-auto bg-muted/50 h-[150px] rounded-full" />
+      );
     }
-    if (error || !capsule) {
-        return (
-             <Card className="max-w-2xl w-full mx-auto bg-muted/50 h-[150px] rounded-full flex items-center justify-center">
-                <CardContent className="p-4 text-center text-muted-foreground">
-                    <p>No tech capsule available for today. Check back tomorrow!</p>
-                </CardContent>
-            </Card>
-        );
+    // 7. Optionally, show fallback text like "No tech capsule available" if no data is found.
+    if (error || !capsuleData) {
+      return (
+        <Card className="max-w-2xl w-full mx-auto bg-muted/50 h-[150px] rounded-full flex items-center justify-center">
+          <CardContent className="p-4 text-center text-muted-foreground">
+            <p>No tech capsule available for today. Check back tomorrow!</p>
+          </CardContent>
+        </Card>
+      );
     }
     
     return (
-        <Card
-            className={cn(
-            "max-w-2xl w-full mx-auto shadow-lg hover:shadow-2xl transition-all duration-300 transform-style-3d",
-            "hover:-translate-y-2 hover:rotate-x-6 hover:rotate-y-[-4deg]",
-            "rounded-full text-primary-foreground p-4",
-            "capsule-gradient-fire"
-            )}
-        >
-            <CardContent className="p-4 flex items-center gap-6">
-                <div className="text-4xl">{capsule.emoji}</div>
-                <div className="flex-grow">
-                    <CardTitle className="text-xl font-bold mb-1">
-                    {capsule.title}
-                    </CardTitle>
-                    <p className="text-lg opacity-90">{capsule.tip}</p>
-                </div>
-            </CardContent>
-        </Card>
-    )
-  }
+      <Card
+        className={cn(
+          "max-w-2xl w-full mx-auto shadow-lg hover:shadow-2xl transition-all duration-300 transform-style-3d",
+          "hover:-translate-y-2 hover:rotate-x-6 hover:rotate-y-[-4deg]",
+          "rounded-full text-primary-foreground p-4",
+          "capsule-gradient-fire"
+        )}
+      >
+        <CardContent className="p-4 flex items-center gap-6">
+          <div className="text-4xl">{capsuleData.emoji}</div>
+          <div className="flex-grow">
+            {/* 5. Bind the Heading Text to `capsuleData.title`. */}
+            <CardTitle className="text-xl font-bold mb-1">
+              {capsuleData.title}
+            </CardTitle>
+            {/* 6. Bind the Paragraph Text to `capsuleData.tip`. */}
+            <p className="text-lg opacity-90">{capsuleData.tip}</p>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  };
 
   return (
     <div className="flex flex-col items-center gap-8 perspective-1000">
+      {/* 1. A Text element for the current day */}
+      <div className="text-center text-muted-foreground">
+        Current Day: {currentDay}
+      </div>
       {renderContent()}
       <Button asChild className="btn-gemini rounded-full">
         <Link href="/resources">
