@@ -11,23 +11,29 @@ import { Lightbulb } from "lucide-react";
 import React from "react";
 
 export function TechCapsuleDisplay() {
-  // Step 2: Create a page state variable called `currentDay` and set its value to 1 (for testing).
-  const [currentDay] = React.useState(1);
+  const [currentDay, setCurrentDay] = React.useState<number | null>(null);
   const [capsuleData, setCapsuleData] = React.useState<Capsule | null>(null);
 
-  // Step 3: Create a Firestore Query.
-  const capsulesQuery = query(
-    collection(firestore, "tech_Capsule"),
-    where("day", "==", currentDay),
-    limit(1)
-  );
+  React.useEffect(() => {
+    // We set a fixed value of 1 for testing as requested.
+    // To use the real current day, you would use: new Date().getDate()
+    setCurrentDay(1);
+  }, []);
+
+  const capsulesQuery = React.useMemo(() => {
+    if (currentDay === null) return null;
+    return query(
+      collection(firestore, "tech_Capsule"),
+      where("day", "==", currentDay),
+      limit(1)
+    );
+  }, [currentDay]);
 
   const [capsulesSnapshot, loading, error] = useCollection(capsulesQuery);
 
   React.useEffect(() => {
     if (capsulesSnapshot && !capsulesSnapshot.empty) {
       const doc = capsulesSnapshot.docs[0];
-      // Step 4: Store the result in a variable named `capsuleData`.
       setCapsuleData({ id: doc.id, ...doc.data() } as Capsule);
     } else {
       setCapsuleData(null);
@@ -35,7 +41,7 @@ export function TechCapsuleDisplay() {
   }, [capsulesSnapshot]);
   
   const renderContent = () => {
-    if (loading) {
+    if (loading || currentDay === null) {
       return (
          <Card className="w-full max-w-2xl mx-auto">
           <CardHeader>
@@ -50,7 +56,7 @@ export function TechCapsuleDisplay() {
     }
 
     if (error) {
-       return <p className="text-destructive text-center">Error: {error.message}</p>;
+       return <p className="text-destructive text-center">Error: Could not load tech capsule. Please check the console.</p>;
     }
     
     if (capsuleData) {
@@ -58,7 +64,6 @@ export function TechCapsuleDisplay() {
         <Card className="w-full max-w-2xl mx-auto animated-gradient-border p-1 shadow-lg">
            <Card className="w-full h-full bg-background/80 backdrop-blur-sm rounded-xl">
              <CardHeader>
-                {/* Step 1 & 5: Bind the Title text to capsuleData.title. */}
                 <CardTitle className="flex items-center gap-2">
                   <Lightbulb className="h-6 w-6 text-yellow-500" />
                   {capsuleData.title}
@@ -66,7 +71,6 @@ export function TechCapsuleDisplay() {
                 <CardDescription>Day: {capsuleData.day}</CardDescription>
              </CardHeader>
              <CardContent>
-                {/* Step 1 & 6: Bind the Tip text to capsuleData.tip. */}
                 <p className="text-lg text-foreground/80">{capsuleData.tip}</p>
              </CardContent>
            </Card>
@@ -74,7 +78,6 @@ export function TechCapsuleDisplay() {
       );
     }
 
-    // Step 7: Fallback message.
     return (
        <p className="text-muted-foreground text-center py-8">
         No tech capsule available for today. Check back tomorrow!
