@@ -46,8 +46,6 @@ export type Project = {
   techStack: string[];
   contributors: Contributor[];
   githubURL: string;
-  imageUrl?: string;
-  imageHint?: string;
   timestamp?: Timestamp;
 };
 

@@ -21,12 +21,12 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const categoryColors: { [key: string]: string } = {
-    Web: "bg-blue-100/50 dark:bg-blue-900/20 border-blue-500/50",
-    Mobile: "bg-green-100/50 dark:bg-green-900/20 border-green-500/50",
-    AI: "bg-red-100/50 dark:bg-red-900/20 border-red-500/50",
-    Cloud: "bg-purple-100/50 dark:bg-purple-900/20 border-purple-500/50",
+    Web: "border-blue-500/50",
+    Mobile: "border-green-500/50",
+    AI: "border-red-500/50",
+    Cloud: "border-purple-500/50",
   };
-  const cardColor = categoryColors[project.category] || "bg-card";
+  const cardColor = categoryColors[project.category] || "border-border";
 
   return (
     <Card className={cn("flex flex-col h-full transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:shadow-2xl border-t-4", cardColor)}>
@@ -40,7 +40,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </CardDescription>
 
          <div className="mb-4">
-            <h4 className="text-sm font-semibold mb-2 text-foreground/80">Contributors</h4>
+            <h4 className="text-sm font-semibold mb-2 text-muted-foreground">Contributors</h4>
             <div className="flex flex-col space-y-2 text-sm text-muted-foreground">
                 {project.contributors.map((c, i) => (
                     <div key={i} className="flex items-center gap-2">
