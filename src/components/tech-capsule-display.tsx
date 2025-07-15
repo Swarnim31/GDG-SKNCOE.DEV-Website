@@ -11,17 +11,10 @@ import { Lightbulb } from "lucide-react";
 import React from "react";
 
 export function TechCapsuleDisplay() {
-  const [currentDay, setCurrentDay] = React.useState<number | null>(null);
+  const [currentDay, setCurrentDay] = React.useState<number>(1);
   const [capsuleData, setCapsuleData] = React.useState<Capsule | null>(null);
 
-  React.useEffect(() => {
-    // We set a fixed value of 1 for testing as requested.
-    // To use the real current day, you would use: new Date().getDate()
-    setCurrentDay(1);
-  }, []);
-
   const capsulesQuery = React.useMemo(() => {
-    if (currentDay === null) return null;
     return query(
       collection(firestore, "tech_Capsule"),
       where("day", "==", currentDay),
@@ -41,7 +34,7 @@ export function TechCapsuleDisplay() {
   }, [capsulesSnapshot]);
   
   const renderContent = () => {
-    if (loading || currentDay === null) {
+    if (loading) {
       return (
          <Card className="w-full max-w-2xl mx-auto">
           <CardHeader>
@@ -56,7 +49,7 @@ export function TechCapsuleDisplay() {
     }
 
     if (error) {
-       return <p className="text-destructive text-center">Error: Could not load tech capsule. Please check the console.</p>;
+       return <p className="text-destructive text-center">Error: Could not load tech capsule.</p>;
     }
     
     if (capsuleData) {
