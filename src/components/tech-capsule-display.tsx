@@ -22,13 +22,9 @@ export function TechCapsuleDisplay() {
   const [capsule, setCapsule] = useState<Capsule | null>(null);
   const [currentDay, setCurrentDay] = useState<number>(1);
 
-  useEffect(() => {
-    setCurrentDay(new Date().getDate());
-  }, []);
-
   const capsulesQuery = query(
     collection(firestore, "tech_Capsule"),
-    where("day", "==", 1)
+    where("day", "==", currentDay)
   );
   const [capsulesSnapshot, loading, error] = useCollection(capsulesQuery);
 
@@ -81,7 +77,6 @@ export function TechCapsuleDisplay() {
 
   return (
     <div className="flex flex-col items-center gap-8 perspective-1000">
-      <p>Current Day: {currentDay}</p>
       {renderContent()}
       <Button asChild className="btn-gemini rounded-full">
         <Link href="/resources">
