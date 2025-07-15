@@ -12,18 +12,72 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { Lock, Mail, User, ArrowRight } from "lucide-react";
+import { Lock, Mail, User, ArrowRight, Loader2 } from "lucide-react";
 import { GoogleIcon } from "@/components/icons/google";
 import React from 'react';
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { auth, firestore } from "@/lib/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
+import { useToast } from "@/hooks/use-toast";
+
+const signUpSchema = z.object({
+  fullName: z.string().min(1, { message: "Full name is required" }),
+  email: z.string().email({ message: "Invalid email address" }),
+  password: z.string().min(6, { message: "Password must be at least 6 characters" }),
+});
 
 export default function JoinPage() {
     const [isMounted, setIsMounted] = React.useState(false);
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const { toast } = useToast();
 
     React.useEffect(() => {
         setIsMounted(true);
     }, []);
 
+    const form = useForm<z.infer<typeof signUpSchema>>({
+        resolver: zodResolver(signUpSchema),
+        defaultValues: {
+            fullName: "",
+            email: "",
+            password: "",
+        },
+    });
+
+    const handleSignUp = async (values: z.infer<typeof signUpSchema>) => {
+        setIsSubmitting(true);
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
+            const user = userCredential.user;
+
+            await setDoc(doc(firestore, "users", user.uid), {
+                name: values.fullName,
+                email: values.email,
+                uid: user.uid,
+            });
+
+            toast({
+                title: "Account Created!",
+                description: "Welcome to the community. You can now log in.",
+            });
+            form.reset();
+
+        } catch (error: any) {
+            console.error("Sign up error:", error);
+            toast({
+                title: "Sign-up Failed",
+                description: error.message || "An unexpected error occurred. Please try again.",
+                variant: "destructive",
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+    
     if (!isMounted) {
         return null;
     }
@@ -40,46 +94,84 @@ export default function JoinPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="fullname">Full Name</Label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input id="fullname" placeholder="Your Name" className="pl-10" />
-              </div>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(handleSignUp)} className="space-y-6">
+              <FormField
+                control={form.control}
+                name="fullName"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Full Name</FormLabel>
+                    <div className="relative">
+                      <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <FormControl>
+                        <Input placeholder="Your Name" className="pl-10" {...field} />
+                      </FormControl>
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email Address</FormLabel>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <FormControl>
+                        <Input type="email" placeholder="your.email@example.com" className="pl-10" {...field} />
+                      </FormControl>
+                    </div>
+                     <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <div className="relative">
+                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <FormControl>
+                        <Input type="password" placeholder="••••••••" className="pl-10" {...field} />
+                      </FormControl>
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full btn-google rounded-full" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Creating Account...
+                  </>
+                ) : (
+                  <>
+                    Create Account <ArrowRight className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </form>
+          </Form>
+          <div className="relative my-4">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="signup-email">Email Address</Label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input id="signup-email" type="email" placeholder="your.email@example.com" className="pl-10" />
-              </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                Or continue with
+              </span>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="signup-password">Password</Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input id="signup-password" type="password" placeholder="••••••••" className="pl-10" />
-              </div>
-            </div>
-            <Button type="submit" className="w-full btn-google rounded-full">
-              Create Account <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <div className="relative my-4">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">
-                  Or continue with
-                </span>
-              </div>
-            </div>
-            <Button variant="outline" className="w-full rounded-full">
-              <GoogleIcon className="mr-2 h-5 w-5" />
-              Continue with Google
-            </Button>
-          </form>
+          </div>
+          <Button variant="outline" className="w-full rounded-full">
+            <GoogleIcon className="mr-2 h-5 w-5" />
+            Continue with Google
+          </Button>
         </CardContent>
       </Card>
 
@@ -126,7 +218,7 @@ export default function JoinPage() {
             </Button>
             <p className="text-center text-sm text-muted-foreground mt-6">
               New here?{' '}
-              <Link href="#" className="font-semibold text-primary hover:underline" onClick={(e) => { e.preventDefault(); document.querySelector('#fullname')?.focus(); }}>
+              <Link href="#" className="font-semibold text-primary hover:underline" onClick={(e) => { e.preventDefault(); document.querySelector('#fullName')?.focus(); }}>
                 Create an account
               </Link>
             </p>
