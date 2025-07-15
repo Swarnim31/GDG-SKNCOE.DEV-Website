@@ -41,7 +41,7 @@ const askBotFlow = ai.defineFlow(
       },
     });
 
-    const botReply = await llmResponse.text();
+    const botReply = llmResponse.text;
 
     try {
       await addDoc(collection(firestore, 'chatHistory'), {
