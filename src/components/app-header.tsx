@@ -45,17 +45,13 @@ export function AppHeader() {
           </nav>
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Link href="/join" passHref>
-              <Button asChild className="btn-gemini rounded-full hidden md:inline-flex">
-                <Link href="/join">Join</Link>
-              </Button>
-            </Link>
+            <Button asChild className="btn-gemini rounded-full hidden md:inline-flex">
+              <Link href="/join">Join</Link>
+            </Button>
             <Link href="/profile" passHref>
-              <Button asChild variant="outline" size="icon" className="rounded-full hidden md:inline-flex">
-                <Link href="/profile">
-                  <User className="h-5 w-5" />
-                  <span className="sr-only">Profile</span>
-                </Link>
+              <Button variant="outline" size="icon" className="rounded-full hidden md:inline-flex">
+                <User className="h-5 w-5" />
+                <span className="sr-only">Profile</span>
               </Button>
             </Link>
             <AppNavMobile />
