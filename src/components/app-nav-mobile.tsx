@@ -66,6 +66,9 @@ export function AppNavMobile() {
             <Link href="/team">Our Team</Link>
           </Button>
           <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet} asChild>
+            <Link href="/chat">Chat</Link>
+          </Button>
+          <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet} asChild>
             <Link href="/get-involved">About GDG</Link>
           </Button>
           <Button variant="ghost" className="w-full justify-start text-base" onClick={closeSheet} asChild>
