@@ -89,6 +89,25 @@ export function TechCapsuleDisplay() {
           More Resources <ArrowRight className="ml-2 h-4 w-4" />
         </Link>
       </Button>
+
+      {/* Temporary Debugging Widget */}
+      <div className="mt-4 p-4 border-2 border-dashed border-destructive w-full max-w-2xl rounded-lg text-center">
+        <h3 className="font-bold text-lg mb-2">Firestore Debug Output</h3>
+        {loading && <p>Loading data...</p>}
+        {error && <p className="text-destructive">Error: {error.message}</p>}
+        {!loading && !error && capsuleData && (
+          <div>
+            <p>Data found!</p>
+            <p>
+              <strong>Title:</strong> {capsuleData.title}
+            </p>
+          </div>
+        )}
+        {!loading && !error && !capsuleData && (
+          <p>No document found where 'day' == 1.</p>
+        )}
+      </div>
+
     </div>
   );
 }
