@@ -85,24 +85,6 @@ export default function ProfilePage() {
           </CardContent>
         </Card>
 
-        {/* My Activity Card */}
-        <Card>
-          <CardHeader>
-            <CardTitle>My Activity</CardTitle>
-            <CardDescription>An overview of your contributions and projects.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-center text-center p-8 border-2 border-dashed rounded-lg">
-                <div className="space-y-2">
-                    <Briefcase className="h-10 w-10 text-muted-foreground mx-auto" />
-                    <p className="text-muted-foreground">Your submitted projects will appear here.</p>
-                     <Button variant="secondary" asChild>
-                        <a href="/teamup-showcase">Submit a Project</a>
-                    </Button>
-                </div>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );
