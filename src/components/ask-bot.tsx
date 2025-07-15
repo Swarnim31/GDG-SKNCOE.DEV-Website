@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect } from "react";
@@ -13,6 +14,7 @@ import { Bot, User, Send, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { ScrollArea } from "./ui/scroll-area";
+import { askBot } from "@/ai/flows/ask-bot-flow";
 
 type Message = {
   text: string;
@@ -39,23 +41,31 @@ export function AskBot() {
     }
   }, [messages]);
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (input.trim()) {
-      setMessages((prev) => [...prev, { text: input, sender: "user" }]);
+      const userInput = input;
+      setMessages((prev) => [...prev, { text: userInput, sender: "user" }]);
       setInput("");
       setIsTyping(true);
 
-      // Simulate bot response
-      setTimeout(() => {
-        setIsTyping(false);
+      try {
+        const botResponse = await askBot(userInput);
+        setMessages((prev) => [
+          ...prev,
+          { text: botResponse, sender: "bot" },
+        ]);
+      } catch (error) {
+        console.error("Error fetching bot response:", error);
         setMessages((prev) => [
           ...prev,
           {
-            text: "This is a simulated response. The actual AI bot is not yet connected.",
+            text: "Sorry, I'm having trouble connecting. Please try again later.",
             sender: "bot",
           },
         ]);
-      }, 1500);
+      } finally {
+        setIsTyping(false);
+      }
     }
   };
 
@@ -83,6 +93,18 @@ export function AskBot() {
           <div className="flex flex-col h-[60vh]">
             <ScrollArea className="flex-grow p-4" ref={scrollAreaRef}>
               <div className="space-y-6">
+                {messages.length === 0 && (
+                   <div className="flex items-start gap-3 justify-start animate-message-in">
+                    <Avatar className="h-8 w-8">
+                      <AvatarFallback className="btn-gemini text-primary-foreground">
+                        <Sparkles className="h-5 w-5" />
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="rounded-2xl px-4 py-2 max-w-sm bg-muted text-foreground rounded-bl-none">
+                      <p>Hello! Ask me anything about our events, resources, or how to get involved.</p>
+                    </div>
+                  </div>
+                )}
                 {messages.map((message, index) => (
                   <div
                     key={index}
@@ -102,7 +124,7 @@ export function AskBot() {
                     )}
                     <div
                       className={cn(
-                        "rounded-2xl px-4 py-2 max-w-sm",
+                        "rounded-2xl px-4 py-2 max-w-sm whitespace-pre-wrap",
                         message.sender === "user"
                           ? "bg-primary text-primary-foreground rounded-br-none"
                           : "bg-muted text-foreground rounded-bl-none"
@@ -148,12 +170,13 @@ export function AskBot() {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask about events, resources, or anything..."
                   className="pr-12 h-11 rounded-full"
+                  disabled={isTyping}
                 />
                 <Button
                   type="submit"
                   size="icon"
                   className="absolute top-1/2 right-1.5 -translate-y-1/2 h-8 w-8 rounded-full btn-gemini"
-                  disabled={!input.trim()}
+                  disabled={!input.trim() || isTyping}
                 >
                   <Send className="h-4 w-4" />
                 </Button>
