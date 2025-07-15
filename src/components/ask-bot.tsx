@@ -59,7 +59,7 @@ export function AskBot() {
         setMessages((prev) => [
           ...prev,
           {
-            text: "Sorry, I'm having trouble connecting. Please try again later.",
+            text: "Sorry, Gemini is currently unavailable.",
             sender: "bot",
           },
         ]);

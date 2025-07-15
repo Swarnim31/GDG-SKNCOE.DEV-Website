@@ -12,7 +12,6 @@ import { z } from 'zod';
 import { firestore } from '@/lib/firebase';
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
-// You can define more complex input/output schemas if needed.
 const AskBotInputSchema = z.string();
 const AskBotOutputSchema = z.string();
 
@@ -29,15 +28,13 @@ const askBotFlow = ai.defineFlow(
   async (prompt) => {
     const llmResponse = await ai.generate({
       prompt: `
-        You are the friendly and helpful chatbot for the GDG SknCoe.DEV website.
-        Your goal is to answer questions about the Google Developer Group at SKNCOE, our events, resources, and how to get involved.
-        Be concise, friendly, and helpful.
+        You are a helpful AI assistant.
 
         User's question: "${prompt}"
       `,
       model: 'googleai/gemini-pro',
       config: {
-        temperature: 0.5,
+        temperature: 0.7,
       },
     });
 
@@ -51,8 +48,6 @@ const askBotFlow = ai.defineFlow(
       });
     } catch (error) {
       console.error("Error saving chat history:", error);
-      // We don't want to block the user's response if saving fails,
-      // so we'll just log the error and continue.
     }
 
     return botReply;
