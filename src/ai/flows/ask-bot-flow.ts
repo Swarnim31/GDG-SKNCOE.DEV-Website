@@ -9,6 +9,8 @@
 
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
+import { firestore } from '@/lib/firebase';
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 
 // You can define more complex input/output schemas if needed.
 const AskBotInputSchema = z.string();
@@ -39,6 +41,20 @@ const askBotFlow = ai.defineFlow(
       },
     });
 
-    return llmResponse.text();
+    const botReply = await llmResponse.text();
+
+    try {
+      await addDoc(collection(firestore, 'chatHistory'), {
+        userInput: prompt,
+        botReply: botReply,
+        timestamp: serverTimestamp(),
+      });
+    } catch (error) {
+      console.error("Error saving chat history:", error);
+      // We don't want to block the user's response if saving fails,
+      // so we'll just log the error and continue.
+    }
+
+    return botReply;
   }
 );
