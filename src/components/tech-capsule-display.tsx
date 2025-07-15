@@ -28,7 +28,7 @@ export function TechCapsuleDisplay() {
 
   const capsulesQuery = query(
     collection(firestore, "tech_Capsule"),
-    where("day", "==", currentDay)
+    where("day", "==", 1)
   );
   const [capsulesSnapshot, loading, error] = useCollection(capsulesQuery);
 
