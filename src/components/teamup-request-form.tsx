@@ -18,15 +18,15 @@ import { firestore } from "@/lib/firebase";
 const teamUpSchema = z.object({
   name: z.string().min(2, "Name is required."),
   query: z.string().min(10, "Please describe your idea or what you're looking for (min. 10 characters)."),
-  skills: z.string().min(1, "Please list at least one skill you're looking for."),
-  contact: z.string().email("Please enter a valid email address.").optional().or(z.literal('')),
+  skillNeeded: z.string().min(1, "Please list at least one skill you're looking for."),
+  email: z.string().email("Please enter a valid email address.").optional().or(z.literal('')),
 });
 
 const defaultFormValues = {
   name: "",
   query: "",
-  skills: "",
-  contact: "",
+  skillNeeded: "",
+  email: "",
 };
 
 export function TeamUpRequestForm() {
@@ -41,10 +41,11 @@ export function TeamUpRequestForm() {
   const onSubmit = async (values: z.infer<typeof teamUpSchema>) => {
     setIsSubmitting(true);
     try {
-      const skillsArray = values.skills.split(',').map(skill => skill.trim());
-      await addDoc(collection(firestore, "teamupAlerts"), {
-        ...values,
-        skills: skillsArray,
+      await addDoc(collection(firestore, "teamQueries"), {
+        name: values.name,
+        query: values.query,
+        skillNeeded: values.skillNeeded,
+        email: values.email,
         timestamp: serverTimestamp(),
       });
       toast({
@@ -91,7 +92,7 @@ export function TeamUpRequestForm() {
                   <FormMessage />
                 </FormItem>
               )} />
-               <FormField name="skills" control={form.control} render={({ field }) => (
+               <FormField name="skillNeeded" control={form.control} render={({ field }) => (
                 <FormItem>
                   <FormLabel>Skills Needed</FormLabel>
                   <FormControl><Input placeholder="e.g., React, UI/UX Design, Firebase" {...field} /></FormControl>
@@ -99,7 +100,7 @@ export function TeamUpRequestForm() {
                   <FormMessage />
                 </FormItem>
               )} />
-              <FormField name="contact" control={form.control} render={({ field }) => (
+              <FormField name="email" control={form.control} render={({ field }) => (
                 <FormItem>
                   <FormLabel>Contact Email (Optional)</FormLabel>
                   <FormControl><Input placeholder="Your email for interested members to reach out" {...field} /></FormControl>
