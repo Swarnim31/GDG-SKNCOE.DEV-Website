@@ -20,7 +20,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { auth, firestore } from "@/lib/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
@@ -31,9 +31,15 @@ const signUpSchema = z.object({
   password: z.string().min(6, { message: "Password must be at least 6 characters" }),
 });
 
+const loginSchema = z.object({
+  email: z.string().email({ message: "Invalid email address" }),
+  password: z.string().min(1, { message: "Password is required" }),
+});
+
 export default function JoinPage() {
     const [isMounted, setIsMounted] = React.useState(false);
-    const [isSubmitting, setIsSubmitting] = React.useState(false);
+    const [isSignUpSubmitting, setIsSignUpSubmitting] = React.useState(false);
+    const [isLoginSubmitting, setIsLoginSubmitting] = React.useState(false);
     const { toast } = useToast();
     const router = useRouter();
 
@@ -41,7 +47,7 @@ export default function JoinPage() {
         setIsMounted(true);
     }, []);
 
-    const form = useForm<z.infer<typeof signUpSchema>>({
+    const signUpForm = useForm<z.infer<typeof signUpSchema>>({
         resolver: zodResolver(signUpSchema),
         defaultValues: {
             fullName: "",
@@ -50,8 +56,16 @@ export default function JoinPage() {
         },
     });
 
+    const loginForm = useForm<z.infer<typeof loginSchema>>({
+        resolver: zodResolver(loginSchema),
+        defaultValues: {
+            email: "",
+            password: "",
+        },
+    });
+
     const handleSignUp = async (values: z.infer<typeof signUpSchema>) => {
-        setIsSubmitting(true);
+        setIsSignUpSubmitting(true);
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
             const user = userCredential.user;
@@ -66,7 +80,7 @@ export default function JoinPage() {
                 title: "Account Created!",
                 description: "Welcome to the community. Redirecting to your profile...",
             });
-            form.reset();
+            signUpForm.reset();
             router.push('/profile');
 
         } catch (error: any) {
@@ -77,7 +91,29 @@ export default function JoinPage() {
                 variant: "destructive",
             });
         } finally {
-            setIsSubmitting(false);
+            setIsSignUpSubmitting(false);
+        }
+    };
+    
+    const handleLogin = async (values: z.infer<typeof loginSchema>) => {
+        setIsLoginSubmitting(true);
+        try {
+            await signInWithEmailAndPassword(auth, values.email, values.password);
+            toast({
+                title: "Welcome Back!",
+                description: "You've successfully logged in. Redirecting...",
+            });
+            loginForm.reset();
+            router.push('/profile');
+        } catch (error: any) {
+            console.error("Login error:", error);
+            toast({
+                title: "Login Failed",
+                description: "Invalid email or password. Please try again.",
+                variant: "destructive",
+            });
+        } finally {
+            setIsLoginSubmitting(false);
         }
     };
     
@@ -97,10 +133,10 @@ export default function JoinPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSignUp)} className="space-y-6">
+          <Form {...signUpForm}>
+            <form onSubmit={signUpForm.handleSubmit(handleSignUp)} className="space-y-6">
               <FormField
-                control={form.control}
+                control={signUpForm.control}
                 name="fullName"
                 render={({ field }) => (
                   <FormItem>
@@ -116,7 +152,7 @@ export default function JoinPage() {
                 )}
               />
               <FormField
-                control={form.control}
+                control={signUpForm.control}
                 name="email"
                 render={({ field }) => (
                   <FormItem>
@@ -132,7 +168,7 @@ export default function JoinPage() {
                 )}
               />
               <FormField
-                control={form.control}
+                control={signUpForm.control}
                 name="password"
                 render={({ field }) => (
                   <FormItem>
@@ -147,8 +183,8 @@ export default function JoinPage() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full btn-google rounded-full" disabled={isSubmitting}>
-                {isSubmitting ? (
+              <Button type="submit" className="w-full btn-google rounded-full" disabled={isSignUpSubmitting}>
+                {isSignUpSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                     Creating Account...
@@ -187,25 +223,55 @@ export default function JoinPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form className="space-y-6">
-            <div className="space-y-2">
-              <Label htmlFor="login-email">Email Address</Label>
-              <div className="relative">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input id="login-email" type="email" placeholder="your.email@example.com" className="pl-10" />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="login-password">Password</Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input id="login-password" type="password" placeholder="••••••••" className="pl-10" />
-              </div>
-            </div>
-            <Button type="submit" className="w-full btn-google rounded-full">
-              Login <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <div className="relative my-4">
+          <Form {...loginForm}>
+            <form onSubmit={loginForm.handleSubmit(handleLogin)} className="space-y-6">
+              <FormField
+                control={loginForm.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Email Address</FormLabel>
+                    <div className="relative">
+                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <FormControl>
+                        <Input type="email" placeholder="your.email@example.com" className="pl-10" {...field} />
+                      </FormControl>
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={loginForm.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <div className="relative">
+                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                      <FormControl>
+                        <Input type="password" placeholder="••••••••" className="pl-10" {...field} />
+                      </FormControl>
+                    </div>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full btn-google rounded-full" disabled={isLoginSubmitting}>
+                {isLoginSubmitting ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Logging In...
+                  </>
+                ) : (
+                  <>
+                    Login <ArrowRight className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </form>
+          </Form>
+          <div className="relative my-4">
               <div className="absolute inset-0 flex items-center">
                 <span className="w-full border-t" />
               </div>
@@ -221,11 +287,10 @@ export default function JoinPage() {
             </Button>
             <p className="text-center text-sm text-muted-foreground mt-6">
               New here?{' '}
-              <Link href="#" className="font-semibold text-primary hover:underline" onClick={(e) => { e.preventDefault(); document.querySelector('#fullName')?.focus(); }}>
+              <Link href="#" className="font-semibold text-primary hover:underline" onClick={(e) => { e.preventDefault(); document.querySelector('input[name="fullName"]')?.focus(); }}>
                 Create an account
               </Link>
             </p>
-          </form>
         </CardContent>
       </Card>
 
