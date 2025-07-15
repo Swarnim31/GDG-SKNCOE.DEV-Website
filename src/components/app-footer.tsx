@@ -53,7 +53,7 @@ export function AppFooter() {
             </Button>
           </div>
           <p className="text-sm text-muted-foreground">
-            Made with ❤️ by the GDG SknCoe Team
+            Made with ❤️ by Swarnim/&gt;
           </p>
         </div>
       </div>
