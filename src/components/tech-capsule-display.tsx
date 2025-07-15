@@ -21,6 +21,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export function TechCapsuleDisplay() {
   const [capsuleData, setCapsuleData] = useState<Capsule | null>(null);
 
+  // Firestore query for testing, where day === 1
   const capsulesQuery = query(
     collection(firestore, "tech_Capsule"),
     where("day", "==", 1)
@@ -30,9 +31,11 @@ export function TechCapsuleDisplay() {
 
   useEffect(() => {
     if (capsulesSnapshot && !capsulesSnapshot.empty) {
+      // We found a document. Get the first one and set it to state.
       const doc = capsulesSnapshot.docs[0];
       setCapsuleData({ id: doc.id, ...doc.data() } as Capsule);
     } else {
+      // No document found for the query.
       setCapsuleData(null);
     }
   }, [capsulesSnapshot]);
@@ -40,19 +43,16 @@ export function TechCapsuleDisplay() {
   const renderContent = () => {
     if (loading) {
       return (
-        <Card className="max-w-2xl w-full mx-auto shadow-lg bg-muted/50 rounded-full flex items-center p-4 h-[110px]">
-          <Skeleton className="h-10 w-10 rounded-full" />
-          <div className="flex-grow ml-6 space-y-2">
-            <Skeleton className="h-4 w-1/3" />
-            <Skeleton className="h-4 w-3/4" />
-          </div>
+        <Card className="max-w-2xl w-full mx-auto shadow-lg bg-muted/50 rounded-lg flex flex-col items-center justify-center p-4 h-[134px]">
+          <Skeleton className="h-4 w-1/3 mb-4" />
+          <Skeleton className="h-4 w-3/4" />
         </Card>
       );
     }
 
     if (error || !capsuleData) {
       return (
-        <Card className="max-w-2xl w-full mx-auto bg-muted/50 rounded-lg flex items-center justify-center h-[110px]">
+        <Card className="max-w-2xl w-full mx-auto bg-muted/50 rounded-lg flex items-center justify-center h-[134px]">
           <CardContent className="p-4 text-center text-muted-foreground">
             <p>No tech capsule available for today. Check back tomorrow!</p>
           </CardContent>
@@ -60,6 +60,7 @@ export function TechCapsuleDisplay() {
       );
     }
 
+    // Data is loaded and available
     return (
       <Card
         className={cn(
