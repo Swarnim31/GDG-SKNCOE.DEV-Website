@@ -25,6 +25,7 @@ const getDailyCapsule = (capsules: Capsule[]): Capsule => {
 
 export function TechCapsuleDisplay() {
   const [capsule, setCapsule] = useState<Capsule | null>(null);
+  const [currentDay, setCurrentDay] = useState<number>(1);
 
   useEffect(() => {
     setCapsule(getDailyCapsule(mockCapsules));
