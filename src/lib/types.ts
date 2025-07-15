@@ -30,6 +30,7 @@ export type Capsule = {
   tip: string;
   category: "Web" | "AI" | "Mobile" | "Git" | "Tools";
   emoji: string;
+  day: number;
 };
 
 export type Contributor = {
