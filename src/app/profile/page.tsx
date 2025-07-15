@@ -13,18 +13,91 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Separator } from "@/components/ui/separator";
-import { Briefcase, Edit, Mail, Save, User } from "lucide-react";
+import { Briefcase, Edit, Mail, Save, User, LogOut } from "lucide-react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useDocumentData } from "react-firebase-hooks/firestore";
+import { auth, firestore } from "@/lib/firebase";
+import { doc } from "firebase/firestore";
+import { Skeleton } from "@/components/ui/skeleton";
+import { useRouter } from "next/navigation";
+import { signOut } from "firebase/auth";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ProfilePage() {
-  const [isMounted, setIsMounted] = React.useState(false);
+  const [user, authLoading, authError] = useAuthState(auth);
+  const router = useRouter();
+  const { toast } = useToast();
 
+  const userDocRef = user ? doc(firestore, "users", user.uid) : null;
+  const [userData, userLoading, userError] = useDocumentData(userDocRef);
+
+  const [isMounted, setIsMounted] = React.useState(false);
   React.useEffect(() => {
     setIsMounted(true);
   }, []);
+  
+  const handleLogout = async () => {
+    await signOut(auth);
+    toast({
+        title: "Logged Out",
+        description: "You have been successfully logged out.",
+    });
+    router.push('/join');
+  }
 
-  if (!isMounted) {
-    return null; // or a loading skeleton
+  if (!isMounted || authLoading || (user && userLoading)) {
+    return (
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div className="max-w-4xl mx-auto space-y-8">
+                <Card className="overflow-hidden">
+                    <div className="bg-muted p-8">
+                        <div className="flex flex-col sm:flex-row items-center gap-6">
+                            <Skeleton className="h-24 w-24 rounded-full" />
+                            <div className="space-y-2 text-center sm:text-left">
+                                <Skeleton className="h-8 w-48" />
+                                <Skeleton className="h-6 w-64" />
+                            </div>
+                        </div>
+                    </div>
+                </Card>
+                <Card>
+                    <CardHeader>
+                        <Skeleton className="h-6 w-32" />
+                        <Skeleton className="h-4 w-48" />
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-2">
+                                <Skeleton className="h-4 w-16" />
+                                <Skeleton className="h-10 w-full" />
+                            </div>
+                             <div className="space-y-2">
+                                <Skeleton className="h-4 w-16" />
+                                <Skeleton className="h-10 w-full" />
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+    );
+  }
+
+  if (!user) {
+    // Optional: You can redirect them to the login page
+    if (typeof window !== "undefined") {
+        router.push('/join');
+    }
+    return null;
+  }
+
+  const getInitials = (name: string | undefined) => {
+    if (!name) return "U";
+    const names = name.split(' ');
+    if (names.length > 1) {
+        return names[0][0] + names[names.length - 1][0];
+    }
+    return name.substring(0, 2);
   }
 
   return (
@@ -36,13 +109,21 @@ export default function ProfilePage() {
           <div className="capsule-gradient-purple p-8 text-primary-foreground">
             <div className="flex flex-col sm:flex-row items-center gap-6">
               <Avatar className="h-24 w-24 border-4 border-background/50">
-                <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                <AvatarFallback>CN</AvatarFallback>
+                <AvatarImage src={user.photoURL ?? undefined} alt={userData?.name} />
+                <AvatarFallback className="text-3xl bg-background/20">
+                    {getInitials(userData?.name)}
+                </AvatarFallback>
               </Avatar>
               <div className="text-center sm:text-left">
-                <h1 className="text-3xl font-bold">Alex Doe</h1>
-                <p className="text-lg opacity-80">alex.doe@example.com</p>
+                <h1 className="text-3xl font-bold">{userData?.name || 'User'}</h1>
+                <p className="text-lg opacity-80">{userData?.email}</p>
               </div>
+               <div className="sm:ml-auto">
+                    <Button variant="ghost" className="text-primary-foreground/80 hover:bg-white/20 hover:text-white" onClick={handleLogout}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        Logout
+                    </Button>
+                </div>
             </div>
           </div>
         </Card>
@@ -65,14 +146,14 @@ export default function ProfilePage() {
                     <Label htmlFor="fullName">Full Name</Label>
                     <div className="relative">
                         <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                        <Input id="fullName" defaultValue="Alex Doe" className="pl-10" />
+                        <Input id="fullName" defaultValue={userData?.name} className="pl-10" />
                     </div>
                 </div>
                 <div className="space-y-2">
                     <Label htmlFor="email">Email Address</Label>
                      <div className="relative">
                         <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                        <Input id="email" type="email" defaultValue="alex.doe@example.com" className="pl-10" disabled />
+                        <Input id="email" type="email" defaultValue={userData?.email} className="pl-10" disabled />
                     </div>
                 </div>
             </div>
