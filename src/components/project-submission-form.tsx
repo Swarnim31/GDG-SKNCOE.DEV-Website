@@ -24,8 +24,8 @@ const contributorSchema = z.object({
 const projectSchema = z.object({
   title: z.string().min(5, "Project title must be at least 5 characters."),
   description: z.string().min(20, "Description must be at least 20 characters."),
-  tags: z.string().min(1, "Please add at least one tech tag."),
-  link: z.string().url("Please enter a valid GitHub URL."),
+  techStack: z.string().min(1, "Please add at least one tech tag."),
+  githubURL: z.string().url("Please enter a valid GitHub URL."),
   contributors: z.array(contributorSchema).min(1, "At least one contributor is required."),
   category: z.enum(["Web", "Mobile", "AI", "Cloud"]),
 });
@@ -33,8 +33,8 @@ const projectSchema = z.object({
 const defaultFormValues = {
   title: "",
   description: "",
-  tags: "",
-  link: "",
+  techStack: "",
+  githubURL: "",
   contributors: [{ name: "", role: "" }],
   category: "Web" as const,
 };
@@ -56,10 +56,10 @@ export function ProjectSubmissionForm() {
   const onSubmit = async (values: z.infer<typeof projectSchema>) => {
     setIsSubmitting(true);
     try {
-      const tagsArray = values.tags.split(',').map(tag => tag.trim());
-      await addDoc(collection(firestore, "teamupProjects"), {
+      const techStackArray = values.techStack.split(',').map(tag => tag.trim()).filter(tag => tag);
+      await addDoc(collection(firestore, "projects"), {
         ...values,
-        tags: tagsArray,
+        techStack: techStackArray,
         timestamp: serverTimestamp(),
       });
       toast({
@@ -129,7 +129,7 @@ export function ProjectSubmissionForm() {
                     </FormItem>
                   )}
                 />
-               <FormField name="tags" control={form.control} render={({ field }) => (
+               <FormField name="techStack" control={form.control} render={({ field }) => (
                 <FormItem>
                   <FormLabel>Tech Stack</FormLabel>
                   <FormControl><Input placeholder="e.g., Next.js, Firebase, Genkit" {...field} /></FormControl>
@@ -137,7 +137,7 @@ export function ProjectSubmissionForm() {
                   <FormMessage />
                 </FormItem>
               )} />
-               <FormField name="link" control={form.control} render={({ field }) => (
+               <FormField name="githubURL" control={form.control} render={({ field }) => (
                 <FormItem>
                   <FormLabel>GitHub URL</FormLabel>
                   <FormControl><Input placeholder="https://github.com/your/repository" {...field} /></FormControl>

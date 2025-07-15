@@ -31,7 +31,7 @@ export default function TeamUpShowcasePage() {
   const alerts: TeamUpAlert[] = alertsSnapshot?.docs.map(doc => ({ id: doc.id, ...doc.data() } as TeamUpAlert)) || [];
 
   // Fetch Projects
-  const projectsQuery = query(collection(firestore, "teamupProjects"), orderBy("timestamp", "desc"));
+  const projectsQuery = query(collection(firestore, "projects"), orderBy("timestamp", "desc"));
   const [projectsSnapshot, projectsLoading, projectsError] = useCollection(projectsQuery);
   const projects: Project[] = projectsSnapshot?.docs.map(doc => ({ id: doc.id, ...doc.data() } as Project)) || [];
 

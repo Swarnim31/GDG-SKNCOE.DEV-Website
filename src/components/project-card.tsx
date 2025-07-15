@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/types";
@@ -52,14 +53,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </CardContent>
       <CardFooter className="p-6 pt-0 flex flex-col items-start gap-4 mt-auto">
          <div className="flex flex-wrap gap-2 mb-2">
-          {project.tags.map((tag) => (
+          {project.techStack.map((tag) => (
             <Badge key={tag} variant="outline">
               {tag}
             </Badge>
           ))}
         </div>
         <Button asChild className="w-full mt-auto btn-google rounded-full">
-          <Link href={project.link} target="_blank" rel="noopener noreferrer">
+          <Link href={project.githubURL} target="_blank" rel="noopener noreferrer">
             <Github className="mr-2 h-4 w-4" />
             View on GitHub
           </Link>

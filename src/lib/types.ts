@@ -43,9 +43,9 @@ export type Project = {
   title: string;
   description: string;
   category: "Web" | "Mobile" | "AI" | "Cloud";
-  tags: string[];
+  techStack: string[];
   contributors: Contributor[];
-  link: string;
+  githubURL: string;
   imageUrl?: string;
   imageHint?: string;
   timestamp?: Timestamp;
