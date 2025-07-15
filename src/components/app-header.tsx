@@ -39,9 +39,6 @@ export function AppHeader() {
             <Link href="/team" passHref>
               <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">Our Team</Button>
             </Link>
-             <Link href="/chat" passHref>
-              <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">Chat</Button>
-            </Link>
             <Link href="/get-involved" passHref>
               <Button variant="link" className="text-muted-foreground hover:text-foreground hover:no-underline">About GDG</Button>
             </Link>
