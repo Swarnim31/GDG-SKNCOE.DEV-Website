@@ -2,7 +2,7 @@
 'use server';
 
 /**
- * @fileOverview A simple AI chatbot flow.
+ * @fileOverview A simple AI chatbot flow for the GDG SknCoe website.
  *
  * - askBot - A function that takes a user's query and returns a text response.
  */
