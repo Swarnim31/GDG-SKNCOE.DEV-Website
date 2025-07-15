@@ -13,14 +13,7 @@ export function TechCapsuleDisplay() {
   const [currentDay, setCurrentDay] = React.useState<number>(1);
   const [capsuleData, setCapsuleData] = React.useState<Capsule | null>(null);
 
-  React.useEffect(() => {
-    // This will run only on the client, after hydration
-    const date = new Date();
-    setCurrentDay(date.getDate());
-  }, []);
-
   const capsulesQuery = React.useMemo(() => {
-    if (!currentDay) return null;
     return query(
       collection(firestore, "tech_Capsule"),
       where("day", "==", currentDay),
@@ -40,12 +33,10 @@ export function TechCapsuleDisplay() {
   }, [capsulesSnapshot]);
   
   const renderContent = () => {
-    if (loading || !currentDay) {
+    if (loading) {
       return (
-         <div className="w-full max-w-2xl mx-auto p-8">
-            <Skeleton className="h-8 w-3/4 mb-4" />
-            <Skeleton className="h-4 w-1/4 mb-6" />
-            <Skeleton className="h-6 w-full" />
+        <div className="w-full max-w-2xl mx-auto">
+          <Skeleton className="h-32 w-full rounded-full" />
         </div>
       );
     }
