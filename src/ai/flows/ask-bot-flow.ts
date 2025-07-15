@@ -32,7 +32,7 @@ const askBotFlow = ai.defineFlow(
 
         User's question: "${prompt}"
       `,
-      model: 'googleai/gemini-pro',
+      model: 'googleai/gemini-1.5-flash',
       config: {
         temperature: 0.7,
       },
