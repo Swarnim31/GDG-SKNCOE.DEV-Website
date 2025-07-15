@@ -28,6 +28,10 @@ export function TechCapsuleDisplay() {
   );
 
   const [capsulesSnapshot, loading, error] = useCollection(capsulesQuery);
+  const [allCapsulesSnapshot, allLoading, allError] = useCollection(
+    collection(firestore, "tech_Capsule")
+  );
+
 
   useEffect(() => {
     if (capsulesSnapshot && !capsulesSnapshot.empty) {
@@ -93,18 +97,36 @@ export function TechCapsuleDisplay() {
       {/* Temporary Debugging Widget */}
       <div className="mt-4 p-4 border-2 border-dashed border-destructive w-full max-w-2xl rounded-lg text-center">
         <h3 className="font-bold text-lg mb-2">Firestore Debug Output</h3>
-        {loading && <p>Loading data...</p>}
+        
+        {loading && <p>Loading data for day 1...</p>}
         {error && <p className="text-destructive">Error: {error.message}</p>}
-        {!loading && !error && capsuleData && (
+        {capsuleData && (
           <div>
-            <p>Data found!</p>
             <p>
-              <strong>Title:</strong> {capsuleData.title}
+              <strong>Title for Day 1:</strong> {capsuleData.title}
             </p>
           </div>
         )}
         {!loading && !error && !capsuleData && (
           <p>No document found where 'day' == 1.</p>
+        )}
+
+        <hr className="my-4 border-dashed" />
+
+        <h4 className="font-bold text-md mt-4 mb-2">Full Collection Data (ListView):</h4>
+        {allLoading && <p>Loading all capsules...</p>}
+        {allError && <p className="text-destructive">Error loading all capsules: {allError.message}</p>}
+        {allCapsulesSnapshot && (
+          <ul className="text-left list-disc pl-5">
+            {allCapsulesSnapshot.docs.map(doc => (
+              <li key={doc.id}>
+                Title: "{doc.data().title}"
+              </li>
+            ))}
+          </ul>
+        )}
+        {allCapsulesSnapshot && allCapsulesSnapshot.empty && (
+          <p>The "tech_Capsule" collection appears to be empty.</p>
         )}
       </div>
 
