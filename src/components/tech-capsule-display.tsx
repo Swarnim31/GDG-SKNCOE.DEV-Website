@@ -29,6 +29,7 @@ export function TechCapsuleDisplay() {
 
   useEffect(() => {
     setCapsule(getDailyCapsule(mockCapsules));
+    setCurrentDay(new Date().getDate());
   }, []);
 
   if (!capsule) {
