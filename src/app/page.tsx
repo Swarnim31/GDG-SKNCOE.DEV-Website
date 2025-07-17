@@ -24,8 +24,6 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { TechCapsuleDisplay } from "@/components/tech-capsule-display";
-import { TechCapsuleLink } from "@/components/tech-capsule-link";
 import { AskBot } from "@/components/ask-bot";
 
 export default function Home() {
@@ -172,26 +170,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tech Capsules Section */}
-      <section id="tech-capsules" className="py-16 bg-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-center mb-4 flex items-center justify-center gap-2">
-              <Sparkles className="h-8 w-8 text-yellow-500" />
-              Tech Capsules
-            </h2>
-            <p className="text-center text-muted-foreground max-w-xl mx-auto">
-              Get a daily dose of bite-sized developer knowledge. A new tip appears every day!
-            </p>
-          </div>
-          <TechCapsuleDisplay />
-        </div>
-      </section>
-      
       {/* Floating Buttons */}
-      <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-center gap-4">
-        <TechCapsuleLink />
-      </div>
       <div className="fixed bottom-6 left-6 z-[100] flex flex-col items-center gap-4">
         <AskBot />
       </div>
