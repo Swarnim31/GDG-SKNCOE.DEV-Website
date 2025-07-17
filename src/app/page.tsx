@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import {
   Carousel,
@@ -21,6 +20,7 @@ import {
   Shield,
   CalendarCheck,
   Feather,
+  Linkedin,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -78,6 +78,8 @@ export default function Home() {
     },
   ];
 
+  const leadMember = mockTeam[0];
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -99,13 +101,11 @@ export default function Home() {
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto font-body">
             Where ideas, code, and community come together.
           </p>
-          <Link href="/events" passHref>
-             <Button size="lg" asChild className="btn-gemini font-bold text-lg rounded-full">
-                <span>
-                  Explore Events <ArrowRight className="ml-2 h-5 w-5" />
-                </span>
-            </Button>
-          </Link>
+          <Button asChild size="lg" className="btn-gemini font-bold text-lg rounded-full">
+            <Link href="/events">
+              Explore Events <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
         </div>
       </section>
 
@@ -113,33 +113,30 @@ export default function Home() {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-12">Meet the Team</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {mockTeam.map((member, index) => (
-              <div
-                key={member.id}
-                className="p-1 rounded-2xl animated-gradient-border shadow-lg"
-              >
-                <Card
-                  className="overflow-hidden transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl rounded-xl"
-                >
-                  <CardContent className="p-0">
-                    <div className="relative h-64 w-full">
-                      <Image
-                        src={member.imageUrl}
-                        alt={member.name}
-                        fill
-                        className="object-cover"
-                        data-ai-hint={member.imageHint}
-                      />
-                    </div>
-                    <div className="p-6 text-center">
-                      <p className="text-xl font-bold">{member.name}</p>
-                      <p className="text-primary">{member.role}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
+          <div className="flex justify-center mb-12">
+             <div className="flex flex-col items-center gap-4 group">
+                <div className="p-1.5 rounded-full animated-gradient-border shadow-lg transition-transform duration-300 group-hover:scale-105">
+                  <div className="relative h-40 w-40">
+                    <Image
+                      src={leadMember.imageUrl}
+                      alt={leadMember.name}
+                      fill
+                      className="object-cover rounded-full"
+                      data-ai-hint={leadMember.imageHint}
+                    />
+                  </div>
+                </div>
+                <div className="text-center">
+                  <p className="text-xl font-bold">{leadMember.name}</p>
+                  <p className="text-primary">{leadMember.role}</p>
+                   <Button asChild variant="ghost" size="icon" className="mt-1 rounded-full text-muted-foreground hover:text-primary">
+                      <Link href={leadMember.linkedinUrl} target="_blank" rel="noopener noreferrer">
+                        <Linkedin className="h-5 w-5" />
+                        <span className="sr-only">LinkedIn Profile</span>
+                      </Link>
+                    </Button>
+                </div>
+            </div>
           </div>
           <Button asChild className="btn-gemini rounded-full">
             <Link href="/team">
