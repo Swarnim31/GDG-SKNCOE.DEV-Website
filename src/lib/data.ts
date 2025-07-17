@@ -85,32 +85,9 @@ export const mockTeam = [
     imageHint: "person portrait",
     linkedinUrl: "https://www.linkedin.com/in/ojas-bhalerao-9742282b3/",
   },
-  {
-    id: "2",
-    name: "Sarah Khambatta",
-    role: "Web Development Lead SKNCOE",
-    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sarah_khambatta_UBajlWC.jpg",
-    imageHint: "person portrait",
-    linkedinUrl: "https://www.linkedin.com/in/sarah-khambatta-468507259/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-  },
+ 
 
-   {
-    id: "3",
-    name: "Swarnim Shamgaonkar",
-    role: "Web Development Co-Lead SKNCOE",
-    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/swarnim_shamgaonkar_MunLauF.jpg",
-    imageHint: "person portrait",
-    linkedinUrl: "https://www.linkedin.com/in/swarnim-shamgaonkar-b725472b1/",
-  },
-
-  {
-    id: "4",
-    name: "Soham Gurav",
-    role: "AI/ML Lead SKNCOE",
-    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/soham_gurav_kR0ucPe.jpg",
-    imageHint: "person portrait",
-    linkedinUrl: "https://www.linkedin.com/in/soham-gurav-5085912ab/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
-  },
+   
 ];
 
 export const mockGalleryImages: GalleryImage[] = [
