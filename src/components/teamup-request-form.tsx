@@ -13,7 +13,9 @@ import { Button } from "@/components/ui/button";
 import { Loader2, Send, Lightbulb } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { firestore } from "@/lib/firebase";
+import { firestore, auth } from "@/lib/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/navigation";
 
 const teamUpSchema = z.object({
   name: z.string().min(2, "Name is required."),
@@ -32,6 +34,8 @@ const defaultFormValues = {
 export function TeamUpRequestForm() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { toast } = useToast();
+  const [user] = useAuthState(auth);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof teamUpSchema>>({
     resolver: zodResolver(teamUpSchema),
@@ -39,6 +43,11 @@ export function TeamUpRequestForm() {
   });
 
   const onSubmit = async (values: z.infer<typeof teamUpSchema>) => {
+    if (!user) {
+      router.push('/join');
+      return;
+    }
+
     setIsSubmitting(true);
     try {
       const skillsArray = values.skills.split(',').map(tag => tag.trim()).filter(tag => tag);

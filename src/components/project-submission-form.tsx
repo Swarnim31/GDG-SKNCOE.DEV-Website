@@ -14,7 +14,9 @@ import { Button } from "@/components/ui/button";
 import { PlusCircle, Trash2, Github, Loader2, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { firestore } from "@/lib/firebase";
+import { firestore, auth } from "@/lib/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/navigation";
 
 const contributorSchema = z.object({
   name: z.string().min(1, "Contributor name is required."),
@@ -42,6 +44,8 @@ const defaultFormValues = {
 export function ProjectSubmissionForm() {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const { toast } = useToast();
+  const [user] = useAuthState(auth);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof projectSchema>>({
     resolver: zodResolver(projectSchema),
@@ -54,6 +58,11 @@ export function ProjectSubmissionForm() {
   });
 
   const onSubmit = async (values: z.infer<typeof projectSchema>) => {
+    if (!user) {
+      router.push('/join');
+      return;
+    }
+    
     setIsSubmitting(true);
     try {
       const techStackArray = values.techStack.split(',').map(tag => tag.trim()).filter(tag => tag);
