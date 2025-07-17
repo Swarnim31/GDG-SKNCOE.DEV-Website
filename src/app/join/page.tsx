@@ -87,7 +87,7 @@ export default function JoinPage() {
             if (error.code === 'auth/email-already-in-use') {
                  toast({
                     title: "Sign-up Failed",
-                    description: "An account with this email already exists.",
+                    description: "This email is already registered. Please sign in instead.",
                     variant: "destructive",
                 });
             } else {
