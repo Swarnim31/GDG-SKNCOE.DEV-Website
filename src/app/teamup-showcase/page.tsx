@@ -4,7 +4,8 @@
 import * as React from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, query, orderBy, limit } from "firebase/firestore";
-import { firestore } from "@/lib/firebase";
+import { firestore, auth } from "@/lib/firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
@@ -15,11 +16,13 @@ import { TeamUpRequestForm } from "@/components/teamup-request-form";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Project, TeamUpAlert } from "@/lib/types";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { AlertTriangle, Users } from "lucide-react";
+import { AlertTriangle, Users, AlertCircle } from "lucide-react";
+import Link from "next/link";
 
 export default function TeamUpShowcasePage() {
   const [isAllQueriesOpen, setIsAllQueriesOpen] = React.useState(false);
   const [isMounted, setIsMounted] = React.useState(false);
+  const [user, loading] = useAuthState(auth);
 
   React.useEffect(() => {
     setIsMounted(true);
@@ -49,6 +52,23 @@ export default function TeamUpShowcasePage() {
       </div>
     );
   }
+
+   const AuthPromptCard = () => (
+    <Card className="bg-yellow-100/50 dark:bg-yellow-900/20 border-yellow-500/50 text-center">
+      <CardHeader>
+        <CardTitle className="flex items-center justify-center gap-2">
+          <AlertCircle className="h-6 w-6 text-yellow-600" />
+          Join the Community!
+        </CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p className="text-muted-foreground mb-4">Please log in or sign up to submit projects and post team-up requests.</p>
+        <Button asChild className="btn-google rounded-full">
+            <Link href="/join">Login / Sign Up</Link>
+        </Button>
+      </CardContent>
+    </Card>
+  );
   
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -157,10 +177,19 @@ export default function TeamUpShowcasePage() {
       <Separator className="my-16" />
 
       {/* 4. & 5. Submission Forms */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        <ProjectSubmissionForm />
-        <TeamUpRequestForm />
-      </div>
+       {loading ? (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <Skeleton className="h-96 w-full" />
+          <Skeleton className="h-96 w-full" />
+        </div>
+      ) : user ? (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <ProjectSubmissionForm />
+          <TeamUpRequestForm />
+        </div>
+      ) : (
+         <AuthPromptCard />
+      )}
     </div>
   );
 }
