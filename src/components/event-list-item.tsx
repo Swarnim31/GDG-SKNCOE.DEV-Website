@@ -39,7 +39,7 @@ export function EventListItem({ event, index }: EventListItemProps) {
             </div>
         </CollapsibleTrigger>
         <CollapsibleContent>
-            <Card className="mt-[-2rem] pt-[3rem] pb-4 z-0 relative shadow-lg rounded-3xl border-t-0">
+            <Card className="mt-[-2rem] pt-[3rem] pb-4 z-0 relative shadow-lg rounded-3xl border-t-0 bg-card/80 backdrop-blur-sm">
                 <CardContent>
                     <div className="grid md:grid-cols-3 gap-6">
                         <div className="md:col-span-1 relative h-48 w-full rounded-lg overflow-hidden">
