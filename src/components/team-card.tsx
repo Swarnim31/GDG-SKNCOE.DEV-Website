@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Linkedin } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -16,41 +15,32 @@ type TeamMember = {
 
 type TeamCardProps = {
   member: TeamMember;
-  index: number;
 };
 
-export function TeamCard({ member, index }: TeamCardProps) {
+export function TeamCard({ member }: TeamCardProps) {
   return (
-    <div
-      className={cn(
-        "team-card-container relative rounded-2xl overflow-hidden group animate-fade-in-up"
-      )}
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
-      <Card className="overflow-hidden text-center h-full rounded-xl bg-background/80 backdrop-blur-sm">
-        <div className="relative h-64 w-full">
-          <Image
-            src={member.imageUrl}
-            alt={member.name}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
-            data-ai-hint={member.imageHint}
-          />
-        </div>
-        <CardContent className="p-6 flex flex-col flex-grow items-center">
-          <div className="flex-grow">
-            <p className="text-xl font-bold">{member.name}</p>
-            <p className="text-primary mb-4">{member.role}</p>
+    <div className="flex flex-col items-center text-center gap-4 group">
+       <div className="p-1 rounded-full animated-gradient-border shadow-lg transition-transform duration-300 group-hover:scale-105">
+          <div className="relative h-32 w-32">
+              <Image
+                src={member.imageUrl}
+                alt={member.name}
+                fill
+                className="object-cover rounded-full"
+                data-ai-hint={member.imageHint}
+              />
           </div>
-          <Button asChild variant="outline" size="icon" className="mt-4 rounded-full border-primary/50 hover:bg-primary/10">
-            <Link href={member.linkedinUrl} target="_blank" rel="noopener noreferrer">
-              <Linkedin className="h-5 w-5 text-primary" />
-              <span className="sr-only">LinkedIn Profile</span>
-            </Link>
-          </Button>
-        </CardContent>
-      </Card>
-      <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-primary/50 transition-all duration-300 -z-10 group-hover:shadow-[0_0_20px_theme(colors.primary/0.3)]"></div>
+       </div>
+       <div className="flex flex-col items-center">
+        <p className="text-base font-bold">{member.name}</p>
+        <p className="text-sm text-primary mb-1">{member.role}</p>
+        <Button asChild variant="ghost" size="icon" className="h-7 w-7 rounded-full text-muted-foreground hover:text-primary">
+          <Link href={member.linkedinUrl} target="_blank" rel="noopener noreferrer">
+            <Linkedin className="h-4 w-4" />
+            <span className="sr-only">LinkedIn Profile</span>
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 }
