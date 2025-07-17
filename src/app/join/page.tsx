@@ -83,7 +83,7 @@ export default function JoinPage() {
             router.push('/profile');
 
         } catch (error: any) {
-            console.error("Sign up error:", error);
+            console.error("Sign up error:", error.code);
             if (error.code === 'auth/email-already-in-use') {
                  toast({
                     title: "Sign-up Failed",
