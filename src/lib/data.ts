@@ -247,15 +247,6 @@ export const googleTools: Resource[] = [
     learnLink: 'https://developers.google.com/fonts/docs/developer_api',
   },
   {
-    id: 'g-16',
-    name: 'g.co',
-    category: 'Google & Firebase',
-    description: 'A URL shortener service provided by Google, used for their own services.',
-    logoUrl: 'https://g.co/favicon.ico',
-    toolLink: 'https://g.co/',
-    learnLink: 'https://g.co/',
-  },
-  {
     id: 'g-17',
     name: 'Dart',
     category: 'Google & Firebase',
