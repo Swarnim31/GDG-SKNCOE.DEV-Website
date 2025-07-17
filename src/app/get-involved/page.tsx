@@ -112,7 +112,7 @@ export default function GetInvolvedPage() {
             ))}
           </div>
           <div className="text-center">
-            <Button size="lg" asChild className="btn-google rounded-full">
+            <Button size="lg" asChild className="btn-gemini rounded-full">
               <a href="#" target="_blank" rel="noopener noreferrer">
                 Fill Interest Form <ArrowRight className="ml-2 h-5 w-5" />
               </a>

@@ -178,7 +178,7 @@ export function ProjectSubmissionForm() {
                   <PlusCircle className="mr-2 h-4 w-4" /> Add Contributor
                 </Button>
               </div>
-              <Button type="submit" className="w-full btn-google rounded-full" disabled={isSubmitting}>
+              <Button type="submit" className="w-full btn-gemini rounded-full" disabled={isSubmitting}>
                 {isSubmitting ? (
                   <> <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting... </>
                 ) : (

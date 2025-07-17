@@ -59,7 +59,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </Badge>
           ))}
         </div>
-        <Button asChild className="w-full mt-auto btn-google rounded-full">
+        <Button asChild className="w-full mt-auto btn-gemini rounded-full">
           <Link href={project.githubURL} target="_blank" rel="noopener noreferrer">
             <Github className="mr-2 h-4 w-4" />
             View on GitHub

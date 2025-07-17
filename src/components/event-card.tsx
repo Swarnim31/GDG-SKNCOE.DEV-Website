@@ -46,7 +46,7 @@ export function EventCard({ event }: EventCardProps) {
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Button asChild className="w-full btn-google rounded-full">
+        <Button asChild className="w-full btn-gemini rounded-full">
           <a href="#">
             View Details <ArrowRight className="ml-2 h-4 w-4" />
           </a>

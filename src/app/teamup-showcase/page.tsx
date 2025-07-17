@@ -65,7 +65,7 @@ export default function TeamUpShowcasePage() {
       </CardHeader>
       <CardContent>
         <p className="text-muted-foreground mb-4">Please log in or sign up to submit projects and post team-up requests.</p>
-        <Button asChild className="btn-google rounded-full">
+        <Button asChild className="btn-gemini rounded-full">
             <Link href="/join">Login / Sign Up</Link>
         </Button>
       </CardContent>

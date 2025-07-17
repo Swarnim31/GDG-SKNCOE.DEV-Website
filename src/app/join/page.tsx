@@ -224,7 +224,7 @@ export default function JoinPage() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full btn-google rounded-full" disabled={isSignUpSubmitting || isGoogleSubmitting}>
+                  <Button type="submit" className="w-full btn-gemini rounded-full" disabled={isSignUpSubmitting || isGoogleSubmitting}>
                     {isSignUpSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -309,7 +309,7 @@ export default function JoinPage() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full btn-google rounded-full" disabled={isLoginSubmitting || isGoogleSubmitting}>
+                  <Button type="submit" className="w-full btn-gemini rounded-full" disabled={isLoginSubmitting || isGoogleSubmitting}>
                     {isLoginSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />

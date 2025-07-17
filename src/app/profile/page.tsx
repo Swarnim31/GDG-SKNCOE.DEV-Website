@@ -202,7 +202,7 @@ export default function ProfilePage() {
                 </div>
                  {isEditing && (
                     <div className="flex justify-end">
-                        <Button className="btn-google rounded-full" onClick={handleSaveChanges} disabled={isSaving}>
+                        <Button className="btn-gemini rounded-full" onClick={handleSaveChanges} disabled={isSaving}>
                             {isSaving ? (
                                 <>
                                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />

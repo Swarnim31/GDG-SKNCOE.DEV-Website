@@ -75,7 +75,7 @@ export function EventListItem({ event, index }: EventListItemProps) {
                                     </Badge>
                                 ))}
                             </div>
-                            <Button asChild className="w-full sm:w-auto btn-google rounded-full">
+                            <Button asChild className="w-full sm:w-auto btn-gemini rounded-full">
                                 <Link href="https://gdg.community.dev/gdg-on-campus-shrimati-kashibai-navale-college-of-engineering-pune-india/" target="_blank" rel="noopener noreferrer">
                                     Checkout More <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
