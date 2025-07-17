@@ -13,14 +13,13 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Lock, Mail, User, ArrowRight, Loader2 } from "lucide-react";
-import { GoogleIcon } from "@/components/icons/google";
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { auth, firestore, googleProvider } from "@/lib/firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth, firestore } from "@/lib/firebase";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
@@ -40,7 +39,6 @@ export default function JoinPage() {
     const [isMounted, setIsMounted] = React.useState(false);
     const [isSignUpSubmitting, setIsSignUpSubmitting] = React.useState(false);
     const [isLoginSubmitting, setIsLoginSubmitting] = React.useState(false);
-    const [isGoogleSubmitting, setIsGoogleSubmitting] = React.useState(false);
     const { toast } = useToast();
     const router = useRouter();
 
@@ -117,45 +115,6 @@ export default function JoinPage() {
             setIsLoginSubmitting(false);
         }
     };
-
-    const handleGoogleSignIn = async () => {
-        setIsGoogleSubmitting(true);
-        try {
-            const result = await signInWithPopup(auth, googleProvider);
-            const user = result.user;
-
-            const userDocRef = doc(firestore, "users", user.uid);
-            const userDoc = await getDoc(userDocRef);
-
-            if (!userDoc.exists()) {
-                await setDoc(userDocRef, {
-                    name: user.displayName,
-                    email: user.email,
-                    uid: user.uid,
-                });
-                 toast({
-                    title: "Account Created!",
-                    description: "Welcome to the community.",
-                });
-            } else {
-                toast({
-                    title: "Welcome Back!",
-                    description: "You've successfully signed in.",
-                });
-            }
-            router.push('/profile');
-            
-        } catch (error: any) {
-            console.error("Google Sign-in error:", error);
-             toast({
-                title: "Google Sign-In Failed",
-                description: error.message || "Could not sign in with Google. Please try again.",
-                variant: "destructive",
-            });
-        } finally {
-            setIsGoogleSubmitting(false);
-        }
-    };
     
     if (!isMounted) {
         return null;
@@ -224,7 +183,7 @@ export default function JoinPage() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full btn-gemini rounded-full" disabled={isSignUpSubmitting || isGoogleSubmitting}>
+                  <Button type="submit" className="w-full btn-gemini rounded-full" disabled={isSignUpSubmitting}>
                     {isSignUpSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -238,29 +197,6 @@ export default function JoinPage() {
                   </Button>
                 </form>
               </Form>
-              <div className="relative my-4">
-                <div className="absolute inset-0 flex items-center">
-                  <span className="w-full border-t" />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase">
-                  <span className="bg-card px-2 text-muted-foreground">
-                    Or continue with
-                  </span>
-                </div>
-              </div>
-              <Button variant="outline" className="w-full rounded-full" onClick={handleGoogleSignIn} disabled={isGoogleSubmitting || isSignUpSubmitting || isLoginSubmitting}>
-                 {isGoogleSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Please wait...
-                  </>
-                ) : (
-                  <>
-                    <GoogleIcon className="mr-2 h-5 w-5" />
-                    Continue with Google
-                  </>
-                )}
-              </Button>
             </CardContent>
         </Card>
       </div>
@@ -309,7 +245,7 @@ export default function JoinPage() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full btn-gemini rounded-full" disabled={isLoginSubmitting || isGoogleSubmitting}>
+                  <Button type="submit" className="w-full btn-gemini rounded-full" disabled={isLoginSubmitting}>
                     {isLoginSubmitting ? (
                       <>
                         <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -323,35 +259,12 @@ export default function JoinPage() {
                   </Button>
                 </form>
               </Form>
-              <div className="relative my-4">
-                  <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t" />
-                  </div>
-                  <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-card px-2 text-muted-foreground">
-                      Or continue with
-                    </span>
-                  </div>
-                </div>
-                <Button variant="outline" className="w-full rounded-full" onClick={handleGoogleSignIn} disabled={isGoogleSubmitting || isSignUpSubmitting || isLoginSubmitting}>
-                  {isGoogleSubmitting ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Please wait...
-                    </>
-                  ) : (
-                    <>
-                      <GoogleIcon className="mr-2 h-5 w-5" />
-                      Continue with Google
-                    </>
-                  )}
-                </Button>
-                <p className="text-center text-sm text-muted-foreground mt-6">
-                  New here?{' '}
-                  <Link href="#" className="font-semibold text-primary hover:underline" onClick={(e) => { e.preventDefault(); document.querySelector('input[name="fullName"]')?.focus(); }}>
-                    Create an account
-                  </Link>
-                </p>
+              <p className="text-center text-sm text-muted-foreground mt-6">
+                New here?{' '}
+                <Link href="#" className="font-semibold text-primary hover:underline" onClick={(e) => { e.preventDefault(); document.querySelector('input[name="fullName"]')?.focus(); }}>
+                  Create an account
+                </Link>
+              </p>
             </CardContent>
         </Card>
       </div>
