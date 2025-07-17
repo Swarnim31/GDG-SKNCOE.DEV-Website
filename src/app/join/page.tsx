@@ -84,11 +84,19 @@ export default function JoinPage() {
 
         } catch (error: any) {
             console.error("Sign up error:", error);
-            toast({
-                title: "Sign-up Failed",
-                description: error.message || "An unexpected error occurred. Please try again.",
-                variant: "destructive",
-            });
+            if (error.code === 'auth/email-already-in-use') {
+                 toast({
+                    title: "Sign-up Failed",
+                    description: "An account with this email already exists.",
+                    variant: "destructive",
+                });
+            } else {
+                toast({
+                    title: "Sign-up Failed",
+                    description: error.message || "An unexpected error occurred. Please try again.",
+                    variant: "destructive",
+                });
+            }
         } finally {
             setIsSignUpSubmitting(false);
         }

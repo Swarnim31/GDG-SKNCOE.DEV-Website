@@ -1,12 +1,18 @@
 
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "./theme-toggle";
 import { AppNavMobile } from "./app-nav-mobile";
 import Image from "next/image";
 import { User } from "lucide-react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "@/lib/firebase";
 
 export function AppHeader() {
+  const [user, loading, error] = useAuthState(auth);
+
   return (
     <header className="bg-background/80 backdrop-blur-sm border-b sticky top-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
@@ -43,9 +49,11 @@ export function AppHeader() {
           </nav>
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <Button asChild className="btn-gemini rounded-full hidden md:inline-flex">
-              <Link href="/join">Join</Link>
-            </Button>
+            {!user && !loading && (
+              <Button asChild className="btn-gemini rounded-full hidden md:inline-flex">
+                <Link href="/join">Join</Link>
+              </Button>
+            )}
             <Link href="/profile" passHref>
               <Button variant="outline" size="icon" className="rounded-full hidden md:inline-flex">
                 <User className="h-5 w-5" />
