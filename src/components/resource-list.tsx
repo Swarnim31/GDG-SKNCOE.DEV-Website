@@ -14,6 +14,7 @@ import {
 import { ResourceCard } from "@/components/resource-card";
 import { Search, Code, Cpu, FileJson, ListFilter } from "lucide-react";
 import { motion } from "framer-motion";
+import { googleTools, aiTools, devTools } from "@/lib/data";
 
 type ResourceListProps = {
   resources: Resource[];
@@ -48,11 +49,10 @@ export function ResourceList({ resources }: ResourceListProps) {
       },
     },
   };
-  
-  const googleTools = filteredResources.filter(r => r.category === 'Google & Firebase');
-  const aiTools = filteredResources.filter(r => r.category === 'AI');
-  const devTools = filteredResources.filter(r => r.category === 'Developer');
 
+  const filteredGoogleTools = filteredResources.filter(r => r.category === 'Google & Firebase');
+  const filteredAiTools = filteredResources.filter(r => r.category === 'AI');
+  const filteredDevTools = filteredResources.filter(r => r.category === 'Developer');
 
   return (
     <div>
@@ -87,18 +87,55 @@ export function ResourceList({ resources }: ResourceListProps) {
         </div>
       </div>
 
-      <div className="space-y-4 max-w-4xl mx-auto">
-         {filteredResources.length > 0 ? (
-            filteredResources.map((resource, index) => (
-                <ResourceCard key={resource.id} resource={resource} index={index} />
-            ))
-         ) : (
-            <div className="text-center py-16">
-                <p className="text-lg text-muted-foreground">No tools found matching your criteria. Try a different search or filter.</p>
-            </div>
-         )}
-      </div>
+        {filteredResources.length > 0 ? (
+          <div className="space-y-12">
+            {filteredGoogleTools.length > 0 && (
+              <section>
+                <h2 className="text-2xl font-bold flex items-center gap-3 mb-6">
+                  <FileJson className="h-7 w-7 text-primary" />
+                  Google & Firebase
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                  {filteredGoogleTools.map((resource, index) => (
+                    <ResourceCard key={resource.id} resource={resource} index={index} />
+                  ))}
+                </div>
+              </section>
+            )}
 
+            {filteredAiTools.length > 0 && (
+              <section>
+                <h2 className="text-2xl font-bold flex items-center gap-3 mb-6">
+                  <Cpu className="h-7 w-7 text-primary" />
+                  Artificial Intelligence
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                  {filteredAiTools.map((resource, index) => (
+                    <ResourceCard key={resource.id} resource={resource} index={index} />
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {filteredDevTools.length > 0 && (
+              <section>
+                <h2 className="text-2xl font-bold flex items-center gap-3 mb-6">
+                  <Code className="h-7 w-7 text-primary" />
+                  Developer Tools
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                  {filteredDevTools.map((resource, index) => (
+                    <ResourceCard key={resource.id} resource={resource} index={index} />
+                  ))}
+                </div>
+              </section>
+            )}
+        </div>
+      ) : (
+        <div className="text-center py-16">
+            <p className="text-lg text-muted-foreground">No tools found matching your criteria. Try a different search or filter.</p>
+        </div>
+      )}
     </div>
   );
 }
