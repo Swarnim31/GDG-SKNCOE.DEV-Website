@@ -11,10 +11,20 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 export function TechCapsuleDisplay() {
-  const [currentDay, setCurrentDay] = React.useState<number>(1);
+  const [currentDay, setCurrentDay] = React.useState<number>(0);
   const [capsuleData, setCapsuleData] = React.useState<Capsule | null>(null);
 
+  React.useEffect(() => {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 0);
+    const diff = now.getTime() - start.getTime();
+    const oneDay = 1000 * 60 * 60 * 24;
+    const dayOfYear = Math.floor(diff / oneDay);
+    setCurrentDay(dayOfYear);
+  }, []);
+
   const capsulesQuery = React.useMemo(() => {
+    if (currentDay === 0) return null;
     return query(
       collection(firestore, "tech_Capsule"),
       where("day", "==", currentDay),
@@ -34,7 +44,7 @@ export function TechCapsuleDisplay() {
   }, [capsulesSnapshot]);
   
   const renderContent = () => {
-    if (loading) {
+    if (loading || currentDay === 0) {
       return (
         <div className="w-full max-w-2xl mx-auto">
           <Skeleton className="h-24 w-full rounded-full" />
