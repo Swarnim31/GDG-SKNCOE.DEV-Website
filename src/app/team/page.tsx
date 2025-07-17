@@ -12,14 +12,9 @@ export default function TeamPage() {
           The driving force behind GDG SknCoe.DEV, a passionate group of creators, thinkers, and innovators.
         </p>
       </div>
-      <div className="flex justify-center">
-        {mockTeam.map((member, index) => (
-          <div
-            key={member.id}
-            className="w-full max-w-sm p-1 rounded-2xl animated-gradient-border shadow-lg"
-          >
-            <TeamCard member={member} index={index} />
-          </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-12">
+        {mockTeam.map((member) => (
+          <TeamCard key={member.id} member={member} />
         ))}
       </div>
 
