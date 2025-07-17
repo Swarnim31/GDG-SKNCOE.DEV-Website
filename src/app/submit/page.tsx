@@ -88,133 +88,56 @@ export default function SubmitPage() {
 
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <Card className="max-w-3xl mx-auto">
-        <CardHeader>
-          <CardTitle className="text-2xl">Submit New Content</CardTitle>
-          <CardDescription>
-            Share an event, update, or resource with the community.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-              <FormField
-                control={form.control}
-                name="type"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Content Type</FormLabel>
-                    <Select
-                      onValueChange={field.onChange}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select a content type" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="GDG Event">GDG Event</SelectItem>
-                        <SelectItem value="Tech Session">Tech Session</SelectItem>
-                        <SelectItem value="Resource Update">
-                          Resource Update
-                        </SelectItem>
-                        <SelectItem value="Info Session">Info Session</SelectItem>
-                        <SelectItem value="Conference">Conference</SelectItem>
-                        <SelectItem value="Workshop / Study Group">Workshop / Study Group</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="title"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Title</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="e.g. Flutter Forward Extended"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="description"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Description</FormLabel>
-                    <FormControl>
-                      <Textarea
-                        placeholder="Provide a detailed description of the event or resource..."
-                        className="resize-y"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="max-w-3xl mx-auto p-1 rounded-2xl animated-gradient-border shadow-lg">
+        <Card className="w-full rounded-xl">
+          <CardHeader>
+            <CardTitle className="text-2xl">Submit New Content</CardTitle>
+            <CardDescription>
+              Share an event, update, or resource with the community.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <FormField
                   control={form.control}
-                  name="date"
+                  name="type"
                   render={({ field }) => (
-                    <FormItem className="flex flex-col">
-                      <FormLabel>Date</FormLabel>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <FormControl>
-                            <Button
-                              variant={"outline"}
-                              className={cn(
-                                "w-full pl-3 text-left font-normal",
-                                !field.value && "text-muted-foreground"
-                              )}
-                            >
-                              {field.value ? (
-                                format(field.value, "PPP")
-                              ) : (
-                                <span>Pick a date</span>
-                              )}
-                              <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                            </Button>
-                          </FormControl>
-                        </PopoverTrigger>
-                        <PopoverContent
-                          className="w-auto p-0"
-                          align="start"
-                        >
-                          <Calendar
-                            mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
-                            disabled={(date) =>
-                              date < new Date(new Date().setHours(0,0,0,0))
-                            }
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
+                    <FormItem>
+                      <FormLabel>Content Type</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a content type" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="GDG Event">GDG Event</SelectItem>
+                          <SelectItem value="Tech Session">Tech Session</SelectItem>
+                          <SelectItem value="Resource Update">
+                            Resource Update
+                          </SelectItem>
+                          <SelectItem value="Info Session">Info Session</SelectItem>
+                          <SelectItem value="Conference">Conference</SelectItem>
+                          <SelectItem value="Workshop / Study Group">Workshop / Study Group</SelectItem>
+                        </SelectContent>
+                      </Select>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
                 <FormField
                   control={form.control}
-                  name="location"
+                  name="title"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Location</FormLabel>
+                      <FormLabel>Title</FormLabel>
                       <FormControl>
                         <Input
-                          placeholder="e.g. Online, Community Hall"
+                          placeholder="e.g. Flutter Forward Extended"
                           {...field}
                         />
                       </FormControl>
@@ -222,28 +145,107 @@ export default function SubmitPage() {
                     </FormItem>
                   )}
                 />
-              </div>
-              <FormField
-                control={form.control}
-                name="tags"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Tags</FormLabel>
-                    <FormControl>
-                      <Input placeholder="e.g. Flutter, Web, AI" {...field} />
-                    </FormControl>
-                    <FormDescription>Separate tags with commas.</FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full sm:w-auto btn-google rounded-full">
-                Submit Content
-              </Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+                <FormField
+                  control={form.control}
+                  name="description"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Description</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          placeholder="Provide a detailed description of the event or resource..."
+                          className="resize-y"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <FormField
+                    control={form.control}
+                    name="date"
+                    render={({ field }) => (
+                      <FormItem className="flex flex-col">
+                        <FormLabel>Date</FormLabel>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <FormControl>
+                              <Button
+                                variant={"outline"}
+                                className={cn(
+                                  "w-full pl-3 text-left font-normal",
+                                  !field.value && "text-muted-foreground"
+                                )}
+                              >
+                                {field.value ? (
+                                  format(field.value, "PPP")
+                                ) : (
+                                  <span>Pick a date</span>
+                                )}
+                                <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                              </Button>
+                            </FormControl>
+                          </PopoverTrigger>
+                          <PopoverContent
+                            className="w-auto p-0"
+                            align="start"
+                          >
+                            <Calendar
+                              mode="single"
+                              selected={field.value}
+                              onSelect={field.onChange}
+                              disabled={(date) =>
+                                date < new Date(new Date().setHours(0,0,0,0))
+                              }
+                              initialFocus
+                            />
+                          </PopoverContent>
+                        </Popover>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="location"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Location</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="e.g. Online, Community Hall"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <FormField
+                  control={form.control}
+                  name="tags"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Tags</FormLabel>
+                      <FormControl>
+                        <Input placeholder="e.g. Flutter, Web, AI" {...field} />
+                      </FormControl>
+                      <FormDescription>Separate tags with commas.</FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full sm:w-auto btn-google rounded-full">
+                  Submit Content
+                </Button>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

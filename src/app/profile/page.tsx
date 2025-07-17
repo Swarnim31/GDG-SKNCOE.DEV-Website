@@ -89,35 +89,39 @@ export default function ProfilePage() {
     return (
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="max-w-4xl mx-auto space-y-8">
-                <Card className="overflow-hidden">
-                    <div className="bg-muted p-8">
-                        <div className="flex flex-col sm:flex-row items-center gap-6">
-                            <Skeleton className="h-24 w-24 rounded-full" />
-                            <div className="space-y-2 text-center sm:text-left">
-                                <Skeleton className="h-8 w-48" />
-                                <Skeleton className="h-6 w-64" />
+                <div className="p-1 rounded-2xl animated-gradient-border shadow-lg">
+                    <Card className="overflow-hidden rounded-xl">
+                        <div className="bg-muted p-8">
+                            <div className="flex flex-col sm:flex-row items-center gap-6">
+                                <Skeleton className="h-24 w-24 rounded-full" />
+                                <div className="space-y-2 text-center sm:text-left">
+                                    <Skeleton className="h-8 w-48" />
+                                    <Skeleton className="h-6 w-64" />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Card>
-                <Card>
-                    <CardHeader>
-                        <Skeleton className="h-6 w-32" />
-                        <Skeleton className="h-4 w-48" />
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                                <Skeleton className="h-4 w-16" />
-                                <Skeleton className="h-10 w-full" />
+                    </Card>
+                </div>
+                <div className="p-1 rounded-2xl animated-gradient-border shadow-lg">
+                    <Card className="rounded-xl">
+                        <CardHeader>
+                            <Skeleton className="h-6 w-32" />
+                            <Skeleton className="h-4 w-48" />
+                        </CardHeader>
+                        <CardContent className="space-y-6">
+                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <Skeleton className="h-4 w-16" />
+                                    <Skeleton className="h-10 w-full" />
+                                </div>
+                                 <div className="space-y-2">
+                                    <Skeleton className="h-4 w-16" />
+                                    <Skeleton className="h-10 w-full" />
+                                </div>
                             </div>
-                             <div className="space-y-2">
-                                <Skeleton className="h-4 w-16" />
-                                <Skeleton className="h-10 w-full" />
-                            </div>
-                        </div>
-                    </CardContent>
-                </Card>
+                        </CardContent>
+                    </Card>
+                </div>
             </div>
         </div>
     );
@@ -141,77 +145,81 @@ export default function ProfilePage() {
       <div className="max-w-4xl mx-auto space-y-8">
         
         {/* Profile Header Card */}
-        <Card className="overflow-hidden">
-          <div className="capsule-gradient-purple p-8 text-primary-foreground">
-            <div className="flex flex-col sm:flex-row items-center gap-6">
-              <Avatar className="h-24 w-24 border-4 border-background/50">
-                <AvatarImage src={user.photoURL ?? undefined} alt={userData?.name} />
-                <AvatarFallback className="text-3xl bg-background/20">
-                    {getInitials(userData?.name)}
-                </AvatarFallback>
-              </Avatar>
-              <div className="text-center sm:text-left">
-                <h1 className="text-3xl font-bold">{userData?.name || 'User'}</h1>
-                <p className="text-lg opacity-80">{userData?.email}</p>
-              </div>
-               <div className="sm:ml-auto">
-                    <Button variant="ghost" className="text-primary-foreground/80 hover:bg-white/20 hover:text-white" onClick={handleLogout}>
-                        <LogOut className="mr-2 h-4 w-4" />
-                        Logout
-                    </Button>
+        <div className="p-1 rounded-2xl animated-gradient-border shadow-lg">
+            <Card className="overflow-hidden rounded-xl">
+              <div className="capsule-gradient-purple p-8 text-primary-foreground">
+                <div className="flex flex-col sm:flex-row items-center gap-6">
+                  <Avatar className="h-24 w-24 border-4 border-background/50">
+                    <AvatarImage src={user.photoURL ?? undefined} alt={userData?.name} />
+                    <AvatarFallback className="text-3xl bg-background/20">
+                        {getInitials(userData?.name)}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="text-center sm:text-left">
+                    <h1 className="text-3xl font-bold">{userData?.name || 'User'}</h1>
+                    <p className="text-lg opacity-80">{userData?.email}</p>
+                  </div>
+                   <div className="sm:ml-auto">
+                        <Button variant="ghost" className="text-primary-foreground/80 hover:bg-white/20 hover:text-white" onClick={handleLogout}>
+                            <LogOut className="mr-2 h-4 w-4" />
+                            Logout
+                        </Button>
+                    </div>
                 </div>
-            </div>
-          </div>
-        </Card>
+              </div>
+            </Card>
+        </div>
 
         {/* Profile Details Card */}
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between">
-            <div className="space-y-1">
-                <CardTitle>Profile Details</CardTitle>
-                <CardDescription>Update your personal information.</CardDescription>
-            </div>
-            <Button variant="outline" size="icon" onClick={() => setIsEditing(!isEditing)} disabled={isSaving}>
-                {isEditing ? <Save className="h-4 w-4" /> : <Edit className="h-4 w-4" />}
-                <span className="sr-only">{isEditing ? "Save Profile" : "Edit Profile"}</span>
-            </Button>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                    <Label htmlFor="fullName">Full Name</Label>
-                    <div className="relative">
-                        <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                        <Input id="fullName" value={editedName} onChange={(e) => setEditedName(e.target.value)} className="pl-10" disabled={!isEditing || isSaving} />
+        <div className="p-1 rounded-2xl animated-gradient-border shadow-lg">
+            <Card className="rounded-xl">
+              <CardHeader className="flex flex-row items-center justify-between">
+                <div className="space-y-1">
+                    <CardTitle>Profile Details</CardTitle>
+                    <CardDescription>Update your personal information.</CardDescription>
+                </div>
+                <Button variant="outline" size="icon" onClick={() => setIsEditing(!isEditing)} disabled={isSaving}>
+                    {isEditing ? <Save className="h-4 w-4" /> : <Edit className="h-4 w-4" />}
+                    <span className="sr-only">{isEditing ? "Save Profile" : "Edit Profile"}</span>
+                </Button>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                        <Label htmlFor="fullName">Full Name</Label>
+                        <div className="relative">
+                            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                            <Input id="fullName" value={editedName} onChange={(e) => setEditedName(e.target.value)} className="pl-10" disabled={!isEditing || isSaving} />
+                        </div>
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="email">Email Address</Label>
+                         <div className="relative">
+                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                            <Input id="email" type="email" defaultValue={userData?.email} className="pl-10" disabled />
+                        </div>
                     </div>
                 </div>
-                <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                     <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                        <Input id="email" type="email" defaultValue={userData?.email} className="pl-10" disabled />
+                 {isEditing && (
+                    <div className="flex justify-end">
+                        <Button className="btn-google rounded-full" onClick={handleSaveChanges} disabled={isSaving}>
+                            {isSaving ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Saving...
+                                </>
+                            ) : (
+                                <>
+                                    <Save className="mr-2 h-4 w-4"/>
+                                    Save Changes
+                                </>
+                            )}
+                        </Button>
                     </div>
-                </div>
-            </div>
-             {isEditing && (
-                <div className="flex justify-end">
-                    <Button className="btn-google rounded-full" onClick={handleSaveChanges} disabled={isSaving}>
-                        {isSaving ? (
-                            <>
-                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                                Saving...
-                            </>
-                        ) : (
-                            <>
-                                <Save className="mr-2 h-4 w-4"/>
-                                Save Changes
-                            </>
-                        )}
-                    </Button>
-                </div>
-            )}
-          </CardContent>
-        </Card>
+                )}
+              </CardContent>
+            </Card>
+        </div>
 
       </div>
     </div>

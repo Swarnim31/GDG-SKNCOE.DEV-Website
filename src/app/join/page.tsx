@@ -128,7 +128,6 @@ export default function JoinPage() {
             const userDoc = await getDoc(userDocRef);
 
             if (!userDoc.exists()) {
-                // New user, create a document
                 await setDoc(userDocRef, {
                     name: user.displayName,
                     email: user.email,
@@ -166,195 +165,197 @@ export default function JoinPage() {
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col items-center justify-center space-y-8">
       
       {/* Sign Up Card */}
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Join the Community</CardTitle>
-          <CardDescription>
-            Create an account to get started.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...signUpForm}>
-            <form onSubmit={signUpForm.handleSubmit(handleSignUp)} className="space-y-6">
-              <FormField
-                control={signUpForm.control}
-                name="fullName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Full Name</FormLabel>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <FormControl>
-                        <Input placeholder="Your Name" className="pl-10" {...field} />
-                      </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={signUpForm.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email Address</FormLabel>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <FormControl>
-                        <Input type="email" placeholder="your.email@example.com" className="pl-10" {...field} />
-                      </FormControl>
-                    </div>
-                     <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={signUpForm.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <FormControl>
-                        <Input type="password" placeholder="••••••••" className="pl-10" {...field} />
-                      </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full btn-google rounded-full" disabled={isSignUpSubmitting || isGoogleSubmitting}>
-                {isSignUpSubmitting ? (
+      <div className="w-full max-w-md p-1 rounded-2xl animated-gradient-border shadow-lg">
+        <Card className="w-full rounded-xl">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl">Join the Community</CardTitle>
+              <CardDescription>
+                Create an account to get started.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Form {...signUpForm}>
+                <form onSubmit={signUpForm.handleSubmit(handleSignUp)} className="space-y-6">
+                  <FormField
+                    control={signUpForm.control}
+                    name="fullName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Full Name</FormLabel>
+                        <div className="relative">
+                          <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                          <FormControl>
+                            <Input placeholder="Your Name" className="pl-10" {...field} />
+                          </FormControl>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={signUpForm.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email Address</FormLabel>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                          <FormControl>
+                            <Input type="email" placeholder="your.email@example.com" className="pl-10" {...field} />
+                          </FormControl>
+                        </div>
+                         <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={signUpForm.control}
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Password</FormLabel>
+                        <div className="relative">
+                          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                          <FormControl>
+                            <Input type="password" placeholder="••••••••" className="pl-10" {...field} />
+                          </FormControl>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type="submit" className="w-full btn-google rounded-full" disabled={isSignUpSubmitting || isGoogleSubmitting}>
+                    {isSignUpSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Creating Account...
+                      </>
+                    ) : (
+                      <>
+                        Create Account <ArrowRight className="ml-2 h-4 w-4" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </Form>
+              <div className="relative my-4">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-card px-2 text-muted-foreground">
+                    Or continue with
+                  </span>
+                </div>
+              </div>
+              <Button variant="outline" className="w-full rounded-full" onClick={handleGoogleSignIn} disabled={isGoogleSubmitting || isSignUpSubmitting || isLoginSubmitting}>
+                 {isGoogleSubmitting ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Creating Account...
+                    Please wait...
                   </>
                 ) : (
                   <>
-                    Create Account <ArrowRight className="ml-2 h-4 w-4" />
+                    <GoogleIcon className="mr-2 h-5 w-5" />
+                    Continue with Google
                   </>
                 )}
               </Button>
-            </form>
-          </Form>
-          <div className="relative my-4">
-            <div className="absolute inset-0 flex items-center">
-              <span className="w-full border-t" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                Or continue with
-              </span>
-            </div>
-          </div>
-          <Button variant="outline" className="w-full rounded-full" onClick={handleGoogleSignIn} disabled={isGoogleSubmitting || isSignUpSubmitting || isLoginSubmitting}>
-             {isGoogleSubmitting ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Please wait...
-              </>
-            ) : (
-              <>
-                <GoogleIcon className="mr-2 h-5 w-5" />
-                Continue with Google
-              </>
-            )}
-          </Button>
-        </CardContent>
-      </Card>
+            </CardContent>
+        </Card>
+      </div>
 
       {/* Login Card */}
-      <Card className="w-full max-w-md">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Welcome Back</CardTitle>
-          <CardDescription>
-            Sign in to your existing account.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...loginForm}>
-            <form onSubmit={loginForm.handleSubmit(handleLogin)} className="space-y-6">
-              <FormField
-                control={loginForm.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email Address</FormLabel>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <FormControl>
-                        <Input type="email" placeholder="your.email@example.com" className="pl-10" {...field} />
-                      </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={loginForm.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <div className="relative">
-                      <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                      <FormControl>
-                        <Input type="password" placeholder="••••••••" className="pl-10" {...field} />
-                      </FormControl>
-                    </div>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full btn-google rounded-full" disabled={isLoginSubmitting || isGoogleSubmitting}>
-                {isLoginSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Logging In...
-                  </>
-                ) : (
-                  <>
-                    Login <ArrowRight className="ml-2 h-4 w-4" />
-                  </>
-                )}
-              </Button>
-            </form>
-          </Form>
-          <div className="relative my-4">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t" />
-              </div>
-              <div className="relative flex justify-center text-xs uppercase">
-                <span className="bg-background px-2 text-muted-foreground">
-                  Or continue with
-                </span>
-              </div>
-            </div>
-            <Button variant="outline" className="w-full rounded-full" onClick={handleGoogleSignIn} disabled={isGoogleSubmitting || isSignUpSubmitting || isLoginSubmitting}>
-              {isGoogleSubmitting ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Please wait...
-                </>
-              ) : (
-                <>
-                  <GoogleIcon className="mr-2 h-5 w-5" />
-                  Continue with Google
-                </>
-              )}
-            </Button>
-            <p className="text-center text-sm text-muted-foreground mt-6">
-              New here?{' '}
-              <Link href="#" className="font-semibold text-primary hover:underline" onClick={(e) => { e.preventDefault(); document.querySelector('input[name="fullName"]')?.focus(); }}>
-                Create an account
-              </Link>
-            </p>
-        </CardContent>
-      </Card>
+      <div className="w-full max-w-md p-1 rounded-2xl animated-gradient-border shadow-lg">
+        <Card className="w-full rounded-xl">
+            <CardHeader className="text-center">
+              <CardTitle className="text-2xl">Welcome Back</CardTitle>
+              <CardDescription>
+                Sign in to your existing account.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Form {...loginForm}>
+                <form onSubmit={loginForm.handleSubmit(handleLogin)} className="space-y-6">
+                  <FormField
+                    control={loginForm.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email Address</FormLabel>
+                        <div className="relative">
+                          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                          <FormControl>
+                            <Input type="email" placeholder="your.email@example.com" className="pl-10" {...field} />
+                          </FormControl>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={loginForm.control}
+                    name="password"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Password</FormLabel>
+                        <div className="relative">
+                          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                          <FormControl>
+                            <Input type="password" placeholder="••••••••" className="pl-10" {...field} />
+                          </FormControl>
+                        </div>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <Button type="submit" className="w-full btn-google rounded-full" disabled={isLoginSubmitting || isGoogleSubmitting}>
+                    {isLoginSubmitting ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Logging In...
+                      </>
+                    ) : (
+                      <>
+                        Login <ArrowRight className="ml-2 h-4 w-4" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </Form>
+              <div className="relative my-4">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t" />
+                  </div>
+                  <div className="relative flex justify-center text-xs uppercase">
+                    <span className="bg-card px-2 text-muted-foreground">
+                      Or continue with
+                    </span>
+                  </div>
+                </div>
+                <Button variant="outline" className="w-full rounded-full" onClick={handleGoogleSignIn} disabled={isGoogleSubmitting || isSignUpSubmitting || isLoginSubmitting}>
+                  {isGoogleSubmitting ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Please wait...
+                    </>
+                  ) : (
+                    <>
+                      <GoogleIcon className="mr-2 h-5 w-5" />
+                      Continue with Google
+                    </>
+                  )}
+                </Button>
+                <p className="text-center text-sm text-muted-foreground mt-6">
+                  New here?{' '}
+                  <Link href="#" className="font-semibold text-primary hover:underline" onClick={(e) => { e.preventDefault(); document.querySelector('input[name="fullName"]')?.focus(); }}>
+                    Create an account
+                  </Link>
+                </p>
+            </CardContent>
+        </Card>
+      </div>
 
     </div>
   );
 }
-
-    
