@@ -98,7 +98,7 @@ export const mockTeam = [
     role: "Web Development Co-Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/swarnim_shamgaonkar_MunLauF.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/swarnim-shamgaonkar-b725472b1/",
   },
   {
     id: "4",
