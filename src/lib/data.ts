@@ -90,7 +90,7 @@ export const mockTeam = [
     role: "Web Development Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sarah_khambatta_UBajlWC.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/sarah-khambatta-468507259/",
   },
   {
     id: "3",
@@ -106,7 +106,7 @@ export const mockTeam = [
     role: "AI/ML Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/soham_gurav_kR0ucPe.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/soham-gurav-5085912ab/",
   },
   {
     id: "5",
@@ -114,7 +114,7 @@ export const mockTeam = [
     role: "AI/ML Co-Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/kabir_talbhandare.jpeg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/kabir-talbhandare-00780b2b2/",
   },
   {
     id: "6",
@@ -122,7 +122,7 @@ export const mockTeam = [
     role: "Cloud Computing Co-Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/say_creations.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/sanket-nagpal-5b40b92b8/",
   },
   {
     id: "7",
@@ -130,7 +130,7 @@ export const mockTeam = [
     role: "Cyber Security Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/husain_khalapurwala_In1Upez.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/husain-khalapurwala-a98962253/",
   },
   {
     id: "8",
@@ -138,7 +138,7 @@ export const mockTeam = [
     role: "UI/UX Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/tvisha_ghiya_eaDjxVI.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/tvisha-ghiya-387062314/",
   },
   {
     id: "9",
@@ -146,7 +146,7 @@ export const mockTeam = [
     role: "UI/UX Co-Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/aarya_anekar.jfif",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/aaryaa2005/",
   },
   {
     id: "10",
@@ -154,7 +154,7 @@ export const mockTeam = [
     role: "Social Media Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/tanmay_ashturkar_aUt2B6e.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/tanmay-ashturkar-700848292/",
   },
   {
     id: "11",
@@ -162,7 +162,7 @@ export const mockTeam = [
     role: "Social Media Co-Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/aditi_deshpande_lz9CXZW.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/aditi-deshpande-9aba32274/",
   },
   {
     id: "12",
@@ -170,7 +170,7 @@ export const mockTeam = [
     role: "Women Tech Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sanjana_puraswani_aIvnHt7.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/sanjana-puraswani-486a1825b/",
   },
   {
     id: "13",
@@ -178,7 +178,7 @@ export const mockTeam = [
     role: "Women Tech Co-Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/srushti_kshirsagar.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/srushtik3296/",
   },
   {
     id: "14",
@@ -194,7 +194,7 @@ export const mockTeam = [
     role: "Sponsorship Team Co-Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/arjun_patil_rwfD5ok.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/arjunpatil15/",
   },
   {
     id: "16",
@@ -202,7 +202,7 @@ export const mockTeam = [
     role: "Event Management Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/shweta_ghate.jpeg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/shwetaghate23/",
   },
   {
     id: "17",
@@ -210,7 +210,7 @@ export const mockTeam = [
     role: "Event Management Co-Lead",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/chidrawar_ritesh.jpg",
     imageHint: "person portrait",
-    linkedinUrl: "#",
+    linkedinUrl: "https://www.linkedin.com/in/chidrawar-ritesh-a8b8b1272/",
   },
 ];
 
