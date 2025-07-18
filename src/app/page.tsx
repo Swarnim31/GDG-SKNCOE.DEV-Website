@@ -25,6 +25,7 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { AskBot } from "@/components/ask-bot";
+import { ProjectIdeaGenerator } from "@/components/project-idea-generator";
 
 export default function Home() {
   const domains = [
@@ -171,6 +172,7 @@ export default function Home() {
 
       {/* Floating Buttons */}
       <div className="fixed bottom-6 left-6 z-[100] flex flex-col items-center gap-4">
+        <ProjectIdeaGenerator />
         <AskBot />
       </div>
     </div>
