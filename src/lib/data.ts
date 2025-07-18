@@ -1,4 +1,3 @@
-
 import type { Event, Resource, Capsule, Project, GalleryImage } from "./types";
 
 export const mockEvents: Event[] = [
@@ -80,15 +79,141 @@ export const mockTeam = [
   {
     id: "1",
     name: "Ojas Bhalerao",
-    role: "GDG Lead  SKNCOE 24-25",
+    role: "GDG Lead 24-25",
     imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,dpr_2,f_auto,g_face,h_400,q_auto:good,w_400/v1/gcs/platform-data-goog/avatars/ojas_bhalerao.jpg",
     imageHint: "person portrait",
     linkedinUrl: "https://www.linkedin.com/in/ojas-bhalerao-9742282b3/",
   },
- 
-
-   
+  {
+    id: "2",
+    name: "Sarah Khambatta",
+    role: "Web Development Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sarah_khambatta_UBajlWC.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "3",
+    name: "Swarnim Shamgaonkar",
+    role: "Web Development Co-Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/swarnim_shamgaonkar_MunLauF.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "4",
+    name: "Soham Gurav",
+    role: "AI/ML Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/soham_gurav_kR0ucPe.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "5",
+    name: "Kabir Talbhandare",
+    role: "AI/ML Co-Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/kabir_talbhandare.jpeg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "6",
+    name: "Sanket Nagpal",
+    role: "Cloud Computing Co-Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/say_creations.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "7",
+    name: "Husain Khalapurwala",
+    role: "Cyber Security Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/husain_khalapurwala_In1Upez.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "8",
+    name: "Tvisha Ghiya",
+    role: "UI/UX Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/tvisha_ghiya_eaDjxVI.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "9",
+    name: "Aarya Anekar",
+    role: "UI/UX Co-Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/aarya_anekar.jfif",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "10",
+    name: "Tanmay Ashturkar",
+    role: "Social Media Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/tanmay_ashturkar_aUt2B6e.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "11",
+    name: "Aditi Deshpande",
+    role: "Social Media Co-Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/aditi_deshpande_lz9CXZW.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "12",
+    name: "Sanjana Puraswani",
+    role: "Women Tech Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/sanjana_puraswani_aIvnHt7.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "13",
+    name: "Srushti Kshirsagar",
+    role: "Women Tech Co-Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/srushti_kshirsagar.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "14",
+    name: "Pranit Agale",
+    role: "Sponsorship Team Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/pranit_agale.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "15",
+    name: "Arjun Patil",
+    role: "Sponsorship Team Co-Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/arjun_patil_rwfD5ok.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "16",
+    name: "Shweta Ghate",
+    role: "Event Management Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/shweta_ghate.jpeg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
+  {
+    id: "17",
+    name: "Chidrawar Ritesh",
+    role: "Event Management Co-Lead",
+    imageUrl: "https://res.cloudinary.com/startup-grind/image/upload/c_fill,w_250,h_250,g_center/c_fill,dpr_2.0,f_auto,g_center,q_auto:good/v1/gcs/platform-data-goog/avatars/chidrawar_ritesh.jpg",
+    imageHint: "person portrait",
+    linkedinUrl: "#",
+  },
 ];
+
 
 export const mockGalleryImages: GalleryImage[] = [
   { id: '1', src: 'https://placehold.co/400x400.png', alt: 'Team working on a project', hint: 'team collaboration', caption: 'Hackathon Brainstorming' },
@@ -621,6 +746,3 @@ export const mockProjects: Project[] = [
     imageHint: "cloud infrastructure diagram"
   }
 ];
-
-
-    
