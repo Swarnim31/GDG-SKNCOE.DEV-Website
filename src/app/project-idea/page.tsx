@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -22,7 +23,7 @@ const IdeaDisplaySkeleton = () => (
         </div>
         <Skeleton className="h-96 w-full rounded-xl" />
     </div>
-)
+);
 
 const ErrorDisplay = ({ error }: { error: string }) => (
     <div className="w-full max-w-3xl mx-auto">
@@ -35,9 +36,9 @@ const ErrorDisplay = ({ error }: { error: string }) => (
             </AlertDescription>
         </Alert>
     </div>
-)
+);
 
-export default function ProjectIdeaPage() {
+function ProjectIdeaPageContent() {
     const router = useRouter();
     const searchParams = useSearchParams();
     const category = searchParams.get('category');
@@ -164,5 +165,14 @@ export default function ProjectIdeaPage() {
                 </div>
             )}
         </div>
+    );
+}
+
+
+export default function ProjectIdeaPage() {
+    return (
+        <React.Suspense fallback={<IdeaDisplaySkeleton />}>
+            <ProjectIdeaPageContent />
+        </React.Suspense>
     );
 }
