@@ -1,4 +1,3 @@
-
 'use server';
 
 /**
@@ -28,11 +27,12 @@ const askBotFlow = ai.defineFlow(
   async (prompt) => {
     const llmResponse = await ai.generate({
       prompt: `
-        You are a helpful AI assistant.
+        You are a helpful AI assistant for the GDG SknCoe community website.
+        Your goal is to answer questions about events, resources, how to join, and what the community is about.
+        Be friendly, concise, and helpful.
 
         User's question: "${prompt}"
       `,
-      model: 'googleai/gemini-1.5-flash',
       config: {
         temperature: 0.7,
       },
